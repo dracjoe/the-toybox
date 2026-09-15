@@ -174,7 +174,9 @@ ToyboxMod:AddCallback(ModCallbacks.MC_POST_APPLY_TEARFLAG_EFFECTS, postApplyVani
 
 local function preApplyModdedTearflags(_, ent, player, source, weaponFlag, hitbox)
     local data = ToyboxMod:getEntityDataTable(ent)
-    if(data.CARRION_CHECK_IDX) then
+    if(data.CARRION_CHECK_IDX and (data.CARRION_PRE_QUEUE or {})[data.CARRION_CHECK_IDX]) then
+        data.CARRION_PRE_QUEUE = data.CARRION_PRE_QUEUE or {}
+
         data.CARRION_PRE_QUEUE[data.CARRION_CHECK_IDX].PreModdedFlagData = {
             WeaponFlag = weaponFlag,
             Hitbox = hitbox,
@@ -185,7 +187,9 @@ ToyboxMod:AddCallback(TearFlagsLib.Callback.PRE_APPLY_TEARFLAG_EFFECTS, preApply
 
 local function postApplyModdedTearflags(_, ent, player, source)
     local data = ToyboxMod:getEntityDataTable(ent)
-    if(data.CARRION_CHECK_IDX) then
+    if(data.CARRION_CHECK_IDX and (data.CARRION_PRE_QUEUE or {})[data.CARRION_CHECK_IDX]) then
+        data.CARRION_PRE_QUEUE = data.CARRION_PRE_QUEUE or {}
+
         data.CARRION_PRE_QUEUE[data.CARRION_CHECK_IDX].ModdedFlagData = {
             Flags = TearFlagsLib.GetTearFlags(source),
             Player = player,

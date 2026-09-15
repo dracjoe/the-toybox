@@ -4374,6 +4374,7 @@ enums.FUNCTIONS.AddPlayer({
     Description = {
         "{{Heart}} While at full red HP, gain the effects of a random item from the current room's item pool",
         "The item is lost when your HP is no longer full, and is different each time you reach full HP",
+        "Can pick up red hearts at full red HP to reroll the item"
     },
     BirthrightDescription = {
         "{{SoulHeart}} Soul/Black Hearts count towards having full red HP",

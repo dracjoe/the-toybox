@@ -1156,3 +1156,57 @@ function ToyboxMod:hsl2Rgb(h, s, l)
 
     return red+(s-c/2), grn+(s-c/2), blu+(s-c/2)
 end
+
+
+
+---@param topLeft Vector
+---@param bottomRight Vector
+---@param sourceQuad boolean? default: true
+---@param uv boolean?
+---@param render boolean?
+function ToyboxMod:makeQuadFromCorners(topLeft, bottomRight, sourceQuad, uv, render)
+    local topRight = Vector(bottomRight.X, topLeft.Y)
+    local bottomLeft = Vector(topLeft.X, bottomRight.Y)
+
+    if(render) then
+        topLeft = Isaac.WorldToRenderPosition(topLeft)
+        topRight = Isaac.WorldToRenderPosition(topRight)
+        bottomLeft = Isaac.WorldToRenderPosition(bottomLeft)
+        bottomRight = Isaac.WorldToRenderPosition(bottomRight)
+    end
+
+    if(sourceQuad or sourceQuad==nil) then
+        return SourceQuad(topLeft, topRight, bottomLeft, bottomRight, uv)
+    else
+        return DestinationQuad(topLeft, topRight, bottomLeft, bottomRight)
+    end
+end
+
+---@param center Vector
+---@param radius number|Vector
+---@param rotation number? default: 0
+---@param sourceQuad boolean? default: true
+---@param uv boolean?
+---@param render boolean?
+function ToyboxMod:makeQuadFromCenterRadius(center, radius, rotation, sourceQuad, uv, render)
+    radius = Vector(1,1)*radius
+    rotation = rotation or 0
+
+    local topLeft = center+radius:Rotated(-180+rotation)
+    local topRight = center+radius:Rotated(-90+rotation)
+    local bottomLeft = center+radius:Rotated(90+rotation)
+    local bottomRight = center+radius:Rotated(0+rotation)
+
+    if(render) then
+        topLeft = Isaac.WorldToRenderPosition(topLeft)
+        topRight = Isaac.WorldToRenderPosition(topRight)
+        bottomLeft = Isaac.WorldToRenderPosition(bottomLeft)
+        bottomRight = Isaac.WorldToRenderPosition(bottomRight)
+    end
+
+    if(sourceQuad or sourceQuad==nil) then
+        return SourceQuad(topLeft, topRight, bottomLeft, bottomRight, uv)
+    else
+        return DestinationQuad(topLeft, topRight, bottomLeft, bottomRight)
+    end
+end

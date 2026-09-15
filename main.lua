@@ -527,7 +527,12 @@ include("scripts_toybox.fortnite funnies.cool title screen")
 include("scripts_toybox.fortnite funnies.slop-o-meter")
 include("scripts_toybox.fortnite funnies.commands")
 include("scripts_toybox.fortnite funnies.kanye")
---include("scripts_toybox.fortnite funnies.the_devil")
+
+--include("scripts_toybox.fortnite funnies.image.the_devil")
+--include("scripts_toybox.fortnite funnies.image.photo")
+--include("scripts_toybox.fortnite funnies.image.jumble")
+--include("scripts_toybox.fortnite funnies.image.testing")
+--include("scripts_toybox.fortnite funnies.image.shatter")
 
 include("scripts_toybox.fortnite funnies.trinket_collection")
 include("scripts_toybox.fortnite funnies.epic_collection")
