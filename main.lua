@@ -70,10 +70,8 @@ include("scripts_toybox.util.achievements.event_counters")
 include("scripts_toybox.misc.transformations.core")
     include("scripts_toybox.misc.transformations.effects.fancy")
     include("scripts_toybox.misc.transformations.effects.hydra")
-
 -- STATUS EFFECTS
 include("scripts_toybox.misc.status_effects.earworm")
-
 -- TEMPORARY ITEMS
 include("scripts_toybox.misc.temporary_items")
 -- PILL POOL LIBRARY
@@ -99,6 +97,9 @@ include("scripts_toybox.misc.tinted_rooms.room_effects")
 include("scripts_toybox.misc.custom_card_pool")
 include("scripts_toybox.misc.golden_key_logic")
 include("scripts_toybox.misc.golden_bomb_logic")
+
+include("scripts_toybox.misc.trinket_weights")
+include("scripts_toybox.misc.parasite_trinkets")
 
 include("scripts_toybox.misc.custom_room_icons")
 
@@ -423,6 +424,15 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.trinkets.fake_beard")
     include("scripts_toybox.items.trinkets.sugar_cube")
     include("scripts_toybox.items.trinkets.interest")
+    include("scripts_toybox.items.trinkets.nematode")
+    include("scripts_toybox.items.trinkets.lil_grub")
+
+    include("scripts_toybox.items.trinkets.flukie")
+    include("scripts_toybox.items.trinkets.ladybug")
+    include("scripts_toybox.items.trinkets.hatchling")
+    include("scripts_toybox.items.trinkets.candida")
+    include("scripts_toybox.items.trinkets.demodex")
+    include("scripts_toybox.items.trinkets.fat_leech")
 --UNUSED
     --include("scripts_toybox.items.unused.btrain")
     --include("scripts_toybox.items.unused.laser_pointer")
@@ -433,14 +443,13 @@ include("scripts_toybox.challenges.safari_zone")
     --include("scripts_toybox.items.unused.limit_break")
     --include("scripts_toybox.items.unused.sine_worm")
 --JOKE
-    include("scripts_toybox.items.troll.equalizer")
     include("scripts_toybox.items.troll.golden_prayer_card")
     include("scripts_toybox.items.troll.golden_schoolbag")
-    include("scripts_toybox.items.troll.catharsis")
     include("scripts_toybox.items.troll.uranium")
     include("scripts_toybox.items.troll.zero_gravity")
     include("scripts_toybox.items.troll.super_hamburger")
     include("scripts_toybox.items.troll.cursed_d6")
+    include("scripts_toybox.items.troll.so_many_options")
 
 
 --PICKUPS

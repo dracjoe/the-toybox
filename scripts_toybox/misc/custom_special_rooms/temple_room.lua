@@ -521,7 +521,7 @@ local function enterTrialRoom(_)
 
             local curPool = ToyboxMod.GAME:GetRoom():GetItemPool(rng:Next())
             local id = ToyboxMod.GAME:GetItemPool():GetCollectible(curPool, true, rng:Next(), CollectibleType.COLLECTIBLE_BREAKFAST)
-            local item = Isaac.Spawn(5,100,id,pos,Vector.Zero,nil)
+            local item = Isaac.Spawn(5,100,id,pos,Vector.Zero,nil):ToPickup()
         end
 
         if(templeMainData[tostring(room.SafeGridIndex)]==0) then
@@ -758,3 +758,16 @@ local function playEpicSound(_)
     ToyboxMod.GAME:ShakeScreen(20)
 end
 ToyboxMod:AddCallback(ToyboxMod.CUSTOM_CALLBACKS.POST_ROOM_CLEAR, playEpicSound)
+
+
+local function replaceCollectiblePedestal(_, pickup)
+    local level = ToyboxMod.GAME:GetLevel()
+    local room = level:GetCurrentRoomDesc()
+    local templeMainData = ToyboxMod:getExtraData("TEMPLE_MAIN_ROOMS") or {}
+    if(templeMainData[tostring(room.SafeGridIndex)]) then
+        if(pickup:GetAlternatePedestal()==PedestalType.DEFAULT) then
+            pickup:GetSprite():ReplaceSpritesheet(5, "gfx_tb/pickups/pickup_caban_altar.png", true)
+        end
+    end
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, replaceCollectiblePedestal, PickupVariant.PICKUP_COLLECTIBLE)

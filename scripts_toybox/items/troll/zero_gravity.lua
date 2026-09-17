@@ -19,7 +19,7 @@ local dirString = {
 local function evalStat(_, pl, stat, val)
     if(not pl:HasCollectible(ToyboxMod.COLLECTIBLE_ZERO_GRAVITY)) then return end
 
-    return val+DMG_UP*player:GetCollectibleNum(ToyboxMod.COLLECTIBLE_ZERO_GRAVITY)
+    return val+DMG_UP*pl:GetCollectibleNum(ToyboxMod.COLLECTIBLE_ZERO_GRAVITY)
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_EVALUATE_STAT, evalStat, EvaluateStatStage.DAMAGE_UP)
 

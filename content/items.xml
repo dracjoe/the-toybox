@@ -1607,7 +1607,16 @@
 />
 
 
-<active id="491" name="Cursed D6"
+<passive id="493" name="So Many Options"
+    description="So little time"
+    gfx="so_many_options.png"
+    quality="3"
+    tags="offensive noeden"
+    cache=""
+
+    hidden="true"
+/>
+<active id="494" name="Cursed D6"
     description="High-quality destiny"
     gfx="cursed_d6.png"
     quality="4"
@@ -1617,7 +1626,7 @@
     maxcharges="5"
     hidden="true"
 />
-<passive id="492" name="Super Hamburger"
+<passive id="495" name="Super Hamburger"
     description="I'm big and fat"
     gfx="super_hamburger.png"
     quality="4"
@@ -1629,7 +1638,7 @@
 
     hidden="true"
 />
-<passive id="493" name="Zero-Gravity"
+<passive id="496" name="Zero-Gravity"
     description="Sluggish movement + DMG up"
     gfx="zero_gravity.png"
     quality="0"
@@ -1638,7 +1647,7 @@
 
     hidden="true"
 />
-<passive id="494" name="Golden Schoolbag"
+<passive id="497" name="Golden Schoolbag"
     description="More room"
     gfx="golden_schoolbag.png"
     quality="4"
@@ -1647,7 +1656,7 @@
 
     hidden="true"
 />
-<active id="495" name="Golden Prayer Card"
+<active id="498" name="Golden Prayer Card"
     description="Eternal eternity"
     gfx="golden_prayer_card.png"
     quality="4"
@@ -1657,39 +1666,12 @@
     maxcharges="12"
     hidden="true"
 />
-<passive id="496" name="Uranium"
+<passive id="499" name="Uranium"
     description="Literally just a slab of uranium"
     gfx="URANIUM.png"
     quality="4"
     tags="offensive noeden"
     cache=""
-
-    hidden="true"
-/>
-<passive id="497" name="Catharsis"
-    description="Tears up + tears cap up"
-    gfx="catharsis.png"
-    quality="4"
-    tags="offensive tearsup noeden"
-    cache="firedelay"
-
-    devilprice="2"
-
-    hidden="true"
-/>
-<active id="498" name="Equalizer"
-    description="..."
-    gfx="equalizer.png"
-    quality="3"
-    tags="offensive noeden"
-    cache="all"
-
-    coins="3"
-    bombs="1"
-    keys="1"
-
-    passivecache="true"
-    maxcharges="1"
 
     hidden="true"
 />
@@ -1941,6 +1923,16 @@
 <trinket id="41" name="Interest"
     description="To the moon"
     gfx="interest.png"
+    cache=""
+/>
+<trinket id="42" name="Nematode"
+    description="Well, that's not coming off"
+    gfx="nematode.png"
+    cache=""
+/>
+<trinket id="43" name="Lil Grub"
+    description="Well, that's not coming off"
+    gfx="lil_grub.png"
     cache=""
 />
 

@@ -6,7 +6,7 @@ local function postNewRoom(_)
             local pos = nil
             while(failsafe>0 and not pos) do
                 local idx = room:GetGridIndex(room:GetRandomPosition(0))
-                if(room:CanSpawnObstacleAtPosition(idx, false)) then
+                if(room:CanSpawnObstacleAtPosition(idx, false) and room:GetGridCollision(idx)==GridCollisionClass.COLLISION_NONE) then
                     pos = room:GetGridPosition(idx)
                     if(pos:Distance(room:GetClampedPosition(pos, 40))>0) then pos = nil end
                 end

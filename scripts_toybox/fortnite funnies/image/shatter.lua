@@ -322,29 +322,31 @@ end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_RENDER, rendertest)
 
 local wasMousePressed = false
+local wasKeyPressed = false
 
 ---@param player EntityPlayer
 local function postUpdate(_, player)
     if(not (player and player:GetPlayerIndex()==0)) then return end
 
     local isPressed = Input.IsMouseBtnPressed(MouseButton.LEFT)
-    if(isPressed and not wasMousePressed) then
+    local isKeyPressed = Input.IsMouseBtnPressed(MouseButton.RIGHT)
+    if((isPressed and not wasMousePressed) or (isKeyPressed and not wasKeyPressed)) then
         local nearestEnt
         local nearestDist = 2^30
 
         local mpos = Input.GetMousePosition(true)
         
         for _, ent in ipairs(Isaac.GetRoomEntities()) do
-            --if(not ent:ToTear()) then
+            if((not isKeyPressed) or (isKeyPressed and not ent:ToEffect())) then
                 local dist = ent.Position:Distance(mpos)-ent.Size
                 if(dist<nearestDist) then
                     nearestEnt = ent
                     nearestDist = dist
                 end
-            --end
+            end
         end
 
-        if(nearestEnt and nearestDist<40*1.5) then
+        if(nearestEnt and nearestDist<(isKeyPressed and 2^20 or 40*1.5)) then
             local img, quads, baseOffset = generateImgFromEnt(nearestEnt)
             if(img) then
                 --[[]]
@@ -355,7 +357,9 @@ local function postUpdate(_, player)
                     nearestEnt:GetDropRNG()
                 )
                 --]]
-                nearestEnt:AddEntityFlags(EntityFlag.FLAG_REDUCE_GIBS)
+                if(not nearestEnt:ToPlayer()) then
+                    nearestEnt:AddEntityFlags(EntityFlag.FLAG_REDUCE_GIBS)
+                end
                 nearestEnt:Die()
                 nearestEnt.Visible = false
                 nearestEnt:SetColor(Color(0,0,0,0),5000,0,false,false)
@@ -366,5 +370,6 @@ local function postUpdate(_, player)
         end
     end
     wasMousePressed = isPressed
+    wasKeyPressed = isKeyPressed
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, postUpdate)

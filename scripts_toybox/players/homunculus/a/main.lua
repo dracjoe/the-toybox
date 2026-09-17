@@ -5,7 +5,7 @@ local HOMUNCULUS_COLOR = Color(245/255, 245/255, 215/255, 1, 0, 0, 0, 1, 1, 1, 0
 local function getTearParams(_, pl, params)
     params.TearVariant = (ToyboxMod:getBloodTearVariant(params.TearVariant) or params.TearVariant)
 end
-ToyboxMod:AddCallback(ModCallbacks.MC_EVALUATE_TEAR_HIT_PARAMS, getTearParams, ToyboxMod.PLAYER_HOMUNCULUS_A)
+--ToyboxMod:AddCallback(ModCallbacks.MC_EVALUATE_TEAR_HIT_PARAMS, getTearParams, ToyboxMod.PLAYER_HOMUNCULUS_A)
 
 ---@param ent Entity
 ---@param amount number

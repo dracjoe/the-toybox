@@ -248,3 +248,23 @@ local function postPedestalCollection(_, pickup, coll, low)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_PICKUP_COLLISION, postPedestalCollection, PickupVariant.PICKUP_COLLECTIBLE)
+
+local previousData = {}
+
+---@param pickup EntityPickup
+local function transferMorphData(_, pickup, t,v,s, keepPrice, keepSeed, keepModifiers)
+    if(pickup.Variant~=PickupVariant.PICKUP_COLLECTIBLE) then return end
+    previousData[tostring(t)..tostring(v)..tostring(s)] = ToyboxMod:getEntityData(pickup, "WAIT_FOR_QUEUE")
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_PRE_PICKUP_MORPH, CallbackPriority.LATE+1, transferMorphData)
+
+---@param pickup EntityPickup
+local function receiveMorphData(_, pickup, t,v,s, keepPrice, keepSeed, keepModifiers)
+    if(pickup.Variant~=PickupVariant.PICKUP_COLLECTIBLE) then return end
+    local str = tostring(pickup.Type)..tostring(pickup.Variant)..tostring(pickup.SubType)
+    if(previousData[str]) then
+        ToyboxMod:setEntityData(pickup, "WAIT_FOR_QUEUE", previousData[str])
+    end
+    previousData[str] = nil
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_PICKUP_MORPH, CallbackPriority.LATE+1, receiveMorphData)

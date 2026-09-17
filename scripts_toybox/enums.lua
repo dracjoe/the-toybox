@@ -3,6 +3,8 @@ local sfx = SFXManager()
 
 ToyboxMod.DATA_LOADED = false
 
+--#region PLAYER TYPE
+
 ToyboxMod.PLAYER_MILCOM_A = Isaac.GetPlayerTypeByName("Milcom", false)
 ToyboxMod.PLAYER_ATLAS_A = Isaac.GetPlayerTypeByName("Atlas", false)
 ToyboxMod.PLAYER_ATLAS_A_TAR = Isaac.GetPlayerTypeByName("The Tar", false)
@@ -15,6 +17,8 @@ ToyboxMod.PLAYER_HOMUNCULUS_A = Isaac.GetPlayerTypeByName("Homunculus", false)
 ToyboxMod.PLAYER_HOMUNCULUS_B = Isaac.GetPlayerTypeByName("Homunculus", true)
 
 ToyboxMod.PLAYER_NOWHERE_A = Isaac.GetPlayerTypeByName("Nowhere", false)
+--#endregion
+--#region ACHIEVEMENT
 
 --- ACHIEVEMENTS - Players
 ToyboxMod.ACHIEVEMENT_HOMUNCULUS = Isaac.GetAchievementIdByName("Homunculus")
@@ -89,13 +93,19 @@ ToyboxMod.ACHIEVEMENT_XENOTRANSFUSION = Isaac.GetAchievementIdByName("Xenotransf
 ToyboxMod.ACHIEVEMENT_CLONE = Isaac.GetAchievementIdByName("Clone")
 ToyboxMod.ACHIEVEMENT_GREYHOUND = Isaac.GetAchievementIdByName("Greyhound")
 ToyboxMod.ACHIEVEMENT_SPITEFUL_PENNY = Isaac.GetAchievementIdByName("Spiteful Penny")
+--#endregion
+--#region CHALLENGE
 
 ToyboxMod.CHALLENGE_SCIENTOLOGY = Isaac.GetChallengeIdByName("I - Scientology")
 ToyboxMod.CHALLENGE_HEART_TO_HEART = Isaac.GetChallengeIdByName("II - Heart to Heart")
 ToyboxMod.CHALLENGE_REDUCE_REUSE_RECYCLE = Isaac.GetChallengeIdByName("III - Reduce Reuse Recycle")
+--#endregion
+--#region ITEMPOOL
 
 ToyboxMod.POOL_GRAVEYARD = Isaac.GetPoolIdByName("toybox-graveyard")
 ToyboxMod.POOL_TEMPLE = Isaac.GetPoolIdByName("toybox-temple")
+--#endregion
+--#region COLLECTIBLE
 
 ToyboxMod.COLLECTIBLE_COCONUT_OIL = Isaac.GetItemIdByName("Coconut Oil")
 ToyboxMod.COLLECTIBLE_CONDENSED_MILK = Isaac.GetItemIdByName("Condensed Milk")
@@ -273,23 +283,21 @@ ToyboxMod.COLLECTIBLE_XENOTRANSFUSION = Isaac.GetItemIdByName("Xenotransfusion")
 
 ToyboxMod.COLLECTIBLE_TMTAMER = Isaac.GetItemIdByName("TMTAMER")
 
-ToyboxMod.COLLECTIBLE_CATHARSIS = Isaac.GetItemIdByName("Catharsis")
 ToyboxMod.COLLECTIBLE_URANIUM = Isaac.GetItemIdByName("Uranium")
-ToyboxMod.COLLECTIBLE_EQUALIZER = Isaac.GetItemIdByName("Equalizer")
 ToyboxMod.COLLECTIBLE_GOLDEN_PRAYER_CARD = Isaac.GetItemIdByName("Golden Prayer Card")
 ToyboxMod.COLLECTIBLE_GOLDEN_SCHOOLBAG = Isaac.GetItemIdByName("Golden Schoolbag")
 ToyboxMod.COLLECTIBLE_ZERO_GRAVITY = Isaac.GetItemIdByName("Zero-Gravity")
 ToyboxMod.COLLECTIBLE_SUPER_HAMBURGER = Isaac.GetItemIdByName("Super Hamburger")
 ToyboxMod.COLLECTIBLE_CURSED_D6 = Isaac.GetItemIdByName("Cursed D6")
-
---ToyboxMod.COLLECTIBLE_BTRAIN = Isaac.GetItemIdByName("B-Train")                       --*LOST MEDIA (its actually just the origin of Fast Forward from d!edith)
-
 ToyboxMod.COLLECTIBLE_PORTABLE_TELLER = Isaac.GetItemIdByName("Portable Teller")
+ToyboxMod.COLLECTIBLE_SO_MANY_OPTIONS = Isaac.GetItemIdByName("So Many Options")
 
 --ToyboxMod.COLLECTIBLE_LASER_POINTER = Isaac.GetItemIdByName("Laser Pointer")          --*UNUSED (i dont like the item)
 --ToyboxMod.COLLECTIBLE_TOY_GUN = Isaac.GetItemIdByName("Toy Gun")                      --*UNUSED (same as above)
 --ToyboxMod.COLLECTIBLE_MALICIOUS_BRAIN = Isaac.GetItemIdByName("Malicious Brain")      --*UNUSED (same)
 --ToyboxMod.COLLECTIBLE_ENEMA = Isaac.GetItemIdByName("Enema")                          --*UNUSED (same as above)
+--#endregion
+--#region TRINKET
 
 ToyboxMod.TRINKET_ANTIBIOTICS = Isaac.GetTrinketIdByName("Antibiotics")
 ToyboxMod.TRINKET_WONDER_DRUG = Isaac.GetTrinketIdByName("Wonder Drug")
@@ -334,10 +342,20 @@ ToyboxMod.TRINKET_INFESTATION_3 = Isaac.GetTrinketIdByName("Infestation 3")
 ToyboxMod.TRINKET_FAKE_BEARD = Isaac.GetTrinketIdByName("Fake Beard")
 ToyboxMod.TRINKET_SUGAR_CUBE = Isaac.GetTrinketIdByName("Sugar Cube")
 ToyboxMod.TRINKET_INTEREST = Isaac.GetTrinketIdByName("Interest")
+ToyboxMod.TRINKET_NEMATODE = Isaac.GetTrinketIdByName("Nematode")
+ToyboxMod.TRINKET_LIL_GRUB = Isaac.GetTrinketIdByName("Lil Grub")
+
+ToyboxMod.TRINKET_FLUKIE = Isaac.GetTrinketIdByName("Flukie")
+ToyboxMod.TRINKET_LADYBUG = Isaac.GetTrinketIdByName("Ladybug")
+ToyboxMod.TRINKET_CANDIDA = Isaac.GetTrinketIdByName("Candida")
+ToyboxMod.TRINKET_DEMODEX = Isaac.GetTrinketIdByName("Demodex")
+ToyboxMod.TRINKET_FAT_LEECH = Isaac.GetTrinketIdByName("Fat Leech")
 
 --ToyboxMod.TRINKET_LIMIT_BREAK = Isaac.GetTrinketIdByName("LIMIT BREAK")               --*UNUSED
 --ToyboxMod.TRINKET_FOAM_BULLET = Isaac.GetTrinketIdByName("Foam Bullet")               --*UNUSED
 --ToyboxMod.TRINKET_SINE_WORM = Isaac.GetTrinketIdByName("Sine Worm")                   --*UNUSED
+--#endregion
+--#region CARD
 
 ToyboxMod.CARD_PRISMSTONE = Isaac.GetCardIdByName("Prismstone")
 ToyboxMod.CARD_FOIL_CARD = Isaac.GetCardIdByName("Foil Card")
@@ -386,10 +404,9 @@ ToyboxMod.CARD_FATE = Isaac.GetCardIdByName("XIIIS - Fate")
 ToyboxMod.CARD_THE_PHANTOM = Isaac.GetCardIdByName("XIVS - The Phantom")
 ToyboxMod.CARD_MIRAGE = Isaac.GetCardIdByName("XVS - Mirage")
 ToyboxMod.CARD_THE_IDOL = Isaac.GetCardIdByName("XVIS - The Idol")
-
 ToyboxMod.CARD_GREYHOUND = Isaac.GetCardIdByName("Greyhound")
-
-
+--#endregion
+--#region PILL EFFECT
 
 ToyboxMod.PILL_I_BELIEVE = Isaac.GetPillEffectByName("I Believe I Can Fly!")
 ToyboxMod.PILL_DYSLEXIA = Isaac.GetPillEffectByName("Dyslexia")
@@ -408,6 +425,9 @@ ToyboxMod.PILL_FOOD_POISONING = Isaac.GetPillEffectByName("Food Poisoning")
 ToyboxMod.PILL_HEARTBURN = Isaac.GetPillEffectByName("Heartburn")
 ToyboxMod.PILL_MUSCLE_ATROPHY = Isaac.GetPillEffectByName("Muscle Atrophy")
 ToyboxMod.PILL_CAPSULE = Isaac.GetPillEffectByName("Capsule")
+--#endregion
+--#region FAMILIAR
+--#region FAMILIAR VARIANT
 
 ToyboxMod.FAMILIAR_HYPNOS = Isaac.GetEntityVariantByName("Malicious Brain") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_SILK_BAG = Isaac.GetEntityVariantByName("Silk Bag") ---@type FamiliarVariant
@@ -430,11 +450,36 @@ ToyboxMod.FAMILIAR_MINDFLAYER_BABY = Isaac.GetEntityVariantByName("Flayer Baby")
 ToyboxMod.FAMILIAR_YES_BABY = Isaac.GetEntityVariantByName("Yes Baby") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_PSYCHO_BABY = Isaac.GetEntityVariantByName("Psycho Baby") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_GIMP_BABY = Isaac.GetEntityVariantByName("Gimp Baby") ---@type FamiliarVariant
+--#endregion
+--#region FAMILIAR SUBTYPE
+
+ToyboxMod.FAMILIAR_VIRUS_RED = 0
+ToyboxMod.FAMILIAR_VIRUS_YELLOW_1 = 1
+ToyboxMod.FAMILIAR_VIRUS_BLUE = 2
+ToyboxMod.FAMILIAR_VIRUS_MAGENTA = 3
+ToyboxMod.FAMILIAR_VIRUS_YELLOW_2 = 4
+ToyboxMod.FAMILIAR_VIRUS_CYAN = 5
+ToyboxMod.FAMILIAR_VIRUS_GREEN = 6
+ToyboxMod.FAMILIAR_VIRUS_LIGHT_BLUE = 7
+ToyboxMod.FAMILIAR_VIRUS_PINK = 8
+ToyboxMod.FAMILIAR_VIRUS_PURPLE = 9
+
+ToyboxMod.FAMILIAR_MASK_SHADOW_FLY = Isaac.GetEntitySubTypeByName("Shadow Fly")
+ToyboxMod.FAMILIAR_MASK_SHADOW_URCHIN = Isaac.GetEntitySubTypeByName("Shadow Urchin")
+ToyboxMod.FAMILIAR_MASK_SHADOW_CRAWLER = Isaac.GetEntitySubTypeByName("Shadow Crawler")
+--#endregion
+--#endregion
+--#region BOMB
 
 ToyboxMod.BOMB_SLEEPY_TROLL_BOMB = Isaac.GetEntityVariantByName("Sleepy Troll Bomb") ---@type BombVariant
+--#endregion
+--#region SLOT
 
 ToyboxMod.SLOT_PYRAMID_DONATION = Isaac.GetEntityVariantByName("Pyramid Donation Machine") ---@type SlotVariant
 ToyboxMod.SLOT_JUICE_FOUNTAIN = Isaac.GetEntityVariantByName("Juice Fountain") ---@type SlotVariant
+--#endregion
+--#region EFFECT (and GRID)
+--#region EFFECT VARIANT
 
 ToyboxMod.EFFECT_BLOOD_RITUAL_PENTAGRAM = Isaac.GetEntityVariantByName("Blood Ritual Pentagram") ---@type EffectVariant
 ToyboxMod.EFFECT_METEOR_TEAR_EXPLOSION = Isaac.GetEntityVariantByName("Meteor Tear Explosion") ---@type EffectVariant
@@ -468,6 +513,38 @@ ToyboxMod.EFFECT_ZERO_GRAV_CROSSHAIR = Isaac.GetEntityVariantByName("Zero-Gravit
 ToyboxMod.EFFECT_KANYE = Isaac.GetEntityVariantByName("Kanye West") ---@type EffectVariant
 
 ToyboxMod.EFFECT_GRID_HELPER = Isaac.GetEntityVariantByName("Toybox Grid Helper") ---@type EffectVariant
+--#endregion
+--#region EFFECT SUBTYPE (and GRIDS)
+
+ToyboxMod.EFFECT_AURA_ENEMY_FEAR = Isaac.GetEntitySubTypeByName("Enemy Fear Aura")
+ToyboxMod.EFFECT_AURA_BOMB_BLESSED = Isaac.GetEntitySubTypeByName("Bomb Blessed Aura")
+ToyboxMod.EFFECT_AURA_DARK_MANTLE = Isaac.GetEntitySubTypeByName("Dark Mantle Aura")
+ToyboxMod.EFFECT_AURA_HOLY_MANTLE = Isaac.GetEntitySubTypeByName("Holy Mantle Aura")
+ToyboxMod.EFFECT_AURA_44 = Isaac.GetEntitySubTypeByName("4 4 Aura")
+ToyboxMod.EFFECT_AURA_MINDFLAYER = Isaac.GetEntitySubTypeByName("Mindflayer Aura")
+
+ToyboxMod.GRID_COPPER_POOP = Isaac.GetEntitySubTypeByName("Copper Poop")
+ToyboxMod.GRID_PLAYERONLY_BLOCK = Isaac.GetEntitySubTypeByName("Player-Only Block")
+ToyboxMod.GRID_ENEMYONLY_BLOCK = Isaac.GetEntitySubTypeByName("Enemy-Only Block")
+ToyboxMod.GRID_SWITCH_BLOCK_1 = Isaac.GetEntitySubTypeByName("Switch Block (1)")
+ToyboxMod.GRID_SWITCH_BLOCK_2 = Isaac.GetEntitySubTypeByName("Switch Block (2)")
+ToyboxMod.GRID_SWITCH_BLOCK_3 = Isaac.GetEntitySubTypeByName("Switch Block (3)")
+ToyboxMod.GRID_SWITCH_BLOCK_4 = Isaac.GetEntitySubTypeByName("Switch Block (4)")
+ToyboxMod.GRID_SWITCH_BLOCK_INACTIVE_1 = Isaac.GetEntitySubTypeByName("Switch Block (Inactive) (1)")
+ToyboxMod.GRID_SWITCH_BLOCK_INACTIVE_2 = Isaac.GetEntitySubTypeByName("Switch Block (Inactive) (2)")
+ToyboxMod.GRID_SWITCH_BLOCK_INACTIVE_3 = Isaac.GetEntitySubTypeByName("Switch Block (Inactive) (3)")
+ToyboxMod.GRID_SWITCH_BLOCK_INACTIVE_4 = Isaac.GetEntitySubTypeByName("Switch Block (Inactive) (4)")
+ToyboxMod.GRID_SWITCH_PLATE_1 = Isaac.GetEntitySubTypeByName("Switch Plate (1)")
+ToyboxMod.GRID_SWITCH_PLATE_2 = Isaac.GetEntitySubTypeByName("Switch Plate (2)")
+ToyboxMod.GRID_SWITCH_PLATE_3 = Isaac.GetEntitySubTypeByName("Switch Plate (3)")
+ToyboxMod.GRID_SWITCH_PLATE_4 = Isaac.GetEntitySubTypeByName("Switch Plate (4)")
+ToyboxMod.GRID_GRAVE_EMPTY = Isaac.GetEntitySubTypeByName("Tombstone (Empty)")
+ToyboxMod.GRID_GRAVE_RANDOM = Isaac.GetEntitySubTypeByName("Tombstone (Random)")
+ToyboxMod.GRID_NUCLEAR_POOP = Isaac.GetEntitySubTypeByName("Nuclear Poop")
+--ToyboxMod.GRID_DEATH_SPIKES_HELPER = Isaac.GetEntitySubTypeByName("Death Sacrifice Spike Helper")
+--#endregion
+--#endregion
+--#region TEAR
 
 ToyboxMod.TEAR_COOL = Isaac.GetEntityVariantByName("Cool Tear") ---@type TearVariant
 ToyboxMod.TEAR_AIDS = Isaac.GetEntityVariantByName("AIDS Tear") ---@type TearVariant
@@ -476,6 +553,9 @@ ToyboxMod.TEAR_YES = Isaac.GetEntityVariantByName("Yes Tear") ---@type TearVaria
 --ToyboxMod.TEAR_BULLET = Isaac.GetEntityVariantByName("Foam Bullet Tear") ---@type TearVariant
 --ToyboxMod.TEAR_SOUNDWAVE = Isaac.GetEntityVariantByName("Soundwave Tear") ---@type TearVariant
 --ToyboxMod.TEAR_PAPER = Isaac.GetEntityVariantByName("Tome Paper Tear") ---@type TearVariant
+--#endregion
+--#region PICKUP
+--#region PICKUP VARIANT
 
 ToyboxMod.PICKUP_SMORGASBORD = Isaac.GetEntityVariantByName("Smorgasbord") ---@type PickupVariant
 ToyboxMod.PICKUP_ETERNAL_MOUND = Isaac.GetEntityVariantByName("Eternal Mound") ---@type PickupVariant
@@ -483,6 +563,8 @@ ToyboxMod.PICKUP_LONELY_KEY = Isaac.GetEntityVariantByName("Lonely Key") ---@typ
 
 ToyboxMod.PICKUP_RANDOM_SELECTOR = Isaac.GetEntityVariantByName("Toybox Random Mantle") ---@type PickupVariant
 ToyboxMod.PICKUP_CARD_SPAWNER = Isaac.GetEntityVariantByName("Toybox Card Spawner") ---@type PickupVariant
+--#endregion
+--#region PICKUP SUBTYPE
 
 ToyboxMod.PICKUP_COIN_INK_1 = Isaac.GetEntitySubTypeByName("Ink (1)") ---@type CoinSubType
 ToyboxMod.PICKUP_COIN_INK_2 = Isaac.GetEntitySubTypeByName("Ink (2)") ---@type CoinSubType
@@ -492,16 +574,20 @@ ToyboxMod.PICKUP_RANDOM_MANTLE = Isaac.GetEntitySubTypeByName("Toybox Random Man
 ToyboxMod.PICKUP_RANDOM_MANTLE_NOBIAS = Isaac.GetEntitySubTypeByName("Toybox Random Mantle (No Bias)")
 ToyboxMod.PICKUP_RANDOM_ALT_TAROT = Isaac.GetEntitySubTypeByName("Toybox Random Alt Tarot Card")
 ToyboxMod.PICKUP_RANDOM_YU_GI_OH = Isaac.GetEntitySubTypeByName("Toybox Random Yu-Gi-Oh! Card")
+--#endregion
+--#endregion
+--#region NPC
 
-ToyboxMod.TEARFLAGS = {
-    MUSICAL = TearFlagsLib.RegisterTearFlag("TOYBOX_MUSICAL"),
-    PLASMA = TearFlagsLib.RegisterTearFlag("TOYBOX_PLASMA"),
-    LANGTON = TearFlagsLib.RegisterTearFlag("TOYBOX_LANGTON"),
-    BLOODY = TearFlagsLib.RegisterTearFlag("TOYBOX_BLOODY"),
+ToyboxMod.NPC_DUMMY_NPC = Isaac.GetEntityTypeByName("Toybox Dummy NPC")
+ToyboxMod.NPC_ENEMY = Isaac.GetEntityTypeByName("Stumpy")
 
-    BOMB_QUAKE = TearFlagsLib.RegisterTearFlag("TOYBOX_BOMB_QUAKE"),
-    BOMB_BLESSED = TearFlagsLib.RegisterTearFlag("TOYBOX_BOMB_BLESSED"),
-}
+ToyboxMod.NPC_STUMPY = Isaac.GetEntityVariantByName("Stumpy")
+ToyboxMod.NPC_TONSIL = Isaac.GetEntityVariantByName("Tonsil")
+ToyboxMod.NPC_EYE_SPY = Isaac.GetEntityVariantByName("Eye Spy")
+ToyboxMod.NPC_KING_HOST = Isaac.GetEntityVariantByName("King Host")
+ToyboxMod.NPC_TAR_BABY = Isaac.GetEntityVariantByName("Tar Baby")
+--#endregion
+--#region SFX
 
 ToyboxMod.SFX_ATLASA_ROCKCRACK = Isaac.GetSoundIdByName("(TOYBOX) Rock Crack")
 ToyboxMod.SFX_ATLASA_ROCKBREAK = Isaac.GetSoundIdByName("(TOYBOX) Rock Break")
@@ -560,61 +646,35 @@ for name, soundEffect in pairs(ToyboxMod) do
         sfx:Preload(soundEffect)
     end
 end
+--#endregion
+--#region BACKDROP
 
-ToyboxMod.BACKDROOP_GRAVEYARD = Isaac.GetBackdropIdByName("Graveyard")
-ToyboxMod.BACKDROOP_TEMPLE = Isaac.GetBackdropIdByName("Temple")
-ToyboxMod.BACKDROOP_DEATH_SACRIFICE = Isaac.GetBackdropIdByName("Death Sacrifice")
+ToyboxMod.BACKDROP_GRAVEYARD = Isaac.GetBackdropIdByName("Graveyard")
+ToyboxMod.BACKDROP_TEMPLE = Isaac.GetBackdropIdByName("Temple")
+ToyboxMod.BACKDROP_DEATH_SACRIFICE = Isaac.GetBackdropIdByName("Death Sacrifice")
+--#endregion
+--#region GIANTBOOK
 
 ToyboxMod.GIANTBOOK_BIG_BANG = Isaac.GetGiantBookIdByName("Big Bang (TOYBOX)")
 ToyboxMod.GIANTBOOK_MOMS_PHOTOBOOK = Isaac.GetGiantBookIdByName("Mom's Photobook")
 ToyboxMod.GIANTBOOK_THE_ANGEL = Isaac.GetGiantBookIdByName("The Angel")
-
-ToyboxMod.FAMILIAR_VIRUS_RED = 0
-ToyboxMod.FAMILIAR_VIRUS_YELLOW_1 = 1
-ToyboxMod.FAMILIAR_VIRUS_BLUE = 2
-ToyboxMod.FAMILIAR_VIRUS_MAGENTA = 3
-ToyboxMod.FAMILIAR_VIRUS_YELLOW_2 = 4
-ToyboxMod.FAMILIAR_VIRUS_CYAN = 5
-ToyboxMod.FAMILIAR_VIRUS_GREEN = 6
-ToyboxMod.FAMILIAR_VIRUS_LIGHT_BLUE = 7
-ToyboxMod.FAMILIAR_VIRUS_PINK = 8
-ToyboxMod.FAMILIAR_VIRUS_PURPLE = 9
-
-ToyboxMod.FAMILIAR_MASK_SHADOW_FLY = Isaac.GetEntitySubTypeByName("Shadow Fly")
-ToyboxMod.FAMILIAR_MASK_SHADOW_URCHIN = Isaac.GetEntitySubTypeByName("Shadow Urchin")
-ToyboxMod.FAMILIAR_MASK_SHADOW_CRAWLER = Isaac.GetEntitySubTypeByName("Shadow Crawler")
-
-ToyboxMod.EFFECT_AURA_ENEMY_FEAR = Isaac.GetEntitySubTypeByName("Enemy Fear Aura")
-ToyboxMod.EFFECT_AURA_BOMB_BLESSED = Isaac.GetEntitySubTypeByName("Bomb Blessed Aura")
-ToyboxMod.EFFECT_AURA_DARK_MANTLE = Isaac.GetEntitySubTypeByName("Dark Mantle Aura")
-ToyboxMod.EFFECT_AURA_HOLY_MANTLE = Isaac.GetEntitySubTypeByName("Holy Mantle Aura")
-ToyboxMod.EFFECT_AURA_44 = Isaac.GetEntitySubTypeByName("4 4 Aura")
-ToyboxMod.EFFECT_AURA_MINDFLAYER = Isaac.GetEntitySubTypeByName("Mindflayer Aura")
-
-ToyboxMod.GRID_COPPER_POOP = Isaac.GetEntitySubTypeByName("Copper Poop")
-ToyboxMod.GRID_PLAYERONLY_BLOCK = Isaac.GetEntitySubTypeByName("Player-Only Block")
-ToyboxMod.GRID_ENEMYONLY_BLOCK = Isaac.GetEntitySubTypeByName("Enemy-Only Block")
-ToyboxMod.GRID_SWITCH_BLOCK_1 = Isaac.GetEntitySubTypeByName("Switch Block (1)")
-ToyboxMod.GRID_SWITCH_BLOCK_2 = Isaac.GetEntitySubTypeByName("Switch Block (2)")
-ToyboxMod.GRID_SWITCH_BLOCK_3 = Isaac.GetEntitySubTypeByName("Switch Block (3)")
-ToyboxMod.GRID_SWITCH_BLOCK_4 = Isaac.GetEntitySubTypeByName("Switch Block (4)")
-ToyboxMod.GRID_SWITCH_BLOCK_INACTIVE_1 = Isaac.GetEntitySubTypeByName("Switch Block (Inactive) (1)")
-ToyboxMod.GRID_SWITCH_BLOCK_INACTIVE_2 = Isaac.GetEntitySubTypeByName("Switch Block (Inactive) (2)")
-ToyboxMod.GRID_SWITCH_BLOCK_INACTIVE_3 = Isaac.GetEntitySubTypeByName("Switch Block (Inactive) (3)")
-ToyboxMod.GRID_SWITCH_BLOCK_INACTIVE_4 = Isaac.GetEntitySubTypeByName("Switch Block (Inactive) (4)")
-ToyboxMod.GRID_SWITCH_PLATE_1 = Isaac.GetEntitySubTypeByName("Switch Plate (1)")
-ToyboxMod.GRID_SWITCH_PLATE_2 = Isaac.GetEntitySubTypeByName("Switch Plate (2)")
-ToyboxMod.GRID_SWITCH_PLATE_3 = Isaac.GetEntitySubTypeByName("Switch Plate (3)")
-ToyboxMod.GRID_SWITCH_PLATE_4 = Isaac.GetEntitySubTypeByName("Switch Plate (4)")
-ToyboxMod.GRID_GRAVE_EMPTY = Isaac.GetEntitySubTypeByName("Tombstone (Empty)")
-ToyboxMod.GRID_GRAVE_RANDOM = Isaac.GetEntitySubTypeByName("Tombstone (Random)")
-ToyboxMod.GRID_NUCLEAR_POOP = Isaac.GetEntitySubTypeByName("Nuclear Poop")
---ToyboxMod.GRID_DEATH_SPIKES_HELPER = Isaac.GetEntitySubTypeByName("Death Sacrifice Spike Helper")
+--#endregion
+--#region SHADER
 
 ToyboxMod.SHADER_EMPTY = "ToyboxEmptyShader" ---@type ShaderType
 ToyboxMod.SHADER_BLOOM = "ToyboxBloomShader" ---@type ShaderType
 ToyboxMod.SHADER_ASCENSION = "ToyboxAscensionShader" ---@type ShaderType
+--#endregion
 
+ToyboxMod.TEARFLAGS = {
+    MUSICAL = TearFlagsLib.RegisterTearFlag("TOYBOX_MUSICAL"),
+    PLASMA = TearFlagsLib.RegisterTearFlag("TOYBOX_PLASMA"),
+    LANGTON = TearFlagsLib.RegisterTearFlag("TOYBOX_LANGTON"),
+    BLOODY = TearFlagsLib.RegisterTearFlag("TOYBOX_BLOODY"),
+
+    BOMB_QUAKE = TearFlagsLib.RegisterTearFlag("TOYBOX_BOMB_QUAKE"),
+    BOMB_BLESSED = TearFlagsLib.RegisterTearFlag("TOYBOX_BOMB_BLESSED"),
+}
 ToyboxMod.TEAR_COPYING_FAMILIARS = {
     [FamiliarVariant.INCUBUS] = true,
     [FamiliarVariant.SPRINKLER] = true,
@@ -633,6 +693,12 @@ ToyboxMod.RED_HEART_SUBTYPES = {
     --[HeartSubType.HEART_ROTTEN] = true,
     --[HeartSubType.HEART_BLENDED] = true,
 }
+ToyboxMod.PARASITE_TRINKETS = {
+    [ToyboxMod.TRINKET_NEMATODE] = true,
+    [ToyboxMod.TRINKET_LIL_GRUB] = true,
+    
+    [TrinketType.TRINKET_TICK] = false,
+}
 
 ToyboxMod.CHEST_PICKER = WeightedOutcomePicker()
     ToyboxMod.CHEST_PICKER:AddOutcomeFloat(PickupVariant.PICKUP_CHEST,        1)
@@ -645,14 +711,6 @@ ToyboxMod.CHEST_PICKER = WeightedOutcomePicker()
     ToyboxMod.CHEST_PICKER:AddOutcomeFloat(PickupVariant.PICKUP_WOODENCHEST,  0.5)
     ToyboxMod.CHEST_PICKER:AddOutcomeFloat(PickupVariant.PICKUP_MEGACHEST,    0.01)
     ToyboxMod.CHEST_PICKER:AddOutcomeFloat(PickupVariant.PICKUP_HAUNTEDCHEST, 0.1)
-
-ToyboxMod.NPC_DUMMY_NPC = Isaac.GetEntityTypeByName("Toybox Dummy NPC")
-ToyboxMod.NPC_ENEMY = Isaac.GetEntityTypeByName("Stumpy")
-ToyboxMod.NPC_STUMPY = Isaac.GetEntityVariantByName("Stumpy")
-ToyboxMod.NPC_TONSIL = Isaac.GetEntityVariantByName("Tonsil")
-ToyboxMod.NPC_EYE_SPY = Isaac.GetEntityVariantByName("Eye Spy")
-ToyboxMod.NPC_KING_HOST = Isaac.GetEntityVariantByName("King Host")
-ToyboxMod.NPC_TAR_BABY = Isaac.GetEntityVariantByName("Tar Baby")
 
 
 ---@type CallbackID[]
@@ -791,7 +849,6 @@ for key, id in pairs(ToyboxMod) do
     end
 end
 
-
 ToyboxMod.WEAPONFLAGS_NO_COLOR = {
     [TearFlagsLib.WeaponFlag.LASER] = true,
     [TearFlagsLib.WeaponFlag.KNIFE] = true,
@@ -800,8 +857,7 @@ ToyboxMod.WEAPONFLAGS_NO_COLOR = {
     [TearFlagsLib.WeaponFlag.UMBILICAL_WHIP] = true,
 }
 
---#endregion
---#region --!ATLAS_A
+--#region ATLAS
 
 ToyboxMod.MANTLE_DATA = {
     NONE = {
@@ -1026,7 +1082,6 @@ ToyboxMod.MANTLE_PICKER = {
 ToyboxMod.MANTLE_SHARD_GRAVITY = 7
 
 --#endregion
---#region !MILCOM_A
 
 ToyboxMod.CUSTOM_CHAMPIONS = {
     FEAR = {
@@ -1076,5 +1131,3 @@ ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(3, 100, 1000)
 ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(4, 1, 1000)
 ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(5, 1, 1000)
 ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(6, 100, 1000)
-
---#endregion

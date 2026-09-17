@@ -48,6 +48,7 @@
 
 		heartcontainers="6" redhearts="4"
 		speedmodifier="0.2"
+		bloodytears="true"
 
 		achievement="Homunculus"
 	/>

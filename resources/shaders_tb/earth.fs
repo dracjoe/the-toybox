@@ -16,7 +16,6 @@ uniform sampler2D Texture0;
 #define MM 0
 
 lowp float ofs = 0.5;
-lowp int FAULT = 1;                 // 0: crest 1: fault
 
 lowp float RATIO = 0.8,              // stone length/width ratio
  /*   STONE_slope = 0.3,        // 0.  .3  .3  -.3
@@ -35,22 +34,6 @@ lowp float RATIO = 0.8,              // stone length/width ratio
 
 #define hash22(p)  fract( 18.5453 * sin( p * mat2(127.1,311.7,269.5,183.3)) )
 #define disp(p) ( -ofs + (1.0+2.0*ofs) * hash22(p) )
-
-lowp vec3 voronoi( lowp vec2 u )  // returns len + id
-{
-    lowp vec2 iu = floor(u), v;
-	lowp float m = 1e9,d;
-
-    for( int k=0; k < 25; k++ ) {
-        lowp vec2 p = iu + vec2(int(mod(float(k),5.0))-2,k/5-2),
-            o = disp(p),
-      	      r = p - u + o;
-		d = dot(r,r);
-        if( d < m ) m = d, v = r;
-    }
-
-    return vec3( sqrt(m), v+u );
-}
 
 // --- Voronoi distance to borders. inspired by https://www.shadertoy.com/view/ldl3W8
 lowp vec3 voronoiB( lowp vec2 u )  // returns len + id
@@ -97,16 +80,6 @@ lowp float noise2(lowp vec2 p) {
                     : 1.0-abs(2.0*v-1.0);
 }
 
-lowp float fbm2(lowp vec2 p) {
-    lowp float v = 0.0, a = 0.5;
-    lowp mat2 R = rot(0.37);
-
-    for (int i = 0; i < 9; i++, p*=2.0,a/=2.0) 
-        p *= R,
-        v += a * noise2(p);
-
-    return v;
-}
 #define noise22(p) vec2(noise2(p),noise2(p+17.7))
 lowp vec2 fbm22(lowp vec2 p) {
     lowp vec2 v = vec2(0.0,0.0);
@@ -118,18 +91,6 @@ lowp vec2 fbm22(lowp vec2 p) {
         v += a * noise22(p);
 
     return v;
-}
-lowp vec2 mfbm22(lowp vec2 p) {  // multifractal fbm 
-    lowp vec2 v = vec2(1.0, 1.0);
-    lowp float a = 0.5;
-    lowp mat2 R = rot(0.37);
-
-    for (int i = 0; i < 6; i++, p*=2.0,a/=2.0) 
-        p *= R,
-        //v *= 1.0+noise22(p);
-          v += v * a * noise22(p);
-
-    return v-1.0;
 }
 
 lowp vec3 rgbToHsl(lowp vec3 color)

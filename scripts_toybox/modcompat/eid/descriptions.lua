@@ -3222,6 +3222,57 @@ enums.FUNCTIONS.AddTrinket({
         },
     },
 })
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_NEMATODE,
+    Name = "Nematode",
+    Description = {
+        "{{Collectible664}} Food items no longer heal red HP, but grant 2 random stat ups when picked up",
+        "!!! Once picked up, it can't be removed",
+        "Only removable with {{Trinket"..ToyboxMod.TRINKET_ANTIBIOTICS.."}} Antibiotics"
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"2", "4"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"2", "6"},
+            }
+        },
+    },
+})
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_LIL_GRUB,
+    Name = "Lil Grub",
+    Description = {
+        "On room clear, spawn 3 blue flies",
+        "The blue flies may be of a {{Collectible"..ToyboxMod.COLLECTIBLE_UNSTABLE_DNA.."}} stronger variant and may have a random locust color",
+        "!!! Once picked up, it can't be removed",
+        "Only removable with {{Trinket}} Dewormer"
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"2", "4"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"2", "6"},
+            }
+        },
+    },
+})
 
 enums.FUNCTIONS.AddCard({
     ID = ToyboxMod.CARD_PRISMSTONE,
@@ -4575,7 +4626,7 @@ enums.FUNCTIONS.AddGlobalModifier({
             Condition = function(descObj)
                 if(not (descObj.ObjType==5 and descObj.ObjVariant==100)) then return false end
                 if(not (ToyboxMod.GAME:GetRoom():GetType()==RoomType.ROOM_BOSS)) then return false end
-                if(descObj.Entity and descObj.Entity:ToPickup() and descObj.Entity:ToPickup().Touched) then return false end
+                if(descObj.Entity and descObj.Entity.ToPickup and descObj.Entity:ToPickup() and descObj.Entity:ToPickup().Touched) then return false end
 
                 return PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_FOOD_STAMPS)
             end,
@@ -4587,7 +4638,7 @@ enums.FUNCTIONS.AddGlobalModifier({
         {
             Condition = function(descObj)
                 if(not (descObj.ObjType==5 and descObj.ObjVariant==100)) then return false end
-                if(descObj.Entity and descObj.Entity:ToPickup() and descObj.Entity:ToPickup().Touched) then return false end
+                if(descObj.Entity and descObj.Entity.ToPickup and descObj.Entity:ToPickup() and descObj.Entity:ToPickup().Touched) then return false end
 
                 return PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_FOOD_STAMPS)
             end,
@@ -4644,25 +4695,6 @@ enums.FUNCTIONS.AddItem({
     },
 })
 enums.FUNCTIONS.AddItem({
-    ID = ToyboxMod.COLLECTIBLE_CATHARSIS,
-    Name = "Catharsis",
-    Description = {
-        "\1 +1 Tears",
-        "\1 Firerate cap is doubled",
-    },
-})
-enums.FUNCTIONS.AddItem({
-    ID = ToyboxMod.COLLECTIBLE_EQUALIZER,
-    Name = "Equalizer",
-    Description = {
-        "{{Coin}} +3 Coins",
-        "{{Bomb}} +1 Bomb",
-        "{{Key}} +1 Key",
-        "On pickup/on use, chooses a pickup and a stat",
-        "You will get a bonus to that stat proportional to how many of that pickup you have, until the next time you use the item"
-    },
-})
-enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_ZERO_GRAVITY,
     Name = "Zero-Gravity",
     Description = {
@@ -4671,12 +4703,19 @@ enums.FUNCTIONS.AddItem({
         "Releasing movement buttons makes you instantly teleport to the desired position"
     },
 })
-
 enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_PORTABLE_TELLER,
     Name = "Portable Teller",
     Description = {
         "{{Coin}} Spend 1 coin to display a fortune or a chance to spawn a trinket, card or soul heart",
+    },
+})
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_SO_MANY_OPTIONS,
+    Name = "So Many Options",
+    Description = {
+        "All enemies spawn as a choice between the original enemy and a random enemy with a similar amount of HP",
+        "Enemies are frozen until Isaac makes the choice by damaging one of the 2 enemies"
     },
 })
 

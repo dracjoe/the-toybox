@@ -4,7 +4,7 @@ local SHOTS_PER_MULT = 1
 ---@param ent Entity
 local function reduceShotsOnFire(_, _, _, ent)
     local pl = (ent and ent:ToPlayer())
-    if(not (pl and pl:HasTrinket(ToyboxMod.TRINKET_POWER_WORD))) then return end
+    --if(not (pl and pl:HasTrinket(ToyboxMod.TRINKET_POWER_WORD))) then return end
 
     local data = ToyboxMod:getEntityDataTable(pl)
     if(not data.POWER_WORD_SHOTS) then return end

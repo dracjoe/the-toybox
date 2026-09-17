@@ -287,7 +287,7 @@ local DEATHSACRIFICE_COLOR_MOD = ColorModifier(2,0.5,0.5,0.25,0,1.05)
 local function replaceBackdrop()
     local desc = ToyboxMod.GAME:GetLevel():GetCurrentRoomDesc()
     if(desc.Data and desc.Data.Type==RoomType.ROOM_SACRIFICE and desc.Data.Subtype==ToyboxMod.ROOM_DEATHSACRIFICE_SUBTYPE) then
-        return ToyboxMod.BACKDROOP_DEATH_SACRIFICE
+        return ToyboxMod.BACKDROP_DEATH_SACRIFICE
     end
 end
 ToyboxMod:AddPriorityCallback(ModCallbacks.MC_PRE_BACKDROP_CHANGE, CallbackPriority.IMPORTANT, replaceBackdrop)
