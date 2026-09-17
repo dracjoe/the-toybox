@@ -405,38 +405,52 @@ end
 EID:ResetItemReminderSelectedItems()
 
 
-if(EID) then
-    local oldFunc = EID.GridEntityDescriptions[GridEntityType.GRID_SPIKES][1].condition
+local oldFunc = EID.GridEntityDescriptions[GridEntityType.GRID_SPIKES][1].condition
 
-    -- for sacrifice spike conditional
-    EID.GridEntityDescriptions[GridEntityType.GRID_SPIKES][1].condition = function(gridEntity)
-        return oldFunc(gridEntity) and not PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_CIMI_DEATH)
-    end
-
-    -- for cimi/death sacrifice spike conditional
-    EID:addGridEntityConditional(
-        GridEntityType.GRID_SPIKES_ONOFF,
-        function(gridEntity)
-            if(not EID.Config["DisplaySacrificeInfo"]) then return end
-            return (ToyboxMod.GAME:GetRoom():GetType()==RoomType.ROOM_SACRIFICE and PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_CIMI_DEATH))
-        end,
-        function(descObj)
-            descObj.ObjSubType = math.abs(descObj.Entity.VarData)+1
-
-            local finalDesc = ""
-            if(descObj.ObjSubType<=#STORED.MISC.death_sacrifice) then
-                finalDesc = STORED.FUNCTIONS.StringTableToDescription(STORED.MISC.death_sacrifice[descObj.ObjSubType])
-            else
-                if(descObj.ObjSubType%4==0) then
-                    finalDesc = STORED.FUNCTIONS.StringTableToDescription(STORED.MISC.death_sacrifice_endless[2])
-                else
-                    finalDesc = STORED.FUNCTIONS.StringTableToDescription(STORED.MISC.death_sacrifice_endless[1])
-                end
-            end
-
-            descObj.Name = "{{Collectible"..ToyboxMod.COLLECTIBLE_CIMI_DEATH.."}} [Next Sacrifice Room payout] ("..tostring(descObj.ObjSubType).."/"..tostring(#STORED.MISC.death_sacrifice)..")"
-            descObj.Description = finalDesc
-            return descObj
-        end
-    )
+-- for sacrifice spike conditional
+EID.GridEntityDescriptions[GridEntityType.GRID_SPIKES][1].condition = function(gridEntity)
+    return oldFunc(gridEntity) and not PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_CIMI_DEATH)
 end
+
+-- for cimi/death sacrifice spike conditional
+EID:addGridEntityConditional(
+    GridEntityType.GRID_SPIKES_ONOFF,
+    function(gridEntity)
+        if(not EID.Config["DisplaySacrificeInfo"]) then return end
+        return (ToyboxMod.GAME:GetRoom():GetType()==RoomType.ROOM_SACRIFICE and PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_CIMI_DEATH))
+    end,
+    function(descObj)
+        descObj.ObjSubType = math.abs(descObj.Entity.VarData)+1
+
+        local finalDesc = ""
+        if(descObj.ObjSubType<=#STORED.MISC.death_sacrifice) then
+            finalDesc = STORED.FUNCTIONS.StringTableToDescription(STORED.MISC.death_sacrifice[descObj.ObjSubType])
+        else
+            if(descObj.ObjSubType%4==0) then
+                finalDesc = STORED.FUNCTIONS.StringTableToDescription(STORED.MISC.death_sacrifice_endless[2])
+            else
+                finalDesc = STORED.FUNCTIONS.StringTableToDescription(STORED.MISC.death_sacrifice_endless[1])
+            end
+        end
+
+        descObj.Name = "{{Collectible"..ToyboxMod.COLLECTIBLE_CIMI_DEATH.."}} [Next Sacrifice Room payout] ("..tostring(descObj.ObjSubType).."/"..tostring(#STORED.MISC.death_sacrifice)..")"
+        descObj.Description = finalDesc
+        return descObj
+    end
+)
+
+--[[] ]
+local oldFunc2 = EID.printDescriptions
+function EID:printDescriptions(useCached)
+    if(not useCached) then
+        if(EID.lastDescriptionEntity and EID.lastDescriptionEntity.ToPickup) then
+            local trinket = ToyboxMod:getEntityData(EID.lastDescriptionEntity, "GRAVEYARD_PARASITE")
+            if(trinket) then
+                local newObj = EID:getDescriptionObj(5, 350, trinket, nil)
+                EID:addDescriptionToPrint(newObj)
+            end
+        end
+    end
+    oldFunc2(EID, useCached)
+end
+--]]

@@ -50,9 +50,18 @@ function ToyboxMod:applyStatusEffect(ent, name, duration, source, setColor, igno
 
     if(ent:ToPlayer() and ent:ToPlayer():HasCollectible(CollectibleType.COLLECTIBLE_EVIL_CHARM)) then return end
 
-    if(ent:GetLastParent()) then
-        ent = ent:GetLastParent()
+    local visitedParent = {}
+    local pr = ent
+    while(pr) do
+        if(visitedParent[pr.InitSeed]) then break end
+        visitedParent[pr.InitSeed] = true
+
+        if((not pr.Parent) or (visitedParent[pr.Parent.InitSeed])) then
+            ent = pr
+        end
+        pr = pr.Parent
     end
+
     if(ent:IsBoss() and not ignoreBoss) then
         ent:SetBossStatusEffectCooldown(30*8)
     end
@@ -82,18 +91,17 @@ function ToyboxMod:applyStatusEffect(ent, name, duration, source, setColor, igno
     local visited = {}
     local ch = ent
     while(ch) do
-        if(not visited[ch.InitSeed]) then
-            visited[ch.InitSeed] = true
+        if(visited[ch.InitSeed]) then break end
+        visited[ch.InitSeed] = true
 
-            ToyboxMod:setEntityData(ch, "STATUS_"..name.."_DURATION", finalDuration)
-            ToyboxMod:setEntityData(ch, "STATUS_"..name.."_SOURCE", source)
+        ToyboxMod:setEntityData(ch, "STATUS_"..name.."_DURATION", finalDuration)
+        ToyboxMod:setEntityData(ch, "STATUS_"..name.."_SOURCE", source)
 
-            if(ent:IsBoss() and ch:IsBoss()) then
-                ch:SetBossStatusEffectCooldown(ent:GetBossStatusEffectCooldown())
-            end
-
-            ch = ch.Child
+        if(ent:IsBoss() and ch:IsBoss()) then
+            ch:SetBossStatusEffectCooldown(ent:GetBossStatusEffectCooldown())
         end
+
+        ch = ch.Child
     end
 end
 ---@param ent Entity

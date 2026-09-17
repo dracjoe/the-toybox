@@ -19,7 +19,7 @@ local function slowEnemy(_, ent, amount, _, ref, _)
         return
     end
 
-    if(fam and fam:ToFamiliar()) then
+    if(fam and fam.Player:HasTrinket(ToyboxMod.TRINKET_CATNIP)) then
         local mult = PlayerManager.GetTotalTrinketMultiplier(ToyboxMod.TRINKET_CATNIP)
 
         local duration = SLOW_DURATION+(mult-1)*SLOW_DURATION_MULT

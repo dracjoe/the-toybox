@@ -1926,13 +1926,18 @@
     cache=""
 />
 <trinket id="42" name="Nematode"
-    description="Well, that's not coming off"
+    description="Well, that's not coming out"
     gfx="nematode.png"
     cache=""
 />
 <trinket id="43" name="Lil Grub"
-    description="Well, that's not coming off"
+    description="Well, he's not coming off"
     gfx="lil_grub.png"
+    cache=""
+/>
+<trinket id="44" name="Candida"
+    description="Ew, that's not coming off"
+    gfx="candida.png"
     cache=""
 />
 

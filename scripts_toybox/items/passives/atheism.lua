@@ -92,27 +92,59 @@ local function removeAtheism(_, pl)
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_TRIGGER_COLLECTIBLE_REMOVED, removeAtheism, ToyboxMod.COLLECTIBLE_ATHEISM)
 
----@param pl EntityPlayer
-local function addDualitiesOnInit(_, pl)
-    if(pl.FrameCount~=0) then return end
 
-    local atheismNum = pl:GetCollectibleNum(ToyboxMod.COLLECTIBLE_ATHEISM)
-    if(atheismNum==0) then return end
 
-    local data = ToyboxMod:getEntityDataTable(pl)
-
-    pl:AddInnateCollectible(CollectibleType.COLLECTIBLE_DUALITY, atheismNum-(data.ATHEISM_JUST_GOT or 0))
-    data.ATHEISM_JUST_GOT = nil
+---@param desc RoomDescriptor
+local function isGreedTreasureDevil(desc)
+    return desc.GridIndex==GridRooms.ROOM_DEVIL_IDX and (desc.Data and desc.Data.Type==RoomType.ROOM_TREASURE) and ToyboxMod.GAME:IsGreedMode()
 end
---ToyboxMod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, addDualitiesOnInit)
 
----@param pl EntityPlayer
-local function checkInnateDuality(_, pl)
-    if(pl:HasCollectible(ToyboxMod.COLLECTIBLE_ATHEISM) and pl:GetCollectibleNum(CollectibleType.COLLECTIBLE_DUALITY)<=pl:GetCollectibleNum(ToyboxMod.COLLECTIBLE_ATHEISM)) then
-        local dualityConfig = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_DUALITY)
-        if(pl:IsItemCostumeVisible(dualityConfig, PlayerSpriteLayer.SPRITE_GLOW)) then
-            pl:RemoveCostume(dualityConfig)
+-- replace pool
+local function setRoomPool(_)
+    local desc = ToyboxMod.GAME:GetLevel():GetCurrentRoomDesc()
+    if(isGreedTreasureDevil(desc)) then
+        ToyboxMod.GAME:GetRoom():SetItemPool(ItemPoolType.POOL_GREED_TREASURE)
+    end
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_NEW_ROOM, CallbackPriority.IMPORTANT, setRoomPool)
+
+local function setPoolWhenItemSpawns(_, t, v)
+    if(t==EntityType.ENTITY_PICKUP and v==PickupVariant.PICKUP_COLLECTIBLE) then
+        setRoomPool()
+    end
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_PRE_ROOM_ENTITY_SPAWN, CallbackPriority.IMPORTANT, setPoolWhenItemSpawns)
+
+---@param ent GridEntity
+local function makeSpecialExitDoor(_, ent, _, first)
+    local door = ent:ToDoor()
+    if(string.find(string.lower(door:GetSprite():GetFilename()), "holeinwall")) then return end
+
+    local currentRoom = ToyboxMod.GAME:GetLevel():GetCurrentRoomDesc()
+    if(isGreedTreasureDevil(currentRoom)) then
+        local sp = door:GetSprite()
+        for i, _ in pairs(sp:GetAllLayers()) do
+            sp:ReplaceSpritesheet(i-1, "gfx/grid/door_02_treasureroomdoor.png", false)
+        end
+        sp:LoadGraphics()
+    end
+end
+ToyboxMod:AddCallback(ToyboxMod.CUSTOM_CALLBACKS.POST_GRID_INIT, makeSpecialExitDoor, GridEntityType.GRID_DOOR)
+
+---@param ent GridEntity
+local function makeSpecialEntranceDoor(_, ent)
+    local door = ent:ToDoor()
+    if(string.find(string.lower(door:GetSprite():GetFilename()), "holeinwall")) then return end
+
+    local room = ToyboxMod.GAME:GetLevel():GetRoomByIdx(door.TargetRoomIndex)
+    if(isGreedTreasureDevil(room)) then
+        local sp = door:GetSprite()
+        if(sp:GetLayer(0):GetSpritesheetPath()~="gfx/grid/door_02_treasureroomdoor.png") then
+            for i, _ in pairs(sp:GetAllLayers()) do
+                sp:ReplaceSpritesheet(i-1, "gfx/grid/door_02_treasureroomdoor.png", false)
+            end
+            sp:LoadGraphics()
         end
     end
 end
---ToyboxMod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, checkInnateDuality, 0)
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_GRID_ENTITY_DOOR_UPDATE, makeSpecialEntranceDoor, GridEntityType.GRID_DOOR)

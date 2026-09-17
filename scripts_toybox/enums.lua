@@ -344,10 +344,10 @@ ToyboxMod.TRINKET_SUGAR_CUBE = Isaac.GetTrinketIdByName("Sugar Cube")
 ToyboxMod.TRINKET_INTEREST = Isaac.GetTrinketIdByName("Interest")
 ToyboxMod.TRINKET_NEMATODE = Isaac.GetTrinketIdByName("Nematode")
 ToyboxMod.TRINKET_LIL_GRUB = Isaac.GetTrinketIdByName("Lil Grub")
+ToyboxMod.TRINKET_CANDIDA = Isaac.GetTrinketIdByName("Candida")
 
 ToyboxMod.TRINKET_FLUKIE = Isaac.GetTrinketIdByName("Flukie")
 ToyboxMod.TRINKET_LADYBUG = Isaac.GetTrinketIdByName("Ladybug")
-ToyboxMod.TRINKET_CANDIDA = Isaac.GetTrinketIdByName("Candida")
 ToyboxMod.TRINKET_DEMODEX = Isaac.GetTrinketIdByName("Demodex")
 ToyboxMod.TRINKET_FAT_LEECH = Isaac.GetTrinketIdByName("Fat Leech")
 
@@ -696,7 +696,8 @@ ToyboxMod.RED_HEART_SUBTYPES = {
 ToyboxMod.PARASITE_TRINKETS = {
     [ToyboxMod.TRINKET_NEMATODE] = true,
     [ToyboxMod.TRINKET_LIL_GRUB] = true,
-    
+    [ToyboxMod.TRINKET_CANDIDA] = true,
+
     [TrinketType.TRINKET_TICK] = false,
 }
 

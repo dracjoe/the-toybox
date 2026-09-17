@@ -178,7 +178,7 @@ local function graveDestroy(_, rock, type, immediate)
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_GRID_ROCK_DESTROY, graveDestroy, GridEntityType.GRID_ROCK)
 
-local function triggerGraveAmbush()
+local function triggerGraveAmbush(timerOffset)
     local roomdat = ToyboxMod.GAME:GetLevel():GetCurrentRoomDesc().Data
     if(roomdat and roomdat.Type==ToyboxMod.SPECIAL_ROOM_TYPE_TEMPLATE and roomdat.Subtype==ToyboxMod.ROOM_TYPE_DATA.GRAVEYARD_ROOM.Id) then
         local room = ToyboxMod.GAME:GetRoom()
@@ -194,7 +194,7 @@ local function triggerGraveAmbush()
                         if(ent) then
                             ent:Destroy(true)
                         end
-                    end, math.random(1, 7)*2+15, 1, false)
+                    end, math.random(1, 7)*2+15+(timerOffset or 0), 1, false)
                 end
 
                 if(ToyboxMod:getGridEntityData(ent, "GRAVE_SUB")>ToyboxMod.GRID_GRAVE_EMPTY) then
@@ -242,7 +242,7 @@ local function postPedestalCollection(_, pickup, coll, low)
     if(coll and coll:ToPlayer()) then
         local pl = coll:ToPlayer()
         if(ToyboxMod:getEntityData(pickup, "WAIT_FOR_QUEUE") and not pl:IsItemQueueEmpty()) then
-            triggerGraveAmbush()
+            triggerGraveAmbush(25)
         end
         ToyboxMod:setEntityData(pickup, "WAIT_FOR_QUEUE", nil)
     end

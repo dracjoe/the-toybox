@@ -1,4 +1,4 @@
-local BASE_CHANCE = 0.05
+local BASE_CHANCE = 10.2 -- 0.05
 local INCREMENT_PER_MISSING_HEAR = 0.05
 local LOST_BASE_CHANCE = 0.1
 
@@ -30,10 +30,10 @@ end
 local function addNewBossRoom(_)
     local level = ToyboxMod.GAME:GetLevel()
     local stage = level:GetAbsoluteStage()--+(level:GetStageType()>=StageType.STAGETYPE_REPENTANCE and 1 or 0)
-    if(stage%2==0) then return end -- only odd stages
+    if(stage%2==0 or stage==LevelStage.STAGE8) then return end -- only odd stages
     local rng = level:GetGenerationRNG()
-    local chance = getGraveyardChance()
-    if(rng:RandomFloat()<chance) then
+    --local chance = getGraveyardChance()
+    if(rng:RandomFloat()<BASE_CHANCE) then
         local newBossRoom = RoomConfigHolder.GetRandomRoom(Random(), true, StbType.SPECIAL_ROOMS, RoomType.ROOM_TELEPORTER, nil, nil, nil, nil, nil, nil, 100)
         if(not newBossRoom) then return end
         local possibleRooms = level:FindValidRoomPlacementLocations(newBossRoom, level:GetDimension(), false, false)
@@ -276,6 +276,10 @@ local function giveQueuedParasite(_, player)
                 end
 
                 player:AnimateTrinket(firstParasite)
+                if(firstParasite & TrinketType.TRINKET_GOLDEN_FLAG ~= 0) then
+                    player:GetHeldSprite():SetRenderFlags(AnimRenderFlags.GOLDEN)
+                end
+
                 ToyboxMod.GAME:GetHUD():ShowItemText(player, conf, true)
                 player:QueueItem(conf, 0, false, (firstParasite & TrinketType.TRINKET_GOLDEN_FLAG ~= 0), 0)
 
@@ -338,6 +342,11 @@ local function postRenderParasite(_, pickup)
         sp:RenderLayer(1, Isaac.WorldToRenderPosition(pickup.Position+baseItemPos))
     end
 
+    if(trinket & TrinketType.TRINKET_GOLDEN_FLAG ~= 0) then
+        TRINKET_SPRITE:SetRenderFlags(AnimRenderFlags.GOLDEN)
+    else
+        TRINKET_SPRITE:SetRenderFlags(0)
+    end
     TRINKET_SPRITE:ReplaceSpritesheet(0, trinketConf.GfxFileName, true)
     TRINKET_SPRITE.Scale = frame:GetScale()
 

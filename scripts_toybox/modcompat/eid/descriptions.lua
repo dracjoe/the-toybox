@@ -450,16 +450,6 @@ enums.FUNCTIONS.AddItem({
         "{{AngelDevilChance}} +15% Devil/Angel deal chance",
         "{{AngelDevilChance}} Devil/Angel deals are replaced by {{TreasureRoom}} Treasure rooms which contain a choice between 2 items",
     },
-    Modifiers = {
-        {
-            Condition = function(descObj)
-                return (ToyboxMod.GAME.Difficulty==Difficulty.DIFFICULTY_GREED or ToyboxMod.GAME.Difficulty==Difficulty.DIFFICULTY_GREEDIER)
-            end,
-            ToModify = {
-                "{{GreedMode}} In Greed Mode, replaces deals with {{GreedTreasureRoom}} Silver Treasure rooms",
-            },
-        },
-    }
 })
 enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_MAYONAISE,
@@ -3227,14 +3217,13 @@ enums.FUNCTIONS.AddTrinket({
     Name = "Nematode",
     Description = {
         "{{Collectible664}} Food items no longer heal red HP, but grant 2 random stat ups when picked up",
-        "!!! Once picked up, it can't be removed",
-        "Only removable with {{Trinket"..ToyboxMod.TRINKET_ANTIBIOTICS.."}} Antibiotics"
+        "!!! Once picked up, can only be removed with {{Trinket"..ToyboxMod.TRINKET_ANTIBIOTICS.."}} Antibiotics",
     },
     DoubleModifiers = {
         {
             Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
             ToModify = {
-                {"2", "4"},
+                {"2 random", "4 {{ColorWhite}}random{{CR}}"},
             }
         },
     },
@@ -3242,7 +3231,7 @@ enums.FUNCTIONS.AddTrinket({
         {
             Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
             ToModify = {
-                {"2", "6"},
+                {"2 random", "6 {{ColorWhite}}random{{CR}}"},
             }
         },
     },
@@ -3253,14 +3242,13 @@ enums.FUNCTIONS.AddTrinket({
     Description = {
         "On room clear, spawn 3 blue flies",
         "The blue flies may be of a {{Collectible"..ToyboxMod.COLLECTIBLE_UNSTABLE_DNA.."}} stronger variant and may have a random locust color",
-        "!!! Once picked up, it can't be removed",
-        "Only removable with {{Trinket}} Dewormer"
+        "!!! Once picked up, can only be removed with {{Trinket}} Dewormer",
     },
     DoubleModifiers = {
         {
             Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
             ToModify = {
-                {"2", "4"},
+                {"3 blue", "6 {{ColorWhite}}blue{{CR}}"},
             }
         },
     },
@@ -3268,7 +3256,33 @@ enums.FUNCTIONS.AddTrinket({
         {
             Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
             ToModify = {
-                {"2", "6"},
+                {"3 blue", "9 {{ColorWhite}}blue{{CR}}"},
+            }
+        },
+    },
+})
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_CANDIDA,
+    Name = "Candida",
+    Description = {
+        "{{Poison}} Damage dealt by familiars is increased by 1 and has a 33% chance to inflict poison",
+        "!!! Once picked up, can only be removed with {{Trinket"..ToyboxMod.TRINKET_ANTIBIOTICS.."}} Antibiotics",
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"by 1", "{{ColorWhite}}by{{CR}} 1.5"},
+                {"33%%", "67%%"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"by 1", "{{ColorWhite}}by{{CR}} 2"},
+                {"33%%", "100%%"},
             }
         },
     },
@@ -4665,6 +4679,115 @@ enums.FUNCTIONS.AddGlobalModifier({
         }
     }
 })
+--[[]]
+enums.FUNCTIONS.AddGlobalModifier({
+    ID = "Parasite Modifier",
+    Modifiers = {
+        {
+            Condition = function(descObj)
+                if(not (descObj.ObjType==5 and descObj.ObjVariant==100)) then return false end
+                
+                local ent = descObj.Entity
+                if(ent and ent.ToPickup and ToyboxMod:getEntityData(ent, "GRAVEYARD_PARASITE")) then
+                    return true
+                end
+                return false
+            end,
+            ToModify = function(descObj)
+                if(not (descObj.Entity and descObj.Entity.ToPickup)) then return end
+
+                local trinket = ToyboxMod:getEntityData(descObj.Entity, "GRAVEYARD_PARASITE")
+                if(trinket) then
+                    local desc = EID:getDescriptionObj(5, 350, trinket, nil)
+
+                    --#region VANILLA EID SHIT
+                    --Display Itemname
+                    local curName = ""
+                    if(EID.Config["ShowItemName"] and desc.Name) then
+                        curName = desc.Name
+                    end
+                    -- Display Entity ID
+                    if(EID.Config["ShowObjectID"] and desc.ObjType and desc.ObjType > 0) then
+                        curName = curName.." {{ColorGray}}"..desc.ObjType.."."..desc.ObjVariant.."."..desc.ObjSubType
+                    end
+                    -- Display Quality
+                    if(EID.Config["ShowQuality"] and desc.Quality) then
+                        curName = curName.." - {{Quality"..desc.Quality.."}}"
+                    end
+                    -- Display Last Pool for Collectible for full reroll effects (icon)
+                    if(desc.ItemPoolType and EID.Config["ShowItemPoolIcon"]) then
+                        local itemConfig = EID.itemConfig:GetCollectible(desc.ObjSubType)
+                        if itemConfig:IsCollectible() and not itemConfig:HasTags(ItemConfig.TAG_QUEST) then
+                            if not EID.Config["ShowQuality"] then
+                                curName = curName.." - "
+                            end
+                            curName = curName..""..(EID.ItemPoolTypeToMarkup[desc.ItemPoolType] or "{{ItemPoolUnknown}}")
+                        end
+                    end
+                    -- Display the mod this item is from
+                    if(desc.ModName) then
+                        curName = curName .. EID:getModNameString(desc)
+                    end
+                    curName = "{{ColorObjName}}"..curName.."{{CR}}"
+                    if(EID.Config["ShowItemIcon"]) then
+                        curName = "{{Trinket"..(trinket & ~TrinketType.TRINKET_GOLDEN_FLAG).."}} "..curName
+                    end
+                    local formatted = curName.."#"
+
+                    if(desc.Transformation and not (desc.Transformation == "0" or desc.Transformation == "")) then
+                        for transform in (string.gmatch(desc.Transformation, "([^,]+)")) do
+                            formatted = formatted.."{{Blank}} "
+                            --have a blank sprite info table if we aren't displaying it
+                            local transformIcon = ""
+                            if(EID.Config["TransformationIcons"]) then
+                                local str = transform
+                                if(tonumber(str)~=nil) then
+                                    str = EID.descriptions[EID.DefaultLanguageCode].transformations[tonumber(str + 1)]
+                                end
+                                str = string.gsub(str, " ", "")
+                                transformIcon = EID:getIcon(str) and "{{"..str.."}}" or "{{CustomTransformation}}"
+                                formatted = formatted..transformIcon
+                            end
+                            if EID.Config["TransformationText"] or EID.Config["TransformationProgress"] then
+                                formatted = formatted.."{{ColorTransform}}"
+                                local transformationName = ""
+                                if EID.Config["TransformationText"] then
+                                    transformationName = EID:getTransformationName(transform)
+                                end
+                                if EID.Config["TransformationProgress"] then
+                                    EID:evaluateTransformationProgress(transform)
+                                    transformationName = transformationName .. " "
+                                    for _, player in ipairs(EID.coopAllPlayers) do
+                                        local playerType = player:GetPlayerType()
+                                        if playerType ~= PlayerType.PLAYER_THESOUL_B and player:GetBabySkin() == -1 then
+                                            if #EID.coopAllPlayers > 1 then
+                                                transformationName = transformationName .. EID:GetPlayerIcon(playerType)
+                                            end
+                                            local numCollected = EID.TransformationProgress[EID:getPlayerID(player, true)] and EID.TransformationProgress[EID:getPlayerID(player, true)][transform] or 0
+                                            local numMax = EID.TransformationData[transform] and EID.TransformationData[transform].NumNeeded or 3
+                                            transformationName = transformationName.."("..numCollected.."/"..numMax..") "
+                                        end
+                                    end
+                                end
+                                formatted = formatted.."{{ColorTransform}}"..transformationName.."{{CR}}"
+                            end
+                            formatted = formatted.."#"
+                        end
+                    end
+                    --#endregion
+                    
+                    local formatDesc = enums.FUNCTIONS.StringTableToDescription(desc.Description)
+                    formatted = formatted..formatDesc
+
+                    return "#"..formatted
+                end
+
+                return ""
+            end
+        }
+    }
+})
+--]]
 
 --- JOKES ---
 

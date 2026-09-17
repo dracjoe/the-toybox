@@ -426,11 +426,11 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.trinkets.interest")
     include("scripts_toybox.items.trinkets.nematode")
     include("scripts_toybox.items.trinkets.lil_grub")
+    include("scripts_toybox.items.trinkets.candida")
 
     include("scripts_toybox.items.trinkets.flukie")
     include("scripts_toybox.items.trinkets.ladybug")
     include("scripts_toybox.items.trinkets.hatchling")
-    include("scripts_toybox.items.trinkets.candida")
     include("scripts_toybox.items.trinkets.demodex")
     include("scripts_toybox.items.trinkets.fat_leech")
 --UNUSED

@@ -116,17 +116,13 @@ local BASEDATA = {
         KEY = 0,
     },
     MUTAGEN_FLAGS = {},
-
     FRANKENCAT_MAXHITS = 0,
     FRANKENCAT_HITS = 0,
-
     LEATHERFACE_KILLS = 0,
-
     PINK_DONUT_DAMAGE = 0,
-
     CLONE_PLAYER = 0,
-
     BREAKTHROUGH_TIMERS = {},
+    PARASITE_QUEUE = {},
 
     TEMPORARY_ITEMS = {},
     TEMPORARY_ITEMS_ROOM = {},
