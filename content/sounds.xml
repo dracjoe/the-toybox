@@ -139,6 +139,9 @@
 		<sample weight="1" path="equip2.wav" />
 		<sample weight="1" path="equip3.wav" />
 	</sound>
+	<sound name="(TOYBOX) Spray">
+		<sample weight="1" path="spray.wav" />
+	</sound>
 
 	<sound name="(TOYBOX) Water Loop (Copy)">
 		<sample weight="1" path="water_loop_copy.wav" />

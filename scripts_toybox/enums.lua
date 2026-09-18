@@ -347,9 +347,9 @@ ToyboxMod.TRINKET_NEMATODE = Isaac.GetTrinketIdByName("Nematode")
 ToyboxMod.TRINKET_LIL_GRUB = Isaac.GetTrinketIdByName("Lil Grub")
 ToyboxMod.TRINKET_CANDIDA = Isaac.GetTrinketIdByName("Candida")
 ToyboxMod.TRINKET_DEWORMER = Isaac.GetTrinketIdByName("Dewormer")
+ToyboxMod.TRINKET_LADYBUG = Isaac.GetTrinketIdByName("Ladybug")
 
 ToyboxMod.TRINKET_FLUKIE = Isaac.GetTrinketIdByName("Flukie")
-ToyboxMod.TRINKET_LADYBUG = Isaac.GetTrinketIdByName("Ladybug")
 ToyboxMod.TRINKET_DEMODEX = Isaac.GetTrinketIdByName("Demodex")
 ToyboxMod.TRINKET_FAT_LEECH = Isaac.GetTrinketIdByName("Fat Leech")
 
@@ -640,6 +640,7 @@ ToyboxMod.SFX_SHATTER_REVERSE = Isaac.GetSoundIdByName("(TOYBOX) Shield Shatter 
 ToyboxMod.SFX_EUREKA = Isaac.GetSoundIdByName("(TOYBOX) Eureka")
 ToyboxMod.SFX_EUREKA_DISCHARGE = Isaac.GetSoundIdByName("(TOYBOX) Eureka Discharge")
 ToyboxMod.SFX_EQUIP = Isaac.GetSoundIdByName("(TOYBOX) Equip")
+ToyboxMod.SFX_SPRAY = Isaac.GetSoundIdByName("(TOYBOX) Spray")
 
 ToyboxMod.SFX_SLIDE_WHISTLE = Isaac.GetSoundIdByName("(TOYBOX) Slide Whistle")
 ToyboxMod.SFX_MR_KRABS_WALK = Isaac.GetSoundIdByName("(TOYBOX) Mr Krabs Walk")

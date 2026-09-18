@@ -1953,6 +1953,13 @@
     gfx="dewormer.png"
     cache=""
 />
+<trinket id="46" name="Ladybug"
+    description="Well, she's not coming off"
+    gfx="ladybug.png"
+    cache=""
+
+    luck="2"
+/>
 
 <trinket id="300" name="Citrusberry "
     description="Emergency heal"

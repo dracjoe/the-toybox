@@ -87,6 +87,9 @@ local BASEDATA = {
 
     SAVED_PEDESTAL_TRINKETS = {},
 
+    LADYBUG_SPAWNS = {},
+    LADYBUG_TRIGGERED = false,
+
     TMTAMER_IDS = {},
 
     SUPER_RETROFALL_ID = 3,

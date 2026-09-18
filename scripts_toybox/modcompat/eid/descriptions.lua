@@ -3323,6 +3323,31 @@ enums.FUNCTIONS.AddTrinket({
         },
     },
 })
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_LADYBUG,
+    Name = "Ladybug",
+    Description = {
+        "\1 +2 Luck",
+        "Room clear rewards are teleported to the Boss Room and only spawn upon defeating the boss",
+        "!!! Once picked up, can only be removed with {{Trinket}} Bug Spray",
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"+2", "{{ColorWhite}}+{{CR}}4"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"+2", "{{ColorWhite}}+{{CR}}6"},
+            }
+        },
+    },
+})
 
 enums.FUNCTIONS.AddCard({
     ID = ToyboxMod.CARD_PRISMSTONE,
