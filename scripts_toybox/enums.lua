@@ -280,6 +280,7 @@ ToyboxMod.COLLECTIBLE_BREAKTHROUGH = Isaac.GetItemIdByName("Breakthrough")
 ToyboxMod.COLLECTIBLE_FRANKINCENSE = Isaac.GetItemIdByName("Frankincense")
 ToyboxMod.COLLECTIBLE_ELEPHANTS_FOOT = Isaac.GetItemIdByName("Elephant's Foot")
 ToyboxMod.COLLECTIBLE_XENOTRANSFUSION = Isaac.GetItemIdByName("Xenotransfusion")
+ToyboxMod.COLLECTIBLE_CRAZED_BOBBY = Isaac.GetItemIdByName("Crazed Bobby")
 
 ToyboxMod.COLLECTIBLE_TMTAMER = Isaac.GetItemIdByName("TMTAMER")
 
@@ -345,6 +346,7 @@ ToyboxMod.TRINKET_INTEREST = Isaac.GetTrinketIdByName("Interest")
 ToyboxMod.TRINKET_NEMATODE = Isaac.GetTrinketIdByName("Nematode")
 ToyboxMod.TRINKET_LIL_GRUB = Isaac.GetTrinketIdByName("Lil Grub")
 ToyboxMod.TRINKET_CANDIDA = Isaac.GetTrinketIdByName("Candida")
+ToyboxMod.TRINKET_DEWORMER = Isaac.GetTrinketIdByName("Dewormer")
 
 ToyboxMod.TRINKET_FLUKIE = Isaac.GetTrinketIdByName("Flukie")
 ToyboxMod.TRINKET_LADYBUG = Isaac.GetTrinketIdByName("Ladybug")
@@ -450,6 +452,7 @@ ToyboxMod.FAMILIAR_MINDFLAYER_BABY = Isaac.GetEntityVariantByName("Flayer Baby")
 ToyboxMod.FAMILIAR_YES_BABY = Isaac.GetEntityVariantByName("Yes Baby") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_PSYCHO_BABY = Isaac.GetEntityVariantByName("Psycho Baby") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_GIMP_BABY = Isaac.GetEntityVariantByName("Gimp Baby") ---@type FamiliarVariant
+ToyboxMod.FAMILIAR_CRAZED_BOBBY = Isaac.GetEntityVariantByName("Crazed Bobby") ---@type FamiliarVariant
 --#endregion
 --#region FAMILIAR SUBTYPE
 
@@ -746,6 +749,7 @@ ToyboxMod.CUSTOM_CALLBACKS = {
     POST_GET_CUSTOM_TRANSFORMATION = "TOYBOX_POST_GET_CUSTOM_TRANSFORMATION",
     POST_LOSE_CUSTOM_TRANSFORMATION = "TOYBOX_POST_LOSE_CUSTOM_TRANSFORMATION",
     APPLY_CUSTOM_TEARFLAG = "TOYBOX_APPLY_CUSTOM_TEARFLAG",
+    ADD_PEDESTAL_TRINKETS = "TOYBOX_ADD_PEDESTAL_TRINKETS",
 }
 
 ToyboxMod.DAMAGE_TYPE = {

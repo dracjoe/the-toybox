@@ -4,7 +4,7 @@ local DAMAGE_PER_MULT = 0.5
 local POISON_CHANCE = 1/3
 local POISON_DURATION = 40
 
-ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_CANDIDA, ToyboxMod.TRINKET_ANTIBIOTICS, SoundEffect.SOUND_POISON_HURT)
+ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_CANDIDA, ToyboxMod.TRINKET_ANTIBIOTICS, SoundEffect.SOUND_BEAST_LAVABALL_RISE)
 
 ---@param tear EntityTear
 local function familiarFireProj(_, tear)

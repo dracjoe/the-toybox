@@ -766,7 +766,11 @@ local function replaceCollectiblePedestal(_, pickup)
     local templeMainData = ToyboxMod:getExtraData("TEMPLE_MAIN_ROOMS") or {}
     if(templeMainData[tostring(room.SafeGridIndex)]) then
         if(pickup:GetAlternatePedestal()==PedestalType.DEFAULT) then
-            pickup:GetSprite():ReplaceSpritesheet(5, "gfx_tb/pickups/pickup_caban_altar.png", true)
+            Isaac.CreateTimer(function()
+                if(pickup:GetAlternatePedestal()==PedestalType.DEFAULT) then
+                    pickup:GetSprite():ReplaceSpritesheet(5, "gfx_tb/pickups/pickup_caban_altar.png", true)
+                end
+            end, 1, 1, false)
         end
     end
 end

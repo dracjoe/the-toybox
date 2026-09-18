@@ -438,19 +438,3 @@ EID:addGridEntityConditional(
         return descObj
     end
 )
-
---[[] ]
-local oldFunc2 = EID.printDescriptions
-function EID:printDescriptions(useCached)
-    if(not useCached) then
-        if(EID.lastDescriptionEntity and EID.lastDescriptionEntity.ToPickup) then
-            local trinket = ToyboxMod:getEntityData(EID.lastDescriptionEntity, "GRAVEYARD_PARASITE")
-            if(trinket) then
-                local newObj = EID:getDescriptionObj(5, 350, trinket, nil)
-                EID:addDescriptionToPrint(newObj)
-            end
-        end
-    end
-    oldFunc2(EID, useCached)
-end
---]]

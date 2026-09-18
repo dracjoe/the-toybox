@@ -8,7 +8,7 @@ local POSSIBLE_MODIFIERS = {
     "TearRange",
 }
 
-ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_NEMATODE, ToyboxMod.TRINKET_ANTIBIOTICS, SoundEffect.SOUND_BEAST_LAVABALL_RISE)
+ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_NEMATODE, ToyboxMod.TRINKET_SUPPOSITORY, SoundEffect.SOUND_POOPITEM_THROW)
 
 ---@param type CollectibleType
 ---@param firstTime boolean

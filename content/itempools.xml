@@ -63,7 +63,6 @@
         <Item Name="Yes Baby"/>
         <Item Name="Gimp Baby"/>
         <Item Name="Psycho Baby"/>
-        <Item Name="RETROFALL"/>
         <Item Name="Krokodil"/>
         <Item Name="Wooden Arm"/>
         <Item Name="Rhubarb"/>
@@ -82,6 +81,7 @@
         <Item Name="Breakthrough"/>
         <Item Name="Elephant's Foot"/>
         <Item Name="Xenotransfusion" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="RETROFALL" Weight="0.5" DecreaseBy="0.5"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -145,7 +145,6 @@
         <Item Name="Yes Baby"/>
         <Item Name="Gimp Baby"/>
         <Item Name="Psycho Baby"/>
-        <Item Name="RETROFALL"/>
         <Item Name="Krokodil"/>
         <Item Name="Wooden Arm"/>
         <Item Name="Rhubarb"/>
@@ -163,6 +162,7 @@
         <Item Name="Nanomachines"/>
         <Item Name="Breakthrough"/>
         <Item Name="Xenotransfusion" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="RETROFALL" Weight="0.5" DecreaseBy="0.5"/>
     </Pool>
 
     <Pool Name="boss">
@@ -201,17 +201,15 @@
     <Pool Name="shop">
         <Item Name="Dad's Prescription"/>
         <Item Name="D"/>
-        <Item Name="Love Letter"/>
         <Item Name="Jonas' Mask"/>
         <Item Name="Candy Dispenser"/>
-        <Item Name="RETROFALL" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Beer Can"/>
         <Item Name="Food Stamps"/>
         <Item Name="Delivery Box"/>
         <Item Name="Solar Panel"/>
         <Item Name="Baby Shoes"/>
         <Item Name="Sack of Chests"/>
-        <Item Name="Gambling Addiction" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Gambling Addiction" Weight="0.25" DecreaseBy="0.25"/>
         <Item Name="Good Job"/>
         <Item Name="Oil Painting"/>
         <Item Name="Reading Glasses"/>
@@ -228,16 +226,14 @@
     <Pool Name="greedShop">
         <Item Name="Dad's Prescription"/>
         <Item Name="D"/>
-        <Item Name="Love Letter"/>
         <Item Name="Jonas' Mask"/>
         <Item Name="Candy Dispenser"/>
-        <Item Name="RETROFALL" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Beer Can"/>
         <Item Name="Food Stamps"/>
         <Item Name="Delivery Box"/>
         <Item Name="Solar Panel"/>
         <Item Name="Sack of Chests"/>
-        <Item Name="Gambling Addiction" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Gambling Addiction" Weight="0.25" DecreaseBy="0.25"/>
         <Item Name="Good Job"/>
         <Item Name="Oil Painting"/>
         <Item Name="Reading Glasses"/>
@@ -270,6 +266,7 @@
         <Item Name="Leatherface"/>
         <Item Name="Frankencat"/>
         <Item Name="Xenotransfusion"/>
+        <Item Name="Crazed Bobby"/>
     </Pool>
     <Pool Name="greedDevil">
         <Item Name="Blood Ritual"/>
@@ -288,6 +285,7 @@
         <Item Name="Leatherface"/>
         <Item Name="Frankencat"/>
         <Item Name="Xenotransfusion"/>
+        <Item Name="Crazed Bobby"/>
     </Pool>
 
     <Pool Name="angel">
@@ -371,6 +369,7 @@
         <Item Name="Clone"/>
         <Item Name="Mutagen"/>
         <Item Name="Breakthrough" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="RETROFALL"/>
     </Pool>
     <Pool Name="greedSecret">
         <Item Name="Fatal Signal"/>
@@ -397,6 +396,7 @@
         <Item Name="Clone"/>
         <Item Name="Mutagen"/>
         <Item Name="Breakthrough" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="RETROFALL"/>
     </Pool>
 
     <Pool Name="library">

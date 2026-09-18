@@ -2,7 +2,7 @@ local FLIES_TO_SPAWN = 3
 local MUTANT_CHANCE = 0.5
 local LOCUST_CHANCE = 0.167
 
-ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_LIL_GRUB, ToyboxMod.TRINKET_ANTIBIOTICS, SoundEffect.SOUND_POISON_HURT)
+ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_LIL_GRUB, ToyboxMod.TRINKET_DEWORMER, SoundEffect.SOUND_POISON_HURT)
 
 ---@param player EntityPlayer
 local function spawnFlies(_, player)

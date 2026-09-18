@@ -1556,7 +1556,7 @@
     gfx="breakthrough.png"
     quality="3"
     tags="offensive summonable"
-    customtags=""
+    customtags="combat"
     cache=""
 
     maxcharges="6"
@@ -1593,6 +1593,14 @@
     initcharge="3333"
 
     achievement="Xenotransfusion"
+/>
+<familiar id="173" name="Crazed Bobby"
+    description="Not your friend"
+    gfx="crazy_bob.png"
+    quality="2"
+    tags="offensive summonable baby"
+    customtags=""
+    cache=""
 />
 
 <passive id="450" name="TMTAMER"
@@ -1938,6 +1946,11 @@
 <trinket id="44" name="Candida"
     description="Ew, that's not coming off"
     gfx="candida.png"
+    cache=""
+/>
+<trinket id="45" name="Dewormer"
+    description="Butt buddies"
+    gfx="dewormer.png"
     cache=""
 />
 

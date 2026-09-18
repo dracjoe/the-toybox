@@ -101,6 +101,8 @@ include("scripts_toybox.misc.golden_bomb_logic")
 include("scripts_toybox.misc.trinket_weights")
 include("scripts_toybox.misc.parasite_trinkets")
 
+include("scripts_toybox.misc.trinket_pedestals")
+
 include("scripts_toybox.misc.custom_room_icons")
 
 include("scripts_toybox.misc.custom_special_rooms.logic")
@@ -337,6 +339,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.passives.nanomachines")
     include("scripts_toybox.items.passives.frankincense")
     include("scripts_toybox.items.passives.elephants_foot")
+    include("scripts_toybox.items.passives.crazed_bobby")
 
     include("scripts_toybox.items.passives.the_elder_scroll") -- just the shader fo now
 --ACTIVES
@@ -427,6 +430,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.trinkets.nematode")
     include("scripts_toybox.items.trinkets.lil_grub")
     include("scripts_toybox.items.trinkets.candida")
+    include("scripts_toybox.items.trinkets.dewormer")
 
     include("scripts_toybox.items.trinkets.flukie")
     include("scripts_toybox.items.trinkets.ladybug")
