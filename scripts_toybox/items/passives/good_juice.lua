@@ -25,10 +25,6 @@ local JUICE_PARTICLE_SPEED = 35
 local JUICE_PARTICLE_INITSPEED = 25
 local JUICE_PARTICLE_INITARC = 25
 
-local juiceSprite = Sprite("gfx_tb/effects/effect_juice.anm2")
-juiceSprite:Play("Idle", true)
-juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
-
 local juiceFrameThresholds = {
     [0] = 7,
     [1] = 6,
@@ -40,6 +36,10 @@ local juiceFrameThresholds = {
     [200] = 0,
 }
 local MAX_JUICE_SIZE = 200
+
+local juiceSprite = Sprite("gfx_tb/effects/effect_juice.anm2")
+juiceSprite:Play("Idle", true)
+--juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
 
 ---@param num number
 local function addJuice(num)
@@ -273,6 +273,7 @@ ToyboxMod:AddCallback(ModCallbacks.MC_POST_RENDER, resetRenders)
 local function renderParticleOverlay(_)
     local offset = ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
 
+    --juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
     for _, ent in ipairs(Isaac.FindByType(EntityType.ENTITY_EFFECT, ToyboxMod.EFFECT_JUICE_TRAIL)) do
         local sp = ent:GetSprite()
         local rpos = Isaac.WorldToRenderPosition(ent.Position)+ent.SpriteOffset+offset
@@ -282,6 +283,7 @@ local function renderParticleOverlay(_)
         juiceSprite.Color = Color(1,1,1,1,0,0,0,rpos.X/40+rpos.Y/40+ToyboxMod.GAME:GetFrameCount()/15)
         juiceSprite:Render(rpos)
     end
+    --juiceSprite:GetLayer("main"):ClearCustomShader()
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_ROOM_RENDER_ENTITIES, renderParticleOverlay)
 
@@ -462,3 +464,14 @@ local function hudRender(_)
     font:DrawString(tostring(math.floor(data.GOOD_JUICE_LERP_COUNTER or 0)), renderPos.X, renderPos.Y, color, 40, false)
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_HUD_RENDER, hudRender)
+
+
+local function unloadSprite(_)
+    juiceSprite:GetLayer("main"):ClearCustomShader()
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, unloadSprite)
+
+local function loadSprite(_, mod, shuttingDown)
+    juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, loadSprite)
