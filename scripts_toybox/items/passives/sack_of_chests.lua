@@ -21,7 +21,9 @@ ToyboxMod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, familiarInit, ToyboxMod.FAM
 local function familiarUpdate(_, fam)
     local sp = fam:GetSprite()
     fam:FollowParent()
-    sp:Play("FloatDown")
+    if(sp:IsFinished()) then
+        sp:Play("FloatDown", true)
+    end
 
     if(fam.RoomClearCount==ROOM_FREQ) then
         local rng = fam:GetDropRNG()

@@ -281,6 +281,8 @@ ToyboxMod.COLLECTIBLE_FRANKINCENSE = Isaac.GetItemIdByName("Frankincense")
 ToyboxMod.COLLECTIBLE_ELEPHANTS_FOOT = Isaac.GetItemIdByName("Elephant's Foot")
 ToyboxMod.COLLECTIBLE_XENOTRANSFUSION = Isaac.GetItemIdByName("Xenotransfusion")
 ToyboxMod.COLLECTIBLE_CRAZED_BOBBY = Isaac.GetItemIdByName("Crazed Bobby")
+ToyboxMod.COLLECTIBLE_JAM = Isaac.GetItemIdByName("Jam")
+ToyboxMod.COLLECTIBLE_GREEDY_POT = Isaac.GetItemIdByName("Greedy Pot")
 
 ToyboxMod.COLLECTIBLE_TMTAMER = Isaac.GetItemIdByName("TMTAMER")
 
@@ -453,6 +455,7 @@ ToyboxMod.FAMILIAR_YES_BABY = Isaac.GetEntityVariantByName("Yes Baby") ---@type 
 ToyboxMod.FAMILIAR_PSYCHO_BABY = Isaac.GetEntityVariantByName("Psycho Baby") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_GIMP_BABY = Isaac.GetEntityVariantByName("Gimp Baby") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_CRAZED_BOBBY = Isaac.GetEntityVariantByName("Crazed Bobby") ---@type FamiliarVariant
+ToyboxMod.FAMILIAR_LIL_POT = Isaac.GetEntityVariantByName("Lil Pot") ---@type FamiliarVariant
 --#endregion
 --#region FAMILIAR SUBTYPE
 

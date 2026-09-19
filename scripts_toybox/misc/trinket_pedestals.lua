@@ -196,6 +196,8 @@ local function giveQueuedPedestalTrinket(_, player)
 
                 table.remove(data.PEDESTAL_TRINKET_QUEUE, 1)
             else
+                local pool = ToyboxMod.GAME:GetItemPool()
+
                 local alreadySpawnedATrinket = false
                 while(#data.PEDESTAL_TRINKET_QUEUE>0) do
                     first = data.PEDESTAL_TRINKET_QUEUE[1]
@@ -223,6 +225,8 @@ local function giveQueuedPedestalTrinket(_, player)
                         else
                             player:AddTrinket(first.ID, true)
                         end
+                        
+                        pool:RemoveTrinket(first.ID & ~TrinketType.TRINKET_GOLDEN_FLAG)
                     end
 
                     table.remove(data.PEDESTAL_TRINKET_QUEUE, 1)

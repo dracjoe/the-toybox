@@ -82,6 +82,9 @@
         <Item Name="Elephant's Foot"/>
         <Item Name="Xenotransfusion" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="RETROFALL" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Jam"/>
+        <Item Name="Awesome Fruit"/>
+        <Item Name="Greedy Pot"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -163,6 +166,9 @@
         <Item Name="Breakthrough"/>
         <Item Name="Xenotransfusion" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="RETROFALL" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Jam"/>
+        <Item Name="Awesome Fruit"/>
+        <Item Name="Greedy Pot"/>
     </Pool>
 
     <Pool Name="boss">
@@ -299,6 +305,7 @@
         <Item Name="The Good Juice"/>
         <Item Name="Reliquary"/>
         <Item Name="Frankincense"/>
+        <Item Name="Steel Soul"/>
     </Pool>
     <Pool Name="greedAngel">
         <Item Name="Silk Bag"/>
@@ -311,6 +318,7 @@
         <Item Name="The Good Juice"/>
         <Item Name="Reliquary"/>
         <Item Name="Frankincense"/>
+        <Item Name="Steel Soul"/>
     </Pool>
 
     <Pool Name="curse">
@@ -328,6 +336,7 @@
         <Item Name="Lab Meat"/>
         <Item Name="Silver Pieces"/>
         <Item Name="Twisted Heart"/>
+        <Item Name="Malice"/>
     </Pool>
     <Pool Name="greedCurse">
         <Item Name="Pliers"/>
@@ -342,30 +351,23 @@
         <Item Name="Tammy's Body"/>
         <Item Name="Lab Meat"/>
         <Item Name="Twisted Heart"/>
+        <Item Name="Malice"/>
     </Pool>
 
     <Pool Name="secret">
         <Item Name="Fatal Signal"/>
-        <Item Name="Steel Soul"/>
-        <Item Name="Alphabet Box"/>
-        <Item Name="Awesome Fruit"/>
         <Item Name="Big Bang"/>
         <Item Name="Fish"/>
         <Item Name="Sack of Chests"/>
         <Item Name="Butterfly Effect"/>
         <Item Name="Big Red Button"/>
-        <Item Name="Langton Loop"/>
         <Item Name="White Daisy"/>
-        <Item Name="Malice"/>
         <Item Name="Dissociation"/>
         <Item Name="Missing Page 3"/>
         <Item Name="Bob's Thesis"/>
         <Item Name="4 4"/>
         <Item Name="Bone Boy"/>
-        <Item Name="Reliquary"/>
-        <Item Name="Y2K"/>
         <Item Name="Mind's Eye"/>
-        <Item Name="Wooden Arm"/>
         <Item Name="Clone"/>
         <Item Name="Mutagen"/>
         <Item Name="Breakthrough" Weight="0.5" DecreaseBy="0.5"/>
@@ -373,26 +375,18 @@
     </Pool>
     <Pool Name="greedSecret">
         <Item Name="Fatal Signal"/>
-        <Item Name="Steel Soul"/>
-        <Item Name="Alphabet Box"/>
-        <Item Name="Awesome Fruit"/>
         <Item Name="Big Bang"/>
         <Item Name="Fish"/>
         <Item Name="Sack of Chests"/>
         <Item Name="Butterfly Effect"/>
         <Item Name="Big Red Button"/>
-        <Item Name="Langton Loop"/>
         <Item Name="White Daisy"/>
-        <Item Name="Malice"/>
         <Item Name="Dissociation"/>
         <Item Name="Missing Page 3"/>
         <Item Name="Bob's Thesis"/>
         <Item Name="4 4"/>
         <Item Name="Bone Boy"/>
-        <Item Name="Reliquary"/>
-        <Item Name="Y2K"/>
         <Item Name="Mind's Eye"/>
-        <Item Name="Wooden Arm"/>
         <Item Name="Clone"/>
         <Item Name="Mutagen"/>
         <Item Name="Breakthrough" Weight="0.5" DecreaseBy="0.5"/>
@@ -461,6 +455,7 @@
         <Item Name="Surprise Egg"/>
         <Item Name="A Spoonful of Mayonnaise"/>
         <Item Name="Hand Pump"/>
+        <Item Name="Jam"/>
     </Pool>
 
     <Pool Name="demonBeggar">

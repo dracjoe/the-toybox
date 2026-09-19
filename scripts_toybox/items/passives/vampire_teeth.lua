@@ -29,7 +29,6 @@ local function healOnBleedKill(_, npc)
         if(pl:HasCollectible(ToyboxMod.COLLECTIBLE_VAMPIRE_TEETH)) then
             pl:AddHearts(1)
 
-
             local maxdist = npc.Position:Distance(pl.Position)
             local dir = (pl.Position-npc.Position):Normalized()
             local pos = npc.Position

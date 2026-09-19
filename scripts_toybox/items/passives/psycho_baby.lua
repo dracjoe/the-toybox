@@ -119,3 +119,8 @@ local function tryCheckIfKill(_, ent, dmg, flags, source, countdown)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_TAKE_DMG, tryCheckIfKill)
+
+local function familiarPriority(_, fam)
+    return FollowerPriority.SHOOTER
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_GET_FOLLOWER_PRIORITY, familiarPriority, ToyboxMod.FAMILIAR_PSYCHO_BABY)

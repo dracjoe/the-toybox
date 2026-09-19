@@ -2176,6 +2176,23 @@ enums.FUNCTIONS.AddItem({
         "Shoots tears that deal 5 damage, 1.67 times per second",
     },
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_JAM,
+    Name = "Jam",
+    Description = {
+        "\1 +2 Range",
+        "\1 +1 Luck",
+        "{{HealingRed}} Heals 2 hearts",
+    },
+})
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_GREEDY_POT,
+    Name = "Greedy Pot",
+    Description = {
+        "{{Card}} Spawns 2 random tarot cards every 8-9 rooms",
+        enums.CONSTANTS.Icon_AltTarotCard.." Can spawn regular, reversed, or alternate tarot cards"
+    },
+})
 
 --- OTHER ITEM MODIFIERS ---
 

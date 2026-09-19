@@ -404,7 +404,7 @@
     description="Zonked state"
     gfx="missing_page_3.png"
     quality="2"
-    tags="summonable offensive"
+    tags="summonable offensive nogreed"
     cache=""
 
     devilprice="1"
@@ -1599,6 +1599,25 @@
     gfx="crazy_bob.png"
     quality="2"
     tags="offensive summonable baby"
+    customtags=""
+    cache=""
+/>
+<passive id="174" name="Jam"
+    description="Range + luck up"
+    gfx="jam.png"
+    quality="1"
+    tags="offensive summonable"
+    customtags=""
+    cache=""
+
+    range="80" luck="1"
+    hearts="4"
+/>
+<familiar id="175" name="Greedy Pot"
+    description="Draw 2 cards"
+    gfx="pot_of_greed.png"
+    quality="2"
+    tags="offensive summonable"
     customtags=""
     cache=""
 />

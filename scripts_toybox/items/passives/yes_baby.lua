@@ -150,3 +150,8 @@ local function aidsTearDeath(_, tear)
     poof.PositionOffset = tear.PositionOffset
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_TEAR_DEATH, aidsTearDeath, ToyboxMod.TEAR_YES)
+
+local function familiarPriority(_, fam)
+    return FollowerPriority.SHOOTER
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_GET_FOLLOWER_PRIORITY, familiarPriority, ToyboxMod.FAMILIAR_YES_BABY)

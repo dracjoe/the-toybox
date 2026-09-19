@@ -340,6 +340,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.passives.frankincense")
     include("scripts_toybox.items.passives.elephants_foot")
     include("scripts_toybox.items.passives.crazed_bobby")
+    include("scripts_toybox.items.passives.greedy_pot")
 
     include("scripts_toybox.items.passives.the_elder_scroll") -- just the shader fo now
 --ACTIVES

@@ -64,3 +64,8 @@ local function gimpyBabyPostRender(_, familiar)
     end
 end
 ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_FAMILIAR_RENDER, CallbackPriority.IMPORTANT, gimpyBabyPostRender, ToyboxMod.FAMILIAR_GIMP_BABY)
+
+local function familiarPriority(_, fam)
+    return FollowerPriority.SHOOTER
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_GET_FOLLOWER_PRIORITY, familiarPriority, ToyboxMod.FAMILIAR_GIMP_BABY)

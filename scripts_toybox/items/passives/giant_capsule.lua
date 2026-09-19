@@ -228,3 +228,8 @@ end
 ToyboxMod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, virusUpdate, ToyboxMod.FAMILIAR_VIRUS)
 --im bored
 
+local function familiarPriority(_, fam)
+    return FollowerPriority.SHOOTER
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_GET_FOLLOWER_PRIORITY, familiarPriority, ToyboxMod.FAMILIAR_VIRUS)
+

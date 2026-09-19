@@ -48,3 +48,8 @@ local function psychoBabyUpdate(_, familiar)
     end
 end
 ToyboxMod:AddPriorityCallback(ModCallbacks.MC_FAMILIAR_UPDATE, CallbackPriority.IMPORTANT, psychoBabyUpdate, ToyboxMod.FAMILIAR_CRAZED_BOBBY)
+
+local function familiarPriority(_, fam)
+    return FollowerPriority.SHOOTER
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_GET_FOLLOWER_PRIORITY, familiarPriority, ToyboxMod.FAMILIAR_CRAZED_BOBBY)
