@@ -1,6 +1,6 @@
 local SHARD_SUBDIVISIONS = 2
 local SHARD_RANDOM_PADDING = 0.25
-local SHARD_IMG_SIZE = 128
+local SHARD_IMG_SIZE = 32
 
 ---@class CrackData
 ---@field Active boolean
@@ -328,8 +328,9 @@ local wasKeyPressed = false
 local function postUpdate(_, player)
     if(not (player and player:GetPlayerIndex()==0)) then return end
 
-    local isPressed = Input.IsMouseBtnPressed(MouseButton.LEFT)
-    local isKeyPressed = Input.IsMouseBtnPressed(MouseButton.RIGHT)
+    local isPressed = Input.IsMouseBtnPressed(MouseButton.LEFT)    
+    local mangoPressed = Input.IsMouseBtnPressed(MouseButton.SCROLLWHEEL)
+    local isKeyPressed = Input.IsMouseBtnPressed(MouseButton.RIGHT) or mangoPressed
     if((isPressed and not wasMousePressed) or (isKeyPressed and not wasKeyPressed)) then
         local nearestEnt
         local nearestDist = 2^30
@@ -337,7 +338,7 @@ local function postUpdate(_, player)
         local mpos = Input.GetMousePosition(true)
         
         for _, ent in ipairs(Isaac.GetRoomEntities()) do
-            if((not isKeyPressed) or (isKeyPressed and not ent:ToEffect())) then
+            if((not isKeyPressed) or (isKeyPressed and (not mangoPressed or not ent:ToPlayer()) and not ent:ToEffect())) then
                 local dist = ent.Position:Distance(mpos)-ent.Size
                 if(dist<nearestDist) then
                     nearestEnt = ent
@@ -346,24 +347,40 @@ local function postUpdate(_, player)
             end
         end
 
+        local grid = ToyboxMod.GAME:GetRoom():GetGridEntityFromPos(mpos)
+        if(grid and not grid:ToDecoration() and (not nearestEnt or grid.Position:Distance(mpos)<nearestDist)) then
+            nearestDist = grid.Position:Distance(mpos)
+            nearestEnt = grid
+        end
+
         if(nearestEnt and nearestDist<(isKeyPressed and 2^20 or 40*1.5)) then
             local img, quads, baseOffset = generateImgFromEnt(nearestEnt)
             if(img) then
+                local rng = (nearestEnt.ToDoor and nearestEnt:GetRNG() or nearestEnt:GetDropRNG())
                 --[[]]
                 shatterImage(
                     img,
                     {TopLeft=quads:GetTopLeft(), TopRight=quads:GetTopRight(), BottomLeft=quads:GetBottomLeft(), BottomRight=quads:GetBottomRight()}, 
                     baseOffset,
-                    nearestEnt:GetDropRNG()
+                    rng
                 )
-                --]]
-                if(not nearestEnt:ToPlayer()) then
-                    nearestEnt:AddEntityFlags(EntityFlag.FLAG_REDUCE_GIBS)
+                if(nearestEnt.ToDoor) then
+                    local room = ToyboxMod.GAME:GetRoom()
+                    room:RemoveGridEntityImmediate(room:GetGridIndex(nearestEnt.Position), 0, false)
+                else
+                    --]]
+                    if(not nearestEnt:ToPlayer()) then
+                        nearestEnt:AddEntityFlags(EntityFlag.FLAG_REDUCE_GIBS)
+                    end
+                    nearestEnt:AddEntityFlags(EntityFlag.FLAG_NO_DEATH_TRIGGER)
+                    nearestEnt:Die()
+                    nearestEnt.Visible = false
+                    nearestEnt:SetColor(Color(0,0,0,0),5000,0,false,false)
+                    if(not nearestEnt:ToPlayer()) then
+                        nearestEnt:Update()
+                        nearestEnt:Remove()
+                    end
                 end
-                nearestEnt:Die()
-                nearestEnt.Visible = false
-                nearestEnt:SetColor(Color(0,0,0,0),5000,0,false,false)
-                --nearestEnt:Remove()
 
                 ToyboxMod.SFX:Play(ToyboxMod.SFX_ATLASA_GLASSBREAK)
             end

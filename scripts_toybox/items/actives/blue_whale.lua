@@ -8,8 +8,10 @@ local function useBlueWhale(_, _, rng, player, flags, slot)
 
     local dmg = (slot==-1 and 0 or player:GetActiveItemDesc(slot).VarData//THRESHOLD)
     if(dmg>0) then
-        player:ResetDamageCooldown()
-        player:TakeDamage(1, DamageFlag.DAMAGE_INVINCIBLE | DamageFlag.DAMAGE_RED_HEARTS, EntityRef(nil), 30)
+        for _=1, dmg do
+            player:ResetDamageCooldown()
+            player:TakeDamage(1, DamageFlag.DAMAGE_INVINCIBLE | DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(nil), 30)
+        end
         ToyboxMod.SFX:Play(SoundEffect.SOUND_DEATH_BURST_SMALL, 0.8, 2, false, 1.1) 
     end
 
