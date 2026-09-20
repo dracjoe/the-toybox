@@ -558,9 +558,9 @@ include("scripts_toybox.modcompat.eid.core")
 -- MINIMAPI
 include("scripts_toybox.modcompat.minimapi.core")
 -- ACCURATE BLURBS
-include("scripts_toybox.modcompat.accurate blurbs.accurate_blurbs")
+--include("scripts_toybox.modcompat.accurate blurbs.accurate_blurbs")
 -- FIEND FOLIO FUZZY PICKLE
-include("scripts_toybox.modcompat.fuzzy pickle.main")
+--include("scripts_toybox.modcompat.fuzzy pickle.main")
 
 -- IMGUI
 include("scripts_toybox.toybox_imgui")

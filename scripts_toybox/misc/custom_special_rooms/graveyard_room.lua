@@ -1,4 +1,4 @@
-local BASE_CHANCE = 10.2 -- 0.05
+local BASE_CHANCE = 0.2 -- 0.05
 local INCREMENT_PER_MISSING_HEAR = 0.05
 local LOST_BASE_CHANCE = 0.1
 
