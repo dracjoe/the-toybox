@@ -1621,6 +1621,16 @@
     customtags=""
     cache=""
 />
+<active id="176" name="The Blue Whale"
+    description="Why scream"
+    gfx="blue_whale.png"
+    quality="1"
+    tags="nolostbr"
+    cache="damage"
+
+    maxcharges="0"
+    activegfx="activegfx/blue_whale.png"
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"

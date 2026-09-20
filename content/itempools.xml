@@ -273,6 +273,7 @@
         <Item Name="Frankencat"/>
         <Item Name="Xenotransfusion"/>
         <Item Name="Crazed Bobby"/>
+        <Item Name="The Blue Whale"/>
     </Pool>
     <Pool Name="greedDevil">
         <Item Name="Blood Ritual"/>
@@ -292,6 +293,7 @@
         <Item Name="Frankencat"/>
         <Item Name="Xenotransfusion"/>
         <Item Name="Crazed Bobby"/>
+        <Item Name="The Blue Whale"/>
     </Pool>
 
     <Pool Name="angel">
@@ -416,6 +418,7 @@
         <Item Name="Flayer Baby"/>
         <Item Name="Silver Pieces"/>
         <Item Name="Twisted Heart"/>
+        <Item Name="The Blue Whale"/>
     </Pool>
 
     <Pool Name="goldenChest">

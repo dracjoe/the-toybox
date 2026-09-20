@@ -2193,6 +2193,16 @@ enums.FUNCTIONS.AddItem({
         enums.CONSTANTS.Icon_AltTarotCard.." Can spawn regular, reversed, or alternate tarot cards"
     },
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_BLUE_WHALE,
+    Name = "The Blue Whale",
+    Description = {
+        "\1 x1.5 Damage for the room",
+        "Additional uses in a room grant \1 +1 Damage instead",
+        "!!! After 5 uses in one run, deals half a heart of damage to Isaac when used",
+        "Every 5 uses after that increases the damage by half a heart"
+    },
+})
 
 --- OTHER ITEM MODIFIERS ---
 
