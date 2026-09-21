@@ -284,6 +284,7 @@ ToyboxMod.COLLECTIBLE_CRAZED_BOBBY = Isaac.GetItemIdByName("Crazed Bobby")
 ToyboxMod.COLLECTIBLE_JAM = Isaac.GetItemIdByName("Jam")
 ToyboxMod.COLLECTIBLE_GREEDY_POT = Isaac.GetItemIdByName("Greedy Pot")
 ToyboxMod.COLLECTIBLE_BLUE_WHALE = Isaac.GetItemIdByName("The Blue Whale")
+ToyboxMod.COLLECTIBLE_BROTHERHOOD = Isaac.GetItemIdByName("Brotherhood")
 
 ToyboxMod.COLLECTIBLE_TMTAMER = Isaac.GetItemIdByName("TMTAMER")
 

@@ -2203,6 +2203,15 @@ enums.FUNCTIONS.AddItem({
         "Every 5 uses after that increases the damage by half a heart"
     },
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_BROTHERHOOD,
+    Name = "Brotherhood",
+    Description = {
+        "{{AngelRoom}} In Angel Rooms, spawns 3 random beggars",
+        "Beggars inside Angel Rooms will pay out more often and will pay out with Angel Room items before leaving",
+        "{{AngelRoom}} Angel Rooms will stay open if Isaac leaves them"
+    },
+})
 
 --- OTHER ITEM MODIFIERS ---
 

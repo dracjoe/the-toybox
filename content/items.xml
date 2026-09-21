@@ -1626,10 +1626,21 @@
     gfx="blue_whale.png"
     quality="1"
     tags="nolostbr"
+    customtags="combat"
     cache="damage"
 
     maxcharges="0"
     activegfx="activegfx/blue_whale.png"
+/>
+<passive id="177" name="Brotherhood"
+    description="Making good men better"
+    gfx="brotherhood.png"
+    quality="1"
+    tags="offensive summonable"
+    customtags=""
+    cache=""
+
+    achievement="Brotherhood"
 />
 
 <passive id="450" name="TMTAMER"

@@ -85,6 +85,7 @@
         <Item Name="Jam"/>
         <Item Name="Awesome Fruit"/>
         <Item Name="Greedy Pot"/>
+        <Item Name="Brotherhood" Weight="0.5" DecreaseBy="0.5"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -169,6 +170,7 @@
         <Item Name="Jam"/>
         <Item Name="Awesome Fruit"/>
         <Item Name="Greedy Pot"/>
+        <Item Name="Brotherhood" Weight="0.5" DecreaseBy="0.5"/>
     </Pool>
 
     <Pool Name="boss">
@@ -308,6 +310,7 @@
         <Item Name="Reliquary"/>
         <Item Name="Frankincense"/>
         <Item Name="Steel Soul"/>
+        <Item Name="Brotherhood"/>
     </Pool>
     <Pool Name="greedAngel">
         <Item Name="Silk Bag"/>
@@ -321,6 +324,7 @@
         <Item Name="Reliquary"/>
         <Item Name="Frankincense"/>
         <Item Name="Steel Soul"/>
+        <Item Name="Brotherhood"/>
     </Pool>
 
     <Pool Name="curse">

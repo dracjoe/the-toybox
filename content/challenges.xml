@@ -32,6 +32,7 @@
 	<challenge 	name="I - Scientology" achievements="Scientology Challenge" 
 				lockeddesc="Unlock Atheism & Cain" endstage="10" altpath="true" 
 				startingitems="Atheism,Pythagoras' Cup " playertype="2" roomfilter="4"
+				unlockachievement="Brotherhood"
 	/>
 	<challenge 	name="II - Heart to Heart" achievements="Heart to Heart Challenge" 
 				lockeddesc="Unlock Glass Vessel & The Lost" endstage="8" altpath="true" 

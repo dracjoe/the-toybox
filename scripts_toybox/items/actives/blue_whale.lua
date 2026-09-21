@@ -12,7 +12,7 @@ local function useBlueWhale(_, _, rng, player, flags, slot)
             player:ResetDamageCooldown()
             player:TakeDamage(1, DamageFlag.DAMAGE_INVINCIBLE | DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(nil), 30)
         end
-        ToyboxMod.SFX:Play(SoundEffect.SOUND_DEATH_BURST_SMALL, 0.8, 2, false, 1.1) 
+        ToyboxMod.SFX:Play(SoundEffect.SOUND_DEATH_BURST_SMALL, 0.8, 2, false, 1.1)
     end
 
     local scale = math.min(1, 0.2+dmg*0.08)

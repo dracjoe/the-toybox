@@ -90,6 +90,8 @@ local BASEDATA = {
     LADYBUG_SPAWNS = {},
     LADYBUG_TRIGGERED = false,
 
+    BROTHERHOOD_ENTERED_ANGEL = false,
+
     TMTAMER_IDS = {},
 
     SUPER_RETROFALL_ID = 3,

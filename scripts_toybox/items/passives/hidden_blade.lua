@@ -22,7 +22,9 @@ local PICKER_WEIGHT_MULTS = {
     [ToyboxMod.COLLECTIBLE_PUGGYS_CLAW] = 0, -- removed because it takes a while to startup?
     [ToyboxMod.COLLECTIBLE_SNAKE_RING] = 0, -- removed because it takes a while to startup?
     [ToyboxMod.COLLECTIBLE_LAB_MEAT] = 0.1,
-    [ToyboxMod.COLLECTIBLE_HAND_PUMP] = 0, -- removed because its basically useless
+    [ToyboxMod.COLLECTIBLE_HAND_PUMP] = 0.5, -- lowered cuz its kind of useless
+    [ToyboxMod.COLLECTIBLE_BLUE_WHALE] = 0.5, -- lowered because its just a free 1.5x dmg
+    [ToyboxMod.COLLECTIBLE_BREAKTHROUGH] = 0, -- removed for giving bonus that lasts outside the current room
 
     --[ToyboxMod.COLLECTIBLE_MELTED_CANDLE] = 10000,
     --[CollectibleType.COLLECTIBLE_CANDLE] = 10000,

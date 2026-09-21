@@ -59,6 +59,8 @@ local function meteorUpdate(_, eff)
         local smoke = Isaac.Spawn(EntityType.ENTITY_EFFECT, ToyboxMod.EFFECT_SMOKE_TRAIL, 0, eff.Position+offset, Vector.Zero, eff):ToEffect()
         --smoke.SpriteOffset = smoke.SpriteOffset+baseOffset*randFrac
         smoke.DepthOffset = smoke.DepthOffset-offset.Y
+
+        smoke.State = offset.Y//1
     end
 
     eff:SetShadowSize((1-frac)*SHADOW_SIZE*eff.Scale/100)
@@ -133,3 +135,10 @@ local function smokeTrailUpdate(_, eff)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, smokeTrailUpdate, ToyboxMod.EFFECT_SMOKE_TRAIL)
+
+local function ihatethisgamesomuch2(_, effect, offset)
+    if(ToyboxMod:renderingAboveWater()) then return end
+
+    return -1.3*Vector(0,effect.State)
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_PRE_EFFECT_RENDER, ihatethisgamesomuch2, ToyboxMod.EFFECT_SMOKE_TRAIL)

@@ -256,6 +256,7 @@ end
 
 local function preRenderPedestalTrinket(_, pickup, offset)
     if(pickup.SubType==0) then return end
+    --if(ToyboxMod.GAME:GetRoom():GetRenderMode()==RenderMode.RENDER_WATER_REFLECT) then return end
 
     local trinkets = ToyboxMod:getEntityData(pickup, "PEDESTAL_TRINKETS")
     if(not trinkets) then return end
@@ -271,8 +272,9 @@ local function preRenderPedestalTrinket(_, pickup, offset)
 end
 ToyboxMod:AddPriorityCallback(ModCallbacks.MC_PRE_PICKUP_RENDER, CallbackPriority.LATE+1, preRenderPedestalTrinket, PickupVariant.PICKUP_COLLECTIBLE)
 
-local function postRenderPedestalTrinket(_, pickup)
+local function postRenderPedestalTrinket(_, pickup, offset)
     if(pickup.SubType==0) then return end
+    --if(ToyboxMod.GAME:GetRoom():GetRenderMode()==RenderMode.RENDER_WATER_REFLECT) then return end
 
     local trinkets = ToyboxMod:getEntityData(pickup, "PEDESTAL_TRINKETS")
     if(not trinkets) then return end
@@ -283,6 +285,8 @@ local function postRenderPedestalTrinket(_, pickup)
     local layer = sp:GetLayer(1)
     local frame = sp:GetLayerFrameData(1)
     if(not layer or not frame or not layer:IsVisible() or sp:GetAnimation()~="Idle") then return end
+
+    local reflect = ToyboxMod.GAME:GetRoom():GetRenderMode()==RenderMode.RENDER_WATER_REFLECT
 
     local roomFrame = ToyboxMod.GAME:GetRoom():GetFrameCount()
 
@@ -305,7 +309,7 @@ local function postRenderPedestalTrinket(_, pickup)
 
     for _, renderData in ipairs(renderList) do
         if(renderData[1]=="REAL_ITEM") then
-            sp:RenderLayer(1, Isaac.WorldToRenderPosition(pickup.Position+renderData[2]))
+            sp:RenderLayer(1, Isaac.WorldToRenderPosition(pickup.Position+renderData[2])+offset)
         else
             local trinketConf = renderData[1].IsTrinket and conf:GetTrinket(renderData[1].ID) or conf:GetCollectible(renderData[1].ID)
 
@@ -317,8 +321,10 @@ local function postRenderPedestalTrinket(_, pickup)
             TRINKET_SPRITE:ReplaceSpritesheet(0, trinketConf.GfxFileName, true)
             TRINKET_SPRITE.Scale = frame:GetScale()
 
-            local finalPedestalTrinketPos = renderData[2]+pickup.Position+Vector(16,0)+frame:GetPos()-frame:GetPivot()
-            TRINKET_SPRITE:Render(Isaac.WorldToRenderPosition(finalPedestalTrinketPos))
+            local finalPedestalTrinketPos = renderData[2]+Vector(16,0)+frame:GetPos()-frame:GetPivot()
+            finalPedestalTrinketPos = pickup.Position+Vector(1,(reflect and -1 or 1))*finalPedestalTrinketPos
+
+            TRINKET_SPRITE:Render(Isaac.WorldToRenderPosition(finalPedestalTrinketPos)+offset)
         end
     end
 end

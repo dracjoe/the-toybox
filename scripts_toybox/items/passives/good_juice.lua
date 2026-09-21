@@ -39,7 +39,7 @@ local MAX_JUICE_SIZE = 200
 
 local juiceSprite = Sprite("gfx_tb/effects/effect_juice.anm2")
 juiceSprite:Play("Idle", true)
---juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
+juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
 
 ---@param num number
 local function addJuice(num)
@@ -167,6 +167,9 @@ local function juiceParticleInit(_, effect)
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_EFFECT_INIT, juiceParticleInit, ToyboxMod.EFFECT_JUICE_TRAIL)
 
+local maxJuiceY = -2^30
+local maxJuiceEnt = nil
+
 ---@param effect EntityEffect
 local function juiceParticleUpdate(_, effect)
     if(effect.SpawnerEntity) then
@@ -230,6 +233,69 @@ local function turnToJuiceOnRoomChange(_, _, newLevel)
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_PRE_ROOM_EXIT, turnToJuiceOnRoomChange)
 
+local toRenderHash = {}
+local weirdOffsets = {}
+local numToRender = 0
+
+local function renderJuiceParticles(_, effect, offset)
+    if(numToRender==nil) then
+        numToRender = 0
+        toRenderHash = {}
+        for _, ent in ipairs(Isaac.FindByType(EntityType.ENTITY_EFFECT, ToyboxMod.EFFECT_JUICE_TRAIL)) do
+            toRenderHash[GetPtrHash(ent)] = true
+            numToRender = numToRender+1
+        end
+    end
+
+    if(numToRender) then
+        local hash = GetPtrHash(effect)
+
+        if(toRenderHash[hash]) then
+            numToRender = numToRender-1
+        end
+        toRenderHash[hash] = nil
+        weirdOffsets[hash] = offset
+
+        if(numToRender==0) then
+            numToRender = nil
+
+            local scrollOffset = ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
+            local reflect = not ToyboxMod:renderingAboveWater()
+            for _, ent in ipairs(Isaac.FindByType(EntityType.ENTITY_EFFECT, ToyboxMod.EFFECT_JUICE_TRAIL)) do
+                local entHash = GetPtrHash(ent)
+                if(weirdOffsets[entHash]) then
+                    local sp = ent:GetSprite()
+                    local rpos = Isaac.WorldToRenderPosition(ent.Position)+ent.SpriteOffset+scrollOffset
+                    if(reflect) then
+                        rpos = rpos+Vector(2,0)*ent.SpriteOffset+Vector(2,-2)*ent.SpriteOffset:Rotated(ent.SpriteRotation)
+                    end
+
+                    juiceSprite:SetFrame(sp:GetFrame())
+                    juiceSprite.Rotation = sp.Rotation
+
+                    juiceSprite.Color = Color(1,1,1,1,0,0,0,rpos.X/40+rpos.Y/40+ToyboxMod.GAME:GetFrameCount()/15)
+                    juiceSprite:Render(rpos+weirdOffsets[entHash])
+                end
+            end
+        end
+    end
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_EFFECT_RENDER, renderJuiceParticles, ToyboxMod.EFFECT_JUICE_TRAIL)
+
+local function ihatethisgamesomuch(_, effect, offset)
+    if(ToyboxMod:renderingAboveWater()) then return end
+
+    return 2*(Vector(-1,1)*effect.SpriteOffset:Rotated(effect.SpriteRotation)-effect.SpriteOffset)
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_PRE_EFFECT_RENDER, ihatethisgamesomuch, ToyboxMod.EFFECT_JUICE_TRAIL)
+
+local function resetRenders(_)
+    numToRender = nil
+    toRenderHash = {}
+    weirdOffsets = {}
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_RENDER, resetRenders)
+
 --[[] ]
 local cancelRenders = false
 local function renderJuiceParticles(_)
@@ -271,6 +337,7 @@ ToyboxMod:AddCallback(ModCallbacks.MC_POST_RENDER, resetRenders)
 --]]
 
 local function renderParticleOverlay(_)
+    --print(ToyboxMod.GAME:GetRoom():GetRenderMode())
     local offset = ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
 
     --juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
@@ -285,7 +352,7 @@ local function renderParticleOverlay(_)
     end
     --juiceSprite:GetLayer("main"):ClearCustomShader()
 end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_ROOM_RENDER_ENTITIES, renderParticleOverlay)
+--ToyboxMod:AddCallback(ModCallbacks.MC_POST_ROOM_RENDER_ENTITIES, renderParticleOverlay)
 
 local function spawnSlotInStartRoom()
     if(not PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_GOOD_JUICE)) then return end

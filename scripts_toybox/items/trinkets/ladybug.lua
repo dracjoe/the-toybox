@@ -11,10 +11,11 @@ local function tryGetRewards(_)
     local room = ToyboxMod.GAME:GetRoom()
 
     if(INVALID_ROOMTYPES[room:GetType()]) then
-        local spawns = ToyboxMod:getExtraData("LADYBUG_SPAWNS")
+        local spawns = ToyboxMod:getExtraData("LADYBUG_SPAWNS") or {}
 
         local inverseOptions = {}
-        for _, pickupdata in ipairs(spawns) do
+        local maxDelay = math.min(6, #spawns)*3
+        for i, pickupdata in ipairs(spawns) do
             local pos = room:FindFreePickupSpawnPosition(room:GetCenterPos())
             local ent = Isaac.Spawn(pickupdata[1], pickupdata[2], pickupdata[3], pos, Vector.Zero, nil)
 
@@ -29,6 +30,10 @@ local function tryGetRewards(_)
                     inverseOptions[pickupdata[4]] = idx
                 end
                 ent.OptionsPickupIndex = idx
+            end
+
+            if(ent.Type==EntityType.ENTITY_PICKUP) then
+                ent:ToPickup():SetDropDelay(math.floor(maxDelay*i/#spawns+0.5))
             end
         end
 

@@ -9,7 +9,7 @@ local function useBreakthrough(_, _, rng, player, flags, slot)
     local isCarbattery = player:HasCollectible(CollectibleType.COLLECTIBLE_CAR_BATTERY)
 
     local itemsToGive = 2
-    if(slot~=-1) then
+    if(slot~=-1 and player:GetActiveItem(slot)==ToyboxMod.COLLECTIBLE_BREAKTHROUGH) then
         itemsToGive = player:GetActiveCharge(slot)
     end
     if(isCarbattery) then
