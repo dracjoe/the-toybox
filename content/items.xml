@@ -2009,8 +2009,23 @@
     tearsmult="1.2"
 />
 <trinket id="48" name="Fat Leech"
-    description="Well, that's not falling off"
+    description="Well, it's not coming off"
     gfx="big_leech.png"
+    cache=""
+/>
+<trinket id="49" name="Flukie"
+    description="Well, it's not coming out"
+    gfx="flukie.png"
+    cache=""
+/>
+<trinket id="50" name="Bug Spray"
+    description="Bugs-B-Gone!"
+    gfx="bug_spray.png"
+    cache=""
+/>
+<trinket id="51" name="Hatchling"
+    description="Well, they won't stop coming out"
+    gfx="hatchling.png"
     cache=""
 />
 

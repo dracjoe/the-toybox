@@ -438,8 +438,8 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.trinkets.ladybug")
     include("scripts_toybox.items.trinkets.demodex")
     include("scripts_toybox.items.trinkets.fat_leech")
-
     include("scripts_toybox.items.trinkets.flukie")
+    include("scripts_toybox.items.trinkets.bug_spray")
     include("scripts_toybox.items.trinkets.hatchling")
 --UNUSED
     --include("scripts_toybox.items.unused.btrain")

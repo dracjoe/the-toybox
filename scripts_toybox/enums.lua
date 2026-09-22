@@ -354,8 +354,8 @@ ToyboxMod.TRINKET_DEWORMER = Isaac.GetTrinketIdByName("Dewormer")
 ToyboxMod.TRINKET_LADYBUG = Isaac.GetTrinketIdByName("Ladybug")
 ToyboxMod.TRINKET_DEMODEX = Isaac.GetTrinketIdByName("Demodex")
 ToyboxMod.TRINKET_FAT_LEECH = Isaac.GetTrinketIdByName("Fat Leech")
-
 ToyboxMod.TRINKET_FLUKIE = Isaac.GetTrinketIdByName("Flukie")
+ToyboxMod.TRINKET_BUG_SPRAY = Isaac.GetTrinketIdByName("Bug Spray")
 ToyboxMod.TRINKET_HATCHLING = Isaac.GetTrinketIdByName("Hatchling")
 
 
@@ -710,6 +710,9 @@ ToyboxMod.PARASITE_TRINKETS = {
     [ToyboxMod.TRINKET_CANDIDA] = true,
     [ToyboxMod.TRINKET_DEMODEX] = true,
     [ToyboxMod.TRINKET_LADYBUG] = true,
+    [ToyboxMod.TRINKET_FAT_LEECH] = true,
+    [ToyboxMod.TRINKET_FLUKIE] = true,
+    [ToyboxMod.TRINKET_HATCHLING] = true,
 
     [TrinketType.TRINKET_TICK] = false,
 }

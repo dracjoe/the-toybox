@@ -189,10 +189,11 @@ for id, data in pairs(STORED.ITEMS) do
     end
     for modifierName, modifierData in pairs(STORED.CONSTANTS.ModifierFunctionKey) do
         if(data[modifierName]) then
+            local color = modifierData[3]
             for _, modifier in ipairs(data[modifierName]) do
                 table.insert(
                     modifiersToAdd,
-                    formatModifier(modifier, modifierData[2], modifierData[3], STORED.CONSTANTS.ModifierCondition[modifierData[1]])
+                    formatModifier(modifier, modifierData[2], color, STORED.CONSTANTS.ModifierCondition[modifierData[1]])
                 )
             end
         end

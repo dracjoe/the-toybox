@@ -4,12 +4,17 @@ ToyboxMod:setCropOffsetLogic(ToyboxMod.TRINKET_FAT_LEECH, function(player)
     end
 end)
 
+local REMOVE_TRINKETS = {
+    [TrinketType.TRINKET_FLAT_PENNY] = true, 
+    [TrinketType.TRINKET_FLAT_FILE] = true,
+}
+
 ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_FAT_LEECH, {TrinketType.TRINKET_FLAT_PENNY, TrinketType.TRINKET_FLAT_FILE}, SoundEffect.SOUND_LEECH)
 
 local function trinketCollision(_, pickup, coll)
     local player = coll and coll:ToPlayer()
     if(not (player and player:HasTrinket(ToyboxMod.TRINKET_FAT_LEECH))) then return end
-    if((pickup.SubType & ~TrinketType.TRINKET_GOLDEN_FLAG) == ToyboxMod.TRINKET_DEWORMER) then return end
+    if(REMOVE_TRINKETS[(pickup.SubType & ~TrinketType.TRINKET_GOLDEN_FLAG)]) then return end
 
     if(player:CanPickupItem() and player:IsExtraAnimationFinished() and (ToyboxMod:getEntityData(player, "FAT_LEECH_ATE") or -1)==-1) then
         ToyboxMod:setEntityData(player, "FAT_LEECH_ATE", pickup.SubType)

@@ -2895,31 +2895,6 @@ enums.FUNCTIONS.AddTrinket({
     },
 })
 enums.FUNCTIONS.AddTrinket({
-    ID = ToyboxMod.TRINKET_CITRUSBERRY_CONSUMED,
-    Name = "Citrusberry",
-    Description = {
-        "On hit, if Isaac has less than half of his max health, {{HealingRed}} heal 25% Max Health and {{SoulHeart}} gain 1 Soul Heart",
-        "Always heals at least 1 Heart",
-        "Can only activate once per floor"
-    },
-    DoubleModifiers = {
-        {
-            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
-            ToModify = {
-                {"25%%", "50%%"},
-            }
-        },
-    },
-    TripleModifiers = {
-        {
-            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
-            ToModify = {
-                {"25%%", "75%%"},
-            }
-        },
-    },
-})
-enums.FUNCTIONS.AddTrinket({
     ID = ToyboxMod.TRINKET_SLINGSHOT,
     Name = "Slingshot",
     Description = {
@@ -3366,7 +3341,7 @@ enums.FUNCTIONS.AddTrinket({
     Description = {
         "\1 +2 Luck",
         "Room clear rewards are teleported to the Boss Room and only spawn upon defeating the boss",
-        "!!! Once picked up, can only be removed with {{Trinket}} Bug Spray",
+        "!!! Once picked up, can only be removed with {{Trinket"..ToyboxMod.TRINKET_BUG_SPRAY.."}} Bug Spray",
     },
     DoubleModifiers = {
         {
@@ -3428,6 +3403,104 @@ enums.FUNCTIONS.AddTrinket({
             Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
             ToModify = {
                 {"smelted copy", "golden {{ColorWhite}}smelted copy{{CR}}"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"smelted copy", "golden {{ColorWhite}}smelted copy{{CR}}"},
+            }
+        },
+    },
+})
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_FLUKIE,
+    Name = "Flukie",
+    Description = {
+        "{{HalfHeart}} Champions drop a half red heart when killed",
+        "{{Heart}} 10% chance to spawn a red heart on room clear",
+        "Chance increases by 10% for every empty heart container",
+        "!!! Once picked up, can only be removed with {{Trinket"..ToyboxMod.TRINKET_ANTIBIOTICS.."}} Antibiotics",
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"half red heart", "red heart"},
+                {"10%% chance", "25%% {{ColorWhite}}chance{{CR}}"},
+            }
+        },
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            IgnoreMarkup = true,
+            ToModify = {
+                {"{{HalfHeart}}", "{{Heart}}"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"half red heart", "red heart"},
+                {"10%% chance", "40%% {{ColorWhite}}chance{{CR}}"},
+            }
+        },
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            IgnoreMarkup = true,
+            ToModify = {
+                {"{{HalfHeart}}", "{{Heart}}"},
+            }
+        },
+    },
+})
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_BUG_SPRAY,
+    Name = "Bug Spray",
+    Description = {
+        "When Isaac damages an enemy, all other fly and spider enemies in the room are hit for 33% of that damage",
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"33%%", "67%%"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"33%%", "100%%"},
+            }
+        },
+    },
+})
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_HATCHLING,
+    Name = "Hatchling",
+    Description = {
+        "Every second in an active room, 15% chance to hatch a blue spider from a random wall or pit",
+        "The blue spiders may be of a {{Collectible"..ToyboxMod.COLLECTIBLE_UNSTABLE_DNA.."}} stronger variant",
+        "!!! Once picked up, can only be removed with {{Trinket"..ToyboxMod.TRINKET_BUG_SPRAY.."}} Bug Spray",
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"33%%", "67%%"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"33%%", "100%%"},
             }
         },
     },

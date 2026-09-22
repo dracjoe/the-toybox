@@ -3,7 +3,7 @@ local INVALID_ROOMTYPES = {
     [RoomType.ROOM_BOSSRUSH] = true,
 }
 
-ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_LADYBUG, ToyboxMod.TRINKET_ANTIBIOTICS, SoundEffect.SOUND_MATCHSTICK)
+ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_LADYBUG, ToyboxMod.TRINKET_BUG_SPRAY, SoundEffect.SOUND_MATCHSTICK)
 
 local function tryGetRewards(_)
     if(not PlayerManager.AnyoneHasTrinket(ToyboxMod.TRINKET_LADYBUG)) then return end
