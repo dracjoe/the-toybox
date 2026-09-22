@@ -39,7 +39,7 @@ local MAX_JUICE_SIZE = 200
 
 local juiceSprite = Sprite("gfx_tb/effects/effect_juice.anm2")
 juiceSprite:Play("Idle", true)
-juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
+--juiceSprite:GetLayer("main"):SetCustomShader("shaders_tb/rainbow")
 
 ---@param num number
 local function addJuice(num)

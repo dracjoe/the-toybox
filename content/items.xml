@@ -2000,14 +2000,18 @@
 
     luck="2"
 />
+<trinket id="47" name="Demodex"
+    description="Well, that's not washing off"
+    gfx="demodex.png"
+    cache="damage"
 
-<trinket id="300" name="Citrusberry "
-    description="Emergency heal"
-    gfx="citrusberry_consumed.png"
+    tears="0.5"
+    tearsmult="1.2"
+/>
+<trinket id="48" name="Fat Leech"
+    description="Well, that's not falling off"
+    gfx="big_leech.png"
     cache=""
-    
-    tags="noeden"
-    hidden="true"
 />
 
 <!-- UNUSED ITEMS

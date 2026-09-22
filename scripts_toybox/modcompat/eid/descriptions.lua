@@ -2080,6 +2080,7 @@ enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_FRANKENCAT,
     Name = "Frankencat",
     Description = {
+        "{{RottenHeart}} +1 Rotten Heart",
         "+1 Life",
         "Isaac can no longer revive, extra lives instead grant 3 free hits (up to 9 hits max) that replenish at the start of every floor",
         "The free hits count as fake damage and block any form of damage"
@@ -3380,6 +3381,53 @@ enums.FUNCTIONS.AddTrinket({
             Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
             ToModify = {
                 {"+2", "{{ColorWhite}}+{{CR}}6"},
+            }
+        },
+    },
+})
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_DEMODEX,
+    Name = "Demodex",
+    Description = {
+        "\1 +0.5 Tears",
+        "\1 x1.2 Firerate",
+        "\2 After shooting continuously for 4 seconds, begins to gradually decrease damage",
+        "!!! Once picked up, can only be removed with {{Trinket"..ToyboxMod.TRINKET_BATH_WATER.."}} Bath Water",
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"0.5", "1"},
+                {"1.2", "1.44"},
+                {"4 seconds", "3 {{ColorWhite}}seconds{{CR}}"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"0.5", "1.5"},
+                {"1.2", "1.72"},
+                {"4 seconds", "2 {{ColorWhite}}seconds{{CR}}"},
+            }
+        },
+    },
+})
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_FAT_LEECH,
+    Name = "Fat Leech",
+    Description = {
+        "{{Trinket}} Eats up to 1 trinket each floor",
+        "At the start of each floor, consumes the trinket and grants a smelted copy of it",
+        "!!! Once picked up, can only be removed with {{Trinket51}} Flat Penny or {{Trinket151}} Flat File",
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"smelted copy", "golden {{ColorWhite}}smelted copy{{CR}}"},
             }
         },
     },

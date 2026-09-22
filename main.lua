@@ -98,6 +98,7 @@ include("scripts_toybox.misc.custom_card_pool")
 include("scripts_toybox.misc.golden_key_logic")
 include("scripts_toybox.misc.golden_bomb_logic")
 
+include("scripts_toybox.misc.trinket_crop_offset_render")
 include("scripts_toybox.misc.trinket_weights")
 include("scripts_toybox.misc.parasite_trinkets")
 
@@ -435,11 +436,11 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.trinkets.candida")
     include("scripts_toybox.items.trinkets.dewormer")
     include("scripts_toybox.items.trinkets.ladybug")
+    include("scripts_toybox.items.trinkets.demodex")
+    include("scripts_toybox.items.trinkets.fat_leech")
 
     include("scripts_toybox.items.trinkets.flukie")
     include("scripts_toybox.items.trinkets.hatchling")
-    include("scripts_toybox.items.trinkets.demodex")
-    include("scripts_toybox.items.trinkets.fat_leech")
 --UNUSED
     --include("scripts_toybox.items.unused.btrain")
     --include("scripts_toybox.items.unused.laser_pointer")
