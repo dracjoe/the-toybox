@@ -259,13 +259,13 @@ local function renderJuiceParticles(_, effect, offset)
         if(numToRender==0) then
             numToRender = nil
 
-            local scrollOffset = ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
+            --local scrollOffset = ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
             local reflect = not ToyboxMod:renderingAboveWater()
             for _, ent in ipairs(Isaac.FindByType(EntityType.ENTITY_EFFECT, ToyboxMod.EFFECT_JUICE_TRAIL)) do
                 local entHash = GetPtrHash(ent)
                 if(weirdOffsets[entHash]) then
                     local sp = ent:GetSprite()
-                    local rpos = Isaac.WorldToRenderPosition(ent.Position)+ent.SpriteOffset+scrollOffset
+                    local rpos = Isaac.WorldToRenderPosition(ent.Position)+ent.SpriteOffset--+scrollOffset
                     if(reflect) then
                         rpos = rpos+Vector(2,0)*ent.SpriteOffset+Vector(2,-2)*ent.SpriteOffset:Rotated(ent.SpriteRotation)
                     end

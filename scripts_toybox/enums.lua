@@ -12,7 +12,6 @@ ToyboxMod.PLAYER_JONAS_A = Isaac.GetPlayerTypeByName("Jonas", false)
 ToyboxMod.PLAYER_MILCOM_B = Isaac.GetPlayerTypeByName("Milcom", true)
 ToyboxMod.PLAYER_ATLAS_B = Isaac.GetPlayerTypeByName("Atlas", true)
 ToyboxMod.PLAYER_JONAS_B = Isaac.GetPlayerTypeByName("Jonas", true)
-
 ToyboxMod.PLAYER_HOMUNCULUS_A = Isaac.GetPlayerTypeByName("Homunculus", false)
 ToyboxMod.PLAYER_HOMUNCULUS_B = Isaac.GetPlayerTypeByName("Homunculus", true)
 
@@ -1143,9 +1142,9 @@ ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME = {
 }
 
 ToyboxMod.CUSTOM_CHAMPION_PICKER = WeightedOutcomePicker()
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(1, 100, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(2, 1, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(3, 100, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(4, 1, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(5, 1, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(6, 100, 1000)
+ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(1, 0, 1000)
+ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(2, 0, 1000)
+ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(3, 1000, 1000)
+ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(4, 0, 1000)
+ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(5, 0, 1000)
+ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(6, 1000, 1000)

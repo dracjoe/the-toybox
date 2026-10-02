@@ -192,6 +192,11 @@ include("scripts_toybox.players.homunculus.a.main")
 include("scripts_toybox.players.homunculus.a.hp_item")
 include("scripts_toybox.players.homunculus.a.render_item")
 
+include("scripts_toybox.players.homunculus.b.main")
+include("scripts_toybox.players.homunculus.b.hp_items")
+include("scripts_toybox.players.homunculus.b.render_items")
+include("scripts_toybox.players.homunculus.b.closet_unlock")
+
 -- BANDIT
 --include("scripts_toybox.players.bandit.a.bandit")
 
