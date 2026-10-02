@@ -79,6 +79,6 @@
 	<achievement name="Greyhound" text="" gfx="ach_greyhound.png" gfxback="achpaper_homunculus.png" />
 	<achievement name="Spiteful Penny" text="" gfx="ach_spiteful_penny.png" gfxback="achpaper_homunculus.png" />
 
-	<achievement name="The Flayed (Tainted Homunculus)" text="" gfx="ach_blank.png" gfxback="achpaper_homunculus.png" />
+	<achievement name="The Flayed (Tainted Homunculus)" text="" gfx="ach_homunculus_b.png" gfxback="achpaper_homunculus.png" />
 	
 </achievements>

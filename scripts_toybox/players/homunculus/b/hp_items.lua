@@ -57,8 +57,9 @@ local function checkItemLogic(_, pl)
     for _, id in ipairs(data.HOMUNCULUS_B_ITEMS) do
         items[id] = (items[id] or 0)+1
     end
+
     pl:SetInnateCollectibleGroup("ToyboxHomunculusBItems", items, true)
-    if(#data.HOMUNCULUS_B_ITEMS) then
+    if(#data.HOMUNCULUS_B_ITEMS<=0) then
         pl:ClearInnateItemGroup("ToyboxHomunculusBItems")
     end
 end

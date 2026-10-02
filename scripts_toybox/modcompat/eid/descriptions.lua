@@ -4664,6 +4664,20 @@ enums.FUNCTIONS.AddPlayer({
         "Taking damage no longer incurs any penalties, such as losing deal chance",
     }
 })
+enums.FUNCTIONS.AddPlayer({
+    ID = ToyboxMod.PLAYER_HOMUNCULUS_B,
+    Name = "Tainted Homunculus",
+    Description = {
+        "Can't have Soul Hearts",
+        "\2 All non-self damage taken is rounded up to the next full heart",
+        "{{Heart}} Each full red heart grants the effects of a random item from the current room's item pool",
+        "{{Collectible25}} Bosses always drop \"food\" items",
+    },
+    BirthrightDescription = {
+        "Damage taken is no longer rounded up",
+        "{{HalfHeart}} Half red hearts also grant a random item effect",
+    }
+})
 
 
 

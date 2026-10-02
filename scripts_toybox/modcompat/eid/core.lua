@@ -330,7 +330,7 @@ for id, data in pairs(STORED.PLAYERS) do
         EID.descriptions["en_us"].CharacterInfo[id] = {data.Name, STORED.FUNCTIONS.StringTableToDescription(data.Description)}
     end
     if(data.BirthrightDescription) then
-        EID:addBirthright(id, STORED.FUNCTIONS.StringTableToDescription(data.BirthrightDescription))
+        EID:addBirthright(id, STORED.FUNCTIONS.StringTableToDescription(data.BirthrightDescription), data.Name)
     end
 end
 

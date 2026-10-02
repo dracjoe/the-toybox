@@ -1,5 +1,4 @@
 --TODO: Add EID category/desc for his HP items
---TODO: Add EID desc and birthright EID
 
 local HOMUNCULUS_COLOR = Color(245/255, 245/255, 215/255, 1, 0, 0, 0, 1, 1, 1, 0.5)--0.15)
 
