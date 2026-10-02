@@ -1053,6 +1053,13 @@ function ToyboxMod:getExtraHudOffset()
     if(pl:HasCollectible(ToyboxMod.COLLECTIBLE_PEZ_DISPENSER)) then
         pos = pos+Vector(0,16)
     end
+    if(pl:GetPlayerType()==ToyboxMod.PLAYER_HOMUNCULUS_B) then
+        local offs = math.ceil(pl:GetEffectiveMaxHearts()/2+pl:GetSoulHearts()/2)
+        if(offs%6==0 and offs<pl:GetHeartLimit()/2 and pl:GetEffects():HasCollectibleEffect(CollectibleType.COLLECTIBLE_HOLY_MANTLE)) then
+            offs = offs+1
+        end
+        pos = pos+Vector(0,16+24*(math.ceil(offs/6)-1))
+    end
 
     return pos
 end

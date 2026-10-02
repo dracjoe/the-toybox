@@ -1885,7 +1885,7 @@ enums.FUNCTIONS.AddItem({
     Description = {
         "On hit, consume 2 bars of active charge, block the damage, and gain \1 +0.8 Tears for the room",
         "Only works if you have at least 2 bars of active charge",
-        "{{Collectible63}} At the start of every floor, your active items are fully overcharged",
+        "{{Battery}} At the start of every floor, your active items are fully charged",
     },
 })
 enums.FUNCTIONS.AddItem({

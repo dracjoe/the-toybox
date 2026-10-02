@@ -24,7 +24,8 @@ end
 local function addNewBossRoom(_)
     local level = ToyboxMod.GAME:GetLevel()
     local stage = level:GetAbsoluteStage()--+(level:GetStageType()>=StageType.STAGETYPE_REPENTANCE and 1 or 0)
-    if(stage%2==0 or stage==LevelStage.STAGE8) then return end -- only odd stages
+    if(stage%2==0 or stage>=LevelStage.STAGE6 or level:IsAscent()) then return end -- only odd stages
+
     local rng = level:GetGenerationRNG()
     --local chance = getGraveyardChance()
     if(rng:RandomFloat()<BASE_CHANCE) then

@@ -88,7 +88,7 @@
 		nameimage="jonas_name.png" portrait="homunculus_portrait.png" skin="character_homunculus.png"
 		costumeSuffix="homunculus_a" skinColor="-1"
 
-		heartcontainers="4" redhearts="1"
+		heartcontainers="4" redhearts="2"
 		speedmodifier="0.2" firedelaymodifier="0.7"
 
 		achievement="The Flayed (Tainted Homunculus)" bSkinParent="Homunculus"

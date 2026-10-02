@@ -54,7 +54,7 @@ local function grantOvercharge(_, pl)
         if(pl:GetActiveItem(i)~=0) then
             local conf = Isaac.GetItemConfig():GetCollectible(pl:GetActiveItem(i))
             if(conf and conf.ChargeType==ItemConfig.CHARGE_NORMAL) then
-                pl:AddActiveCharge(pl:GetActiveMaxCharge(i)*2, i, true, true, true)
+                pl:AddActiveCharge(pl:GetActiveMaxCharge(i), i, true, false, true)
             end
         end
     end
