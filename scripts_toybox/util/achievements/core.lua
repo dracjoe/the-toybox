@@ -52,7 +52,6 @@ function ToyboxMod:checkUnlocks(completionUnlocks, blockPaper)
 
     for _, unlockData in ipairs(ToyboxMod.ACHIEVEMENTS[key]) do
         if(unlockData.Condition(persistentdata, toyboxpersistentdata)) then
-            print(unlockData.Achievement)
             persistentdata:TryUnlock(unlockData.Achievement, blockPaper)
         else
             --Isaac.ExecuteCommand("lockachievement " .. unlockData.Achievement)

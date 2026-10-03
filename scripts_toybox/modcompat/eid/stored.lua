@@ -159,6 +159,7 @@ EID:addIcon("Player"..tostring(ToyboxMod.PLAYER_ATLAS_A_TAR), "Players", 1, 16, 
 EID:addIcon("Player"..tostring(ToyboxMod.PLAYER_JONAS_A), "Players", 2, 16, 16, 0, 0, iconSprite)
 EID:addIcon("Player"..tostring(ToyboxMod.PLAYER_MILCOM_A), "Players", 3, 16, 16, 0, 0, iconSprite)
 EID:addIcon("Player"..tostring(ToyboxMod.PLAYER_HOMUNCULUS_A), "Players", 4, 16, 16, 0, 0, iconSprite)
+EID:addIcon("Player"..tostring(ToyboxMod.PLAYER_HOMUNCULUS_B), "Players", 5, 16, 16, 0, 0, iconSprite)
 
 --- TRANSFORMATIONS (MANTLE)
 EID:addIcon("ToyboxIconRockTransformation", "MantleTransformations", 0, 16, 16, 0, 0, iconSprite)
@@ -243,6 +244,7 @@ EID:addColor("ToyboxColorHorsePill", nil, MakeSwagColor({{184,169,163},{111,134,
 EID:addColor("ToyboxColorJonas", MakeColor({173,189,228}))
 EID:addColor("ToyboxColorItemStack", MakeColor({196,167,196}))
 EID:addColor("ToyboxColorConglomerate", nil, MakeSwagColor({{119,137,147},{91,99,104}}, 80))
+EID:addColor("ToyboxColorHomunculus", nil, MakeSwagColor({{255,0,10},{206,4,11}}, 80))
 
 STORED.CONSTANTS = {
     --- ICONS ---
@@ -262,6 +264,9 @@ STORED.CONSTANTS = {
     Icon_PlayerAtlasTar = "{{Player" .. tostring(ToyboxMod.PLAYER_ATLAS_A_TAR) .. "}}",
     Icon_PlayerJonas = "{{Player" .. tostring(ToyboxMod.PLAYER_JONAS_A) .. "}}",
     Icon_PlayerMilcom = "{{Player" .. tostring(ToyboxMod.PLAYER_MILCOM_A) .. "}}",
+    Icon_PlayerHomunculus = "{{Player" .. tostring(ToyboxMod.PLAYER_HOMUNCULUS_A) .. "}}",
+
+    Icon_PlayerHomunculusB = "{{Player" .. tostring(ToyboxMod.PLAYER_HOMUNCULUS_B) .. "}}",
 
     Icon_TransfFancy = "{{ToyboxFancyTransformation}}",
     Icon_TransfHydra = "{{ToyboxHydraTransformation}}",
@@ -323,6 +328,7 @@ STORED.CONSTANTS = {
     Color_Jonas = "{{ToyboxColorJonas}}",
     Color_ItemStack = "{{ToyboxColorItemStack}}",
     Color_Conglomerate = "{{ToyboxColorConglomerate}}",
+    Color_Homunculus = "{{ToyboxColorHomunculus}}",
 
     --- ENUMS ---
     DescriptionModifier = {

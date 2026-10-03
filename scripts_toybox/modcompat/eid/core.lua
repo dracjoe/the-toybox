@@ -439,3 +439,66 @@ EID:addGridEntityConditional(
         return descObj
     end
 )
+
+for i, categoryData in ipairs(EID.ItemReminderCategories) do
+    if(categoryData.id=="Passives") then
+        local function getHomunculusItems(player) ---@param player EntityPlayer
+            if(player:GetPlayerType()==ToyboxMod.PLAYER_HOMUNCULUS_A) then
+                local id = ToyboxMod:getEntityData(player, "HOMUNCULUS_A_ITEM")
+                return ((id or -1)~=-1 and {id} or {}), false
+            elseif(player:GetPlayerType()==ToyboxMod.PLAYER_HOMUNCULUS_B) then
+                local items = ToyboxMod:getEntityData(player, "HOMUNCULUS_B_ITEMS")
+                return (items or {}), true
+            end
+            return {}, false
+        end
+
+        local oldEntryGenFunc = categoryData.entryGenerators[1]
+        EID.ItemReminderCategories[i].entryGenerators = { function(player)
+            local id = EID:getPlayerID(player, true)
+            local items, tainted = getHomunculusItems(player)
+            if(EID.RecentlyTouchedItems[id]) then
+                for idx, item in ipairs(items) do
+                    table.insert(EID.RecentlyTouchedItems[id], idx, item)
+                end
+            end
+            oldEntryGenFunc(player)
+            if(EID.RecentlyTouchedItems[id]) then
+                local hpitems = {}
+                for _, item in ipairs(items) do
+                    table.remove(EID.RecentlyTouchedItems[id], 1)
+                    hpitems["5.100."..tostring(item)] = true
+                end
+
+                local hpText = STORED.MISC.homunculus_item_text[tainted and "TAINTED" or "REGULAR"]
+
+                for idx, data in ipairs(EID.ItemReminderTempDescriptions) do
+                    if(hpitems[data[4]]) then
+                        EID.ItemReminderTempDescriptions[idx][2] = STORED.CONSTANTS.Color_Homunculus..EID.ItemReminderTempDescriptions[idx][2]..hpText
+                    end
+                end
+            end
+        end }
+
+        local oldScrollBarFunc = categoryData.scrollbarGenerator
+        EID.ItemReminderCategories[i].scrollbarGenerator = function(player)
+            local id = EID:getPlayerID(player, true)
+            local items = getHomunculusItems(player)
+            if(EID.RecentlyTouchedItems[id]) then
+                for idx, item in ipairs(items) do
+                    table.insert(EID.RecentlyTouchedItems[id], idx, item)
+                end
+            end
+            local toRet = oldScrollBarFunc(player)
+            if(EID.RecentlyTouchedItems[id]) then
+                for _, _ in ipairs(items) do
+                    table.remove(EID.RecentlyTouchedItems[id], 1)
+                end
+            end
+
+            return toRet
+        end
+
+        break
+    end
+end

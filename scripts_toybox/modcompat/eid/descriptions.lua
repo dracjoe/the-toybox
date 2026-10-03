@@ -5176,3 +5176,8 @@ enums.MISC.tinted_rooms = {
     BROWN = "\1 Major size down",
     PINK = "On death, enemies have a 15% chance to respawn as a friendly copy",
 }
+
+enums.MISC.homunculus_item_text = {
+    REGULAR = enums.CONSTANTS.Icon_PlayerHomunculus,--enums.CONSTANTS.Color_Homunculus.."("..enums.CONSTANTS.Icon_PlayerHomunculus.."from HP){{CR}}",
+    TAINTED = enums.CONSTANTS.Icon_PlayerHomunculusB,--enums.CONSTANTS.Color_Homunculus.."("..enums.CONSTANTS.Icon_PlayerHomunculusB.."from HP){{CR}}"
+}
