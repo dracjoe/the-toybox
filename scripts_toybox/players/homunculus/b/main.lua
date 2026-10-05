@@ -1,6 +1,4 @@
---TODO: Add EID category/desc for his HP items
-
-local HOMUNCULUS_COLOR = Color(245/255, 245/255, 215/255, 1, 0, 0, 0, 1, 1, 1, 0.5)--0.15)
+local HOMUNCULUS_COLOR = Color(245/255, 255/255, 205/255, 1, 0, 0, 0, 1.1, 1.15, 1, 0.2)
 
 ---@param ent Entity
 ---@param amount number
@@ -66,10 +64,6 @@ local function replaceClearBossPedestal(_)
     if(ToyboxMod.GAME:GetRoom():GetType()~=RoomType.ROOM_BOSS) then return end
 
     if(PlayerManager.AnyoneIsPlayerType(ToyboxMod.PLAYER_HOMUNCULUS_B)) then
-        if(#FOOD_ITEMS==0) then
-            loadFoodItems()
-        end
-
         REPLACE_WITH_FOOD = true
         Isaac.CreateTimer(function()
             REPLACE_WITH_FOOD = false
@@ -79,7 +73,20 @@ end
 ToyboxMod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, replaceClearBossPedestal)
 
 local function preGetCollectible(_, pool, decrease, seed)
-    if(REPLACE_WITH_FOOD) then
+    local shouldReplace = REPLACE_WITH_FOOD
+    if(not shouldReplace) then
+        shouldReplace = PlayerManager.AnyoneIsPlayerType(ToyboxMod.PLAYER_HOMUNCULUS_B)
+                    and ToyboxMod.GAME:IsGreedMode()
+                    and ToyboxMod.GAME:GetRoom():GetType()==RoomType.ROOM_TREASURE
+                    and ToyboxMod.GAME:GetLevel():GetCurrentRoomIndex()==98
+                    and ToyboxMod.GAME:GetRoom():GetFrameCount()==-1
+    end
+
+    if(shouldReplace) then
+        if(#FOOD_ITEMS==0) then
+            loadFoodItems()
+        end
+
         return FOOD_ITEMS[ToyboxMod:generateRng(seed):RandomInt(1,#FOOD_ITEMS)]
     end
 end

@@ -40,6 +40,7 @@
 
     <costume id="1100" anm2path="costume_jonas.anm2" type="none" priority="99"/>
     <costume id="1101" anm2path="costume_homunculus.anm2" type="none" priority="99" hasSkinAlt="true"/>
+    <costume id="1102" anm2path="costume_homunculus_b.anm2" type="none" priority="99" hasSkinAlt="true"/>
 
     <costume id="1200" anm2path="costume_gambling_addiction_spin.anm2" type="none" priority="99" hasOverlay="true"/>
     <costume id="1201" anm2path="costume_anaphylaxis_puffed.anm2" type="none" priority="10"/>
