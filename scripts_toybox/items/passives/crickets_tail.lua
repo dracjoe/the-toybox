@@ -6,8 +6,8 @@ local DAMAGE_PER_SECONDTIMED = 0.1
 
 local DAMAGE_DECAY = 0.05
 local DAMAGE_DECAY_FREQ = 20
-local DAMAGE_DECAYFAST_THRESHOLD = 1.5
-local DAMAGE_DECAYFAST_MULT = 0.05
+local DAMAGE_DECAYFAST_THRESHOLD = 2
+local DAMAGE_DECAYFAST_MULT = 0.0333
 
 ---@param id CollectibleType
 ---@param removed boolean

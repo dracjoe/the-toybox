@@ -29,6 +29,14 @@ local function useMantle(_, card, player, flags)
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_USE_CARD, useMantle)
 
+---@param player EntityPlayer
+local function postAddItem(_, _, _, firstTime, slot, vData, player)
+    if(firstTime~=true) then return end
+    local pos = ToyboxMod.GAME:GetRoom():FindFreePickupSpawnPosition(player.Position,40)
+    local mantle = Isaac.Spawn(5,ToyboxMod.PICKUP_RANDOM_SELECTOR,ToyboxMod.PICKUP_RANDOM_MANTLE,pos,Vector.Zero,player):ToPickup()
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_ADD_COLLECTIBLE, postAddItem, ToyboxMod.COLLECTIBLE_CONGLOMERATE)
+
 ---@param pickup EntityPickup
 local function tryReplaceCard(_, pickup, var, sub, rvar, rsub, rng)
     if(not (var==PickupVariant.PICKUP_TAROTCARD and (rvar==0 or rsub==0))) then return end

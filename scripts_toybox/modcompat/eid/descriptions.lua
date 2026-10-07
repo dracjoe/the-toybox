@@ -1481,6 +1481,7 @@ enums.FUNCTIONS.AddItem({
     Description = {
         enums.CONSTANTS.Icon_CardMantleRock.." 5% chance for mantles to replace random card spawns",
         enums.CONSTANTS.Icon_CardMantleRock.." Mantle effects are enhanced",
+        enums.CONSTANTS.Icon_CardMantleRock .. " Spawns a random Mantle consumable",
     },
 })
 enums.FUNCTIONS.AddItem({
@@ -2211,6 +2212,16 @@ enums.FUNCTIONS.AddItem({
         "{{AngelRoom}} In Angel Rooms, spawns 3 random beggars",
         "Beggars inside Angel Rooms will pay out more often and will pay out with Angel Room items before leaving",
         "{{AngelRoom}} Angel Rooms will stay open if Isaac leaves them"
+    },
+})
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_SNOWCONE,
+    Name = "Snowcone",
+    Description = {
+        "\1 +0.5 Tears",
+        "\1 +1.5 Range",
+        "\1 +0.2 Shotspeed",
+        "{{SoulHeart}} +1 Soul Heart"
     },
 })
 

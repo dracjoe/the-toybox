@@ -86,6 +86,7 @@
         <Item Name="Awesome Fruit"/>
         <Item Name="Greedy Pot"/>
         <Item Name="Brotherhood" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Snowcone" Weight="0.5" DecreaseBy="0.5"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -171,6 +172,7 @@
         <Item Name="Awesome Fruit"/>
         <Item Name="Greedy Pot"/>
         <Item Name="Brotherhood" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Snowcone" Weight="0.5" DecreaseBy="0.5"/>
     </Pool>
 
     <Pool Name="boss">
@@ -562,6 +564,7 @@
         <Item Name="Vampire Teeth"/>
         <Item Name="Twisted Heart"/>
         <Item Name="Carrion"/>
+        <Item Name="Jam"/>
     </Pool>
 
     <Pool Name="toybox-graveyard">

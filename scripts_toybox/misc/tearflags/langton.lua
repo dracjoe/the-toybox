@@ -118,7 +118,7 @@ local function langtonPostTearUpdate(_, tear)
 
         posToSpawn = posToSpawn-tear.Velocity:Resized(LOOP_INTERVAL)
 
-        data.LANGTON_DISTTRAVELLED = data.LANGTON_DISTTRAVELLED-LOOP_INTERVAL
+        data.LANGTON_DISTTRAVELLED = (data.LANGTON_DISTTRAVELLED or 0)-LOOP_INTERVAL
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, langtonPostTearUpdate)
@@ -317,7 +317,7 @@ local function langtonPostLaserUpdateRing(_, laser)
 
         posToSpawn = posToSpawn-laser.Velocity:Resized(LOOP_INTERVAL)
 
-        data.LANGTON_DISTTRAVELLED = data.LANGTON_DISTTRAVELLED-LOOP_INTERVAL
+        data.LANGTON_DISTTRAVELLED = (data.LANGTON_DISTTRAVELLED or 0)-LOOP_INTERVAL
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_LASER_UPDATE, langtonPostLaserUpdateRing)
@@ -413,7 +413,7 @@ local function langtonPostKnifeUpdate(_, knife)
         end
 
         posToSpawn = posToSpawn-vel:Resized(LOOP_INTERVAL)
-        data.LANGTON_DISTTRAVELLED = data.LANGTON_DISTTRAVELLED-LOOP_INTERVAL
+        data.LANGTON_DISTTRAVELLED = (data.LANGTON_DISTTRAVELLED or 0)-LOOP_INTERVAL
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_KNIFE_UPDATE, langtonPostKnifeUpdate)
@@ -518,7 +518,7 @@ local function langtonPostBombUpdate(_, bomb)
 
         posToSpawn = posToSpawn-bomb.Velocity:Resized(LOOP_INTERVAL)
 
-        data.LANGTON_DISTTRAVELLED = data.LANGTON_DISTTRAVELLED-LOOP_INTERVAL
+        data.LANGTON_DISTTRAVELLED = (data.LANGTON_DISTTRAVELLED or 0)-LOOP_INTERVAL
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_BOMB_UPDATE, langtonPostBombUpdate)
@@ -566,7 +566,7 @@ local function langtonPostTargetUpdate(_, rocket)
 
         posToSpawn = posToSpawn-rocket.Velocity:Resized(EPICFETUS_TARGET_LOOP_INTERVAL)
 
-        data.LANGTON_DISTTRAVELLED = data.LANGTON_DISTTRAVELLED-EPICFETUS_TARGET_LOOP_INTERVAL
+        data.LANGTON_DISTTRAVELLED = (data.LANGTON_DISTTRAVELLED or 0)-EPICFETUS_TARGET_LOOP_INTERVAL
     end
 end
 --ToyboxMod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, langtonPostTargetUpdate, EffectVariant.TARGET)

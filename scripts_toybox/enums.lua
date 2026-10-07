@@ -531,6 +531,7 @@ ToyboxMod.EFFECT_AURA_DARK_MANTLE = Isaac.GetEntitySubTypeByName("Dark Mantle Au
 ToyboxMod.EFFECT_AURA_HOLY_MANTLE = Isaac.GetEntitySubTypeByName("Holy Mantle Aura")
 ToyboxMod.EFFECT_AURA_44 = Isaac.GetEntitySubTypeByName("4 4 Aura")
 ToyboxMod.EFFECT_AURA_MINDFLAYER = Isaac.GetEntitySubTypeByName("Mindflayer Aura")
+ToyboxMod.EFFECT_AURA_FREEZE = Isaac.GetEntitySubTypeByName("Freeze Aura")
 
 ToyboxMod.GRID_COPPER_POOP = Isaac.GetEntitySubTypeByName("Copper Poop")
 ToyboxMod.GRID_PLAYERONLY_BLOCK = Isaac.GetEntitySubTypeByName("Player-Only Block")

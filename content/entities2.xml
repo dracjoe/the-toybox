@@ -15,7 +15,7 @@
     <entity name="Bone Boy"
         id="3" anm2path="familiars/familiar_bone_boy.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="20" collisionRadius="12" collisionInterval="4"
-        numGridCollisionPoints="6" shadowSize="16" stageHP="0" customtags="familiarcantakedamage familiarblockprojectiles">
+        numGridCollisionPoints="6" shadowSize="16" stageHP="0" customtags="familiarcantakedamage familiarblockprojectiles" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Black Shadow"
@@ -33,43 +33,43 @@
     <entity name="Shadow Fly"
         id="3" variant="5784" subtype="0" anm2path="familiars/familiar_shadow_ball.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="20" collisionRadius="12" collisionInterval="4"
-        numGridCollisionPoints="6" shadowSize="16" stageHP="0">
+        numGridCollisionPoints="6" shadowSize="16" stageHP="0" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Shadow Urchin"
         id="3" variant="5784" subtype="1" anm2path="familiars/familiar_shadow_urchin.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="20" collisionRadius="12" collisionInterval="2"
-        numGridCollisionPoints="6" shadowSize="16" stageHP="0">
+        numGridCollisionPoints="6" shadowSize="16" stageHP="0" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Shadow Crawler"
         id="3" variant="5784" subtype="2" anm2path="familiars/familiar_shadow_crawler.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="20" collisionRadius="12" collisionInterval="4"
-        numGridCollisionPoints="6" shadowSize="16" stageHP="0">
+        numGridCollisionPoints="6" shadowSize="16" stageHP="0" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Dr Bum"
         id="3" subtype="0" anm2path="familiars/familiar_bum_docter.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="1"
-        numGridCollisionPoints="6" shadowSize="10" stageHP="0">
+        numGridCollisionPoints="6" shadowSize="10" stageHP="0" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Bath Water"
         id="3" anm2path="familiars/familiar_bathwater.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="4"
-        numGridCollisionPoints="6" shadowSize="11" stageHP="0">
+        numGridCollisionPoints="6" shadowSize="11" stageHP="0" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Sack of Chests"
         id="3" anm2path="familiars/familiar_sack_of_chests.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="4"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Effigy"
         id="3" anm2path="familiars/familiar_effigy.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="4"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Pythagoras' Cup"
@@ -81,7 +81,7 @@
     <entity name="Good Job Star"
         id="3" anm2path="familiars/familiar_goodjob.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="4"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Cardboard Decoy"
@@ -110,43 +110,43 @@
     <entity name="Mind's Eye Follower"
         id="3" anm2path="familiars/familiar_minds_eye.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="100" collisionRadius="13" collisionInterval="3"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Flayer Baby"
         id="3" anm2path="familiars/familiar_mindflayer_baby.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="3"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Yes Baby"
         id="3" anm2path="familiars/familiar_yes_baby.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="3"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Psycho Baby"
         id="3" anm2path="familiars/familiar_psycho_baby.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="3"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Gimp Baby"
         id="3" anm2path="familiars/familiar_gimpy_baby.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="15" collisionInterval="3"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="familiarblockprojectiles">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="familiarblockprojectiles" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Crazed Bobby"
         id="3" anm2path="familiars/familiar_crazed_bobby.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="3"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
     <entity name="Lil Pot"
         id="3" anm2path="familiars/familiar_pot_of_greed.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="13" collisionInterval="3"
-        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="">
+        numGridCollisionPoints="6" shadowSize="12" stageHP="0" customtags="" tags="cansacrifice">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
@@ -359,6 +359,12 @@
     </entity>
     <entity name="Mindflayer Aura"
         id="1000" variant="5784" subtype="5" anm2path="effects/effect_fear_aura.anm2" friction="1"
+        baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0"
+        numGridCollisionPoints="0" shadowSize="0" stageHP="0">
+		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+    </entity>
+    <entity name="Freeze Aura"
+        id="1000" variant="5784" subtype="6" anm2path="effects/effect_holy_aura.anm2" friction="1"
         baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0"
         numGridCollisionPoints="0" shadowSize="0" stageHP="0">
 		<gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
