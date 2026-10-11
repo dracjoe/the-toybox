@@ -879,6 +879,8 @@ function ToyboxMod:playTearScaleAnim(tear, forcePlay, animPrefix)
             sp:SetAnimation(resAnim, false)
         end
     end
+
+    tear.SpriteScale = Vector(1,1)/tear.Scale
 end
 
 function ToyboxMod:getTearPoofVariantFromTear(tear)

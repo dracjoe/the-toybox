@@ -34,6 +34,8 @@ local function handPumpUse(_, item, rng, player, flags, slot, vdata)
     setCostume(player, math.ceil((eff:GetCollectibleEffectNum(item)+1)/STACKS_PER_USE))
     ToyboxMod.SFX:Play(SoundEffect.SOUND_INFLATE, 0.65, nil, nil, 1.5)
 
+--    player:AnimateCollectible(item, "HideItem")
+
     return {
         Discharge = true,
         Remove = false,
@@ -65,8 +67,16 @@ local function removeStacksOnClear(_)
         local eff = player:GetEffects()
         if(eff:HasCollectibleEffect(ToyboxMod.COLLECTIBLE_HAND_PUMP)) then
             eff:RemoveCollectibleEffect(ToyboxMod.COLLECTIBLE_HAND_PUMP, -1)
+            setCostume(player, 0)
             player:AddCacheFlags(CacheFlag.CACHE_LUCK, true)
         end
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_PRE_ROOM_TRIGGER_CLEAR, removeStacksOnClear)
+
+local function removeCostumeOnNewRoom(_, player)
+    if(player:HasCollectible(ToyboxMod.COLLECTIBLE_HAND_PUMP)) then
+        setCostume(player, 0)
+    end
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_PLAYER_NEW_ROOM_TEMP_EFFECTS, removeCostumeOnNewRoom)

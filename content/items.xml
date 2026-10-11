@@ -1643,6 +1643,14 @@
 
     achievement="Brotherhood"
 />
+<passive id="178" name="Runic Sap"
+    description="Curse tears"
+    gfx="runic_sap.png"
+    quality="2"
+    tags="offensive summonable"
+    customtags=""
+    cache=""
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"

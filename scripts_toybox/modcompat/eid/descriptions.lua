@@ -274,14 +274,15 @@ enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_MISSING_PAGE_3,
     Name = "Missing Page 3",
     Description = {
-        "{{DeathMark}} A random enemy every room will become a Skull champion",
+        "{{DeathMark}} 50% chance for a random enemy every room to become a Skull champion",
         --"{{Blank}} {{ColorGray}}Skull champions have 2x health and trigger {{Collectible35}} The Necronomicon effect on death{{CR}}",
-        "{{BlackHeart}} Skull champions have a 16% chance to drop a black heart on death",
+        "{{BlackHeart}} Skull champions have a 16.7% chance to drop a black heart on death",
     },
     StackModifiers = {
         {
             ToModify = {
                 "Skull champions spawned by this item don't have increased health",
+                "Can convert +1 enemy per stack",
             }
         }
     }
@@ -2224,6 +2225,22 @@ enums.FUNCTIONS.AddItem({
         "{{SoulHeart}} +1 Soul Heart"
     },
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_RUNIC_SAP,
+    Name = "Runic Sap",
+    Description = {
+        "8% chance to shoot a cursed tear that devolves enemies and spawns their champion drops, if possible",
+        "Enemies can only be devolved once",
+        "{{Luck}} 20% chance at 24 luck",
+    },
+    StackModifiers = {
+        {
+            ToModify = {
+                "Enemies can be devolved an additional time per stack",
+            }
+        },
+    }
+})
 
 --- OTHER ITEM MODIFIERS ---
 
@@ -3495,7 +3512,7 @@ enums.FUNCTIONS.AddTrinket({
     ID = ToyboxMod.TRINKET_HATCHLING,
     Name = "Hatchling",
     Description = {
-        "Every second in an active room, 15% chance to hatch a blue spider from a random wall or pit",
+        "Every second in an active room, 15% chance to hatch a blue spider from a random wall or pit, up to 10",
         "The blue spiders may be of a {{Collectible"..ToyboxMod.COLLECTIBLE_UNSTABLE_DNA.."}} stronger variant",
         "!!! Once picked up, can only be removed with {{Trinket"..ToyboxMod.TRINKET_BUG_SPRAY.."}} Bug Spray",
     },

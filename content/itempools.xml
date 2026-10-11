@@ -87,6 +87,7 @@
         <Item Name="Greedy Pot"/>
         <Item Name="Brotherhood" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Snowcone" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Runic Sap"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -173,6 +174,7 @@
         <Item Name="Greedy Pot"/>
         <Item Name="Brotherhood" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Snowcone" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Runic Sap"/>
     </Pool>
 
     <Pool Name="boss">
@@ -278,6 +280,7 @@
         <Item Name="Xenotransfusion"/>
         <Item Name="Crazed Bobby"/>
         <Item Name="The Blue Whale"/>
+        <Item Name="Runic Sap"/>
     </Pool>
     <Pool Name="greedDevil">
         <Item Name="Blood Ritual"/>
@@ -298,6 +301,7 @@
         <Item Name="Xenotransfusion"/>
         <Item Name="Crazed Bobby"/>
         <Item Name="The Blue Whale"/>
+        <Item Name="Runic Sap"/>
     </Pool>
 
     <Pool Name="angel">

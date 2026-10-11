@@ -1,8 +1,12 @@
+--TODO: Isaacguru desc mentions the spider cap
+
 local SPAWN_FREQ = 30
 local SPIDER_CHANCE = 0.15
 local SPIDER_CHANCE_PER_PIT = 0.015
 
 local MUTANT_CHANCE = 0.5
+
+local MAX_SPIDERS = 10
 
 ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_HATCHLING, ToyboxMod.TRINKET_BUG_SPRAY, SoundEffect.SOUND_MATCHSTICK)
 
@@ -23,9 +27,16 @@ local function peffectUpdate(_, player)
         end
     end
 
+    local numSpiders = 0
+    for _, ent in ipairs(Isaac.FindByType(3,FamiliarVariant.BLUE_SPIDER,-1)) do
+        if(ent and ToyboxMod:getEntityData(ent, "HATCHLING_SPIDER")) then
+            numSpiders = numSpiders+1
+        end
+    end
+
     local chance = (SPIDER_CHANCE+SPIDER_CHANCE_PER_PIT*#pits)*mult
     local rand = rng:RandomFloat()
-    if(rand<chance) then
+    if(numSpiders<MAX_SPIDERS and rand<chance) then
         local spawnPos
         if(rand<SPIDER_CHANCE*mult) then
             local walls = {}
@@ -50,6 +61,9 @@ local function peffectUpdate(_, player)
         local spider = player:ThrowBlueSpider(spawnPos, room:FindFreeTilePosition(spawnPos,0))
         if(spider and rng:RandomFloat()<MUTANT_CHANCE) then
             ToyboxMod:makeRandomUpgradedInsect(spider, true)
+        end
+        if(spider) then
+            ToyboxMod:setEntityData(spider, "HATCHLING_SPIDER", true)
         end
         ToyboxMod.SFX:Play(SoundEffect.SOUND_BOIL_HATCH, 0.66)
     end

@@ -36,7 +36,7 @@ ToyboxMod:addCustomRoomIcon("ToyboxAhauFlowerUpgrade",
         else
             local maxNum = PlayerManager.GetNumCollectibles(ToyboxMod.COLLECTIBLE_AHAU_FLOWER)
             if((ToyboxMod:getExtraData("AHAU_TRIGGERED") or 0)<maxNum and (desc.VisitedCount==0)) then
-                if(((ToyboxMod:getExtraData("AHAU_ROOM_SUBS") or {})[tostring(desc.SafeGridIndex)] or -1)~=-1) then
+                if(((ToyboxMod:getExtraData("AHAU_ROOM_SUBS") or {})[tostring(desc.SafeGridIndex)] or {}).SubType~=-1) then
                     return true
                 end
             end
@@ -50,11 +50,11 @@ ToyboxMod:addCustomRoomIcon("ToyboxAhauFlowerUpgrade",
 ---@param roomIdx integer
 ---@param rng RNG
 local function getRoomSubtype(roomIdx, rng)
-    if((ToyboxMod:getExtraData("AHAU_ROOM_SUBS") or {})[tostring(roomIdx)]) then return end
-
-    local desc = ToyboxMod.GAME:GetLevel():GetRoomByIdx(roomIdx, dim)
+    local desc = ToyboxMod.GAME:GetLevel():GetRoomByIdx(roomIdx, Dimension.NORMAL)
     if(not desc.Data) then return end
     if(desc.VisitedCount>0) then return -1 end
+
+    if(((ToyboxMod:getExtraData("AHAU_ROOM_SUBS") or {})[tostring(roomIdx)] or {}).Type==desc.Data.Type) then return end
 
     if(UPGRADED_VARIANTS[desc.Data.Type]) then
         local upgrIdx = -1
@@ -72,19 +72,19 @@ local function getRoomSubtype(roomIdx, rng)
                 local checkroom = roomset:Get(i)
                 if(checkroom.Type==desc.Data.Type and checkroom.Subtype==upgrIdx) then
                     if(checkroom.Shape==desc.Data.Shape and (checkroom.Doors & desc.AllowedDoors == desc.AllowedDoors)) then
-                        return upgrIdx
+                        return upgrIdx, desc.Data.Type
                     end
                 end
             end
         end
     end
 
-    return -1
+    return -1, -1
 end
 
 local function markRoomSubtypes(_)
     if(not ToyboxMod.GAME:GetRoom():IsFirstVisit()) then return end
-    if(ToyboxMod:getExtraData("AHAU_LEVEL_CHECK")==ToyboxMod.GAME:GetLevel():GetDungeonPlacementSeed()) then return end
+    --if(ToyboxMod:getExtraData("AHAU_LEVEL_CHECK")==ToyboxMod.GAME:GetLevel():GetDungeonPlacementSeed()) then return end
 
     local data = ToyboxMod:getExtraDataTable()
 
@@ -99,9 +99,9 @@ local function markRoomSubtypes(_)
     local rng = pl:GetCollectibleRNG(ToyboxMod.COLLECTIBLE_AHAU_FLOWER)
 
     for i=0, 13^2-1 do
-        local sub = getRoomSubtype(i, rng)
+        local sub, type = getRoomSubtype(i, rng)
         if(sub) then
-            data.AHAU_ROOM_SUBS[tostring(i)] = sub
+            data.AHAU_ROOM_SUBS[tostring(i)] = {SubType=sub, Type=type}
         end
     end
 
@@ -110,7 +110,7 @@ local function markRoomSubtypes(_)
         MinimapAPI:CheckForNewRedRooms()
     end
 end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, markRoomSubtypes)
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_NEW_LEVEL, CallbackPriority.LATE, markRoomSubtypes)
 
 ---@param door GridEntityDoor
 local function trySpawnFlowersAtDoor(door)
@@ -124,7 +124,7 @@ local function trySpawnFlowersAtDoor(door)
     else
         local maxNum = PlayerManager.GetNumCollectibles(ToyboxMod.COLLECTIBLE_AHAU_FLOWER)
         if((data.AHAU_TRIGGERED or 0)<maxNum and (ToyboxMod.GAME:GetLevel():GetRoomByIdx(door.TargetRoomIndex).VisitedCount==0)) then
-            if(((data.AHAU_ROOM_SUBS or {})[tostring(door.TargetRoomIndex)] or -1)~=-1) then
+            if((((data.AHAU_ROOM_SUBS or {})[tostring(door.TargetRoomIndex)] or {}).SubType or -1)~=-1) then
                 shouldSpawnFlowers = true
             end
         end
@@ -133,6 +133,11 @@ local function trySpawnFlowersAtDoor(door)
     if(shouldSpawnFlowers) then
         local pos = ToyboxMod.GAME:GetRoom():GetClampedPosition(door.Position, 20)
         local flowers = Isaac.Spawn(1000, ToyboxMod.EFFECT_FLOWER_PATCH, 0, pos, Vector.Zero, nil):ToEffect()
+    else
+        local flowers = Isaac.FindByType(1000, ToyboxMod.EFFECT_FLOWER_PATCH, 0)[1]
+        if(flowers) then
+            flowers:Remove()
+        end
     end
 end
 
@@ -159,10 +164,10 @@ local function tryGetSubtype(_, ent)
 
     markRoomSubtypes()
 
-    local idx = getRoomSubtype(door.TargetRoomIndex, door:GetRNG())
+    local idx, type = getRoomSubtype(door.TargetRoomIndex, door:GetRNG())
     if(idx) then
         data.AHAU_ROOM_SUBS = data.AHAU_ROOM_SUBS or {}
-        data.AHAU_ROOM_SUBS[tostring(door.TargetRoomIndex)] = idx
+        data.AHAU_ROOM_SUBS[tostring(door.TargetRoomIndex)] = {SubType=idx, Type=type}
     end
 
     trySpawnFlowersAtDoor(door)
@@ -179,16 +184,16 @@ local function tryUpgradeRoom(_, roomidx, dim)
     local rng = pl:GetCollectibleRNG(ToyboxMod.COLLECTIBLE_AHAU_FLOWER)
 
     data.AHAU_ROOM_SUBS = data.AHAU_ROOM_SUBS or {}
-    local subData = data.AHAU_ROOM_SUBS[tostring(roomidx)] or -1
+    local subData = data.AHAU_ROOM_SUBS[tostring(roomidx)] or {SubType=-1, Type=-1}
     if(subData==nil) then
-        subData = getRoomSubtype(roomidx, rng)
-        data.AHAU_ROOM_SUBS[tostring(roomidx)] = subData
+        subData, type = getRoomSubtype(roomidx, rng)
+        data.AHAU_ROOM_SUBS[tostring(roomidx)] = {SubType=subData, Type=type}
     end
 
-    if((subData or -1)~=-1) then
+    if((subData.SubType or -1)~=-1) then
         local maxNum = PlayerManager.GetNumCollectibles(ToyboxMod.COLLECTIBLE_AHAU_FLOWER)
         if(desc.VisitedCount==0 and (data.AHAU_TRIGGERED or 0)<maxNum) then
-            local newRoom = RoomConfig.GetRandomRoom(rng:Next(), false, StbType.SPECIAL_ROOMS, desc.Data.Type, desc.Data.Shape, nil, nil, nil, nil, desc.AllowedDoors, subData)
+            local newRoom = RoomConfig.GetRandomRoom(rng:Next(), false, StbType.SPECIAL_ROOMS, desc.Data.Type, desc.Data.Shape, nil, nil, nil, nil, desc.AllowedDoors, subData.SubType)
             if(newRoom) then
                 desc.OverrideData = desc.Data
                 desc.Data = newRoom

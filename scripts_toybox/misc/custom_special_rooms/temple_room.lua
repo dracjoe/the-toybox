@@ -486,7 +486,7 @@ local function addNewBossRoom(_)
         end
     end
 end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, addNewBossRoom)
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_NEW_LEVEL, CallbackPriority.IMPORTANT-1, addNewBossRoom)
 
 local function setRoomBackdrops(_)
     local room = ToyboxMod.GAME:GetLevel():GetCurrentRoomDesc()

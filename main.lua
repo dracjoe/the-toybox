@@ -83,11 +83,13 @@ include("scripts_toybox.misc.champions.mod_champion_logic")
     include("scripts_toybox.misc.champions.champion_effects.drowned")
     include("scripts_toybox.misc.champions.champion_effects.fear")
 include("scripts_toybox.misc.champions.champions_in_greed")
+include("scripts_toybox.misc.tear_variants")
 -- CUSTOM TEARFLAGS
     include("scripts_toybox.misc.tearflags.plasma")
     include("scripts_toybox.misc.tearflags.langton")
     include("scripts_toybox.misc.tearflags.musical")
     include("scripts_toybox.misc.tearflags.bloody")
+    include("scripts_toybox.misc.tearflags.relic")
 -- TINTED ROOMS
 include("scripts_toybox.misc.tinted_rooms.enums")
 include("scripts_toybox.misc.tinted_rooms.tinted_room_logic")
@@ -348,6 +350,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.passives.crazed_bobby")
     include("scripts_toybox.items.passives.greedy_pot")
     include("scripts_toybox.items.passives.brotherhood")
+    include("scripts_toybox.items.passives.runic_sap")
 
     include("scripts_toybox.items.passives.the_elder_scroll") -- just the shader fo now
 --ACTIVES

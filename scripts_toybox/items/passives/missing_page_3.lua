@@ -1,6 +1,7 @@
 
 
 --local DEATH_CHAMP_CHANCE = 0.1
+local CHAMP_CHANCE = 0.5
 local HARD_BLACK_CHANCE = 0.1667
 
 ---@param npc EntityNPC
@@ -45,23 +46,25 @@ local function newRoom(_)
     local picker = WeightedOutcomePicker()
     for i, npc in ipairs(validEnemies) do
         local dist = npc.Position:Distance(pl.Position)
-        dist = (dist/(40*2))^2
+        dist = (dist/(40*4))^3
 
         picker:AddOutcomeFloat(i, dist, 100)
     end
 
     for _=1, num do
         if(picker:GetNumOutcomes()>0) then
-            local picked = picker:PickOutcome(rng)
-            picker:RemoveOutcome(picked)
+            if(rng:RandomFloat()<CHAMP_CHANCE) then
+                local picked = picker:PickOutcome(rng)
+                picker:RemoveOutcome(picked)
 
-            local npc = validEnemies[picked]
-            local oldHits = npc.MaxHitPoints
-            npc:MakeChampion(math.max(Random(),1), ChampionColor.DEATH, true)
-            if(num==1) then
-                npc.HitPoints = npc.MaxHitPoints
-            else
-                npc.MaxHitPoints = oldHits
+                local npc = validEnemies[picked]
+                local oldHits = npc.MaxHitPoints
+                npc:MakeChampion(math.max(Random(),1), ChampionColor.DEATH, true)
+                if(num==1) then
+                    npc.HitPoints = npc.MaxHitPoints
+                else
+                    npc.MaxHitPoints = oldHits
+                end
             end
         else
             break

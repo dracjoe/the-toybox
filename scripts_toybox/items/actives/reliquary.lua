@@ -1,3 +1,5 @@
+--TODO: Make wisps not collide with fires
+
 local sfx = SFXManager()
 
 local ORBIT_LAYERS = {

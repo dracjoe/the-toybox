@@ -284,6 +284,7 @@ ToyboxMod.COLLECTIBLE_JAM = Isaac.GetItemIdByName("Jam")
 ToyboxMod.COLLECTIBLE_GREEDY_POT = Isaac.GetItemIdByName("Greedy Pot")
 ToyboxMod.COLLECTIBLE_BLUE_WHALE = Isaac.GetItemIdByName("The Blue Whale")
 ToyboxMod.COLLECTIBLE_BROTHERHOOD = Isaac.GetItemIdByName("Brotherhood")
+ToyboxMod.COLLECTIBLE_RUNIC_SAP = Isaac.GetItemIdByName("Runic Sap")
 
 ToyboxMod.COLLECTIBLE_TMTAMER = Isaac.GetItemIdByName("TMTAMER")
 
@@ -559,6 +560,7 @@ ToyboxMod.GRID_NUCLEAR_POOP = Isaac.GetEntitySubTypeByName("Nuclear Poop")
 ToyboxMod.TEAR_COOL = Isaac.GetEntityVariantByName("Cool Tear") ---@type TearVariant
 ToyboxMod.TEAR_AIDS = Isaac.GetEntityVariantByName("AIDS Tear") ---@type TearVariant
 ToyboxMod.TEAR_YES = Isaac.GetEntityVariantByName("Yes Tear") ---@type TearVariant
+ToyboxMod.TEAR_RELIC = Isaac.GetEntityVariantByName("Relic Tear") ---@type TearVariant
 --ToyboxMod.TEAR_METEOR = Isaac.GetEntityVariantByName("Meteor Tear") ---@type TearVariant
 --ToyboxMod.TEAR_BULLET = Isaac.GetEntityVariantByName("Foam Bullet Tear") ---@type TearVariant
 --ToyboxMod.TEAR_SOUNDWAVE = Isaac.GetEntityVariantByName("Soundwave Tear") ---@type TearVariant
@@ -682,6 +684,7 @@ ToyboxMod.TEARFLAGS = {
     PLASMA = TearFlagsLib.RegisterTearFlag("TOYBOX_PLASMA"),
     LANGTON = TearFlagsLib.RegisterTearFlag("TOYBOX_LANGTON"),
     BLOODY = TearFlagsLib.RegisterTearFlag("TOYBOX_BLOODY"),
+    RELIC = TearFlagsLib.RegisterTearFlag("TOYBOX_RELIC"),
 
     BOMB_QUAKE = TearFlagsLib.RegisterTearFlag("TOYBOX_BOMB_QUAKE"),
     BOMB_BLESSED = TearFlagsLib.RegisterTearFlag("TOYBOX_BOMB_BLESSED"),

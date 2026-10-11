@@ -5,6 +5,40 @@ local EXTRA_SHOT_DELAY = 3
 
 local SHOT_DMG = 4.5
 
+
+local YES_TEAR_ANIMS = {
+    [1] = "S",
+    [2] = "E",
+    [3] = "Y",
+    [4] = nil,
+    [5] = "H",
+    [6] = "A",
+    [7] = "E",
+    [8] = "Y",
+}
+
+---@param tear EntityTear
+local function playYesTearAnim(tear, forcePlay)
+    local sp = tear:GetSprite()
+
+    local desAnim = "Tear_"..(YES_TEAR_ANIMS[tear.SubType+1] or "A")
+
+    if(sp:GetAnimation()~=desAnim) then
+        if(forcePlay or forcePlay==nil) then
+            sp:Play(desAnim, true)
+        else
+            sp:SetAnimation(desAnim, false)
+        end
+    end
+end
+
+ToyboxMod:registerTearVariant(
+    ToyboxMod.TEAR_YES,
+    playYesTearAnim, playYesTearAnim, function(tear, splat)
+        splat:GetSprite().Color = splat:GetSprite().Color*Color(255/185,236/207,135/255,1)
+    end, false, false, nil
+)
+
 ---@param pl EntityPlayer
 local function evalCache(_, pl)
     pl:CheckFamiliar(
@@ -96,60 +130,6 @@ local function yesBabyUpdate(_, familiar)
     end
 end
 ToyboxMod:AddPriorityCallback(ModCallbacks.MC_FAMILIAR_UPDATE, CallbackPriority.IMPORTANT, yesBabyUpdate, ToyboxMod.FAMILIAR_YES_BABY)
-
-local YES_TEAR_ANIMS = {
-    [1] = "S",
-    [2] = "E",
-    [3] = "Y",
-    [4] = nil,
-    [5] = "H",
-    [6] = "A",
-    [7] = "E",
-    [8] = "Y",
-}
-
----@param tear EntityTear
-local function playYesTearAnim(tear, forcePlay)
-    local sp = tear:GetSprite()
-
-    local desAnim = "Tear_"..(YES_TEAR_ANIMS[tear.SubType+1] or "A")
-
-    if(sp:GetAnimation()~=desAnim) then
-        if(forcePlay) then
-            sp:Play(desAnim, true)
-        else
-            sp:SetAnimation(desAnim, false)
-        end
-    end
-end
-
----@param tear EntityTear
-local function yesTearInit(_, tear)
-    playYesTearAnim(tear, true)
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_TEAR_INIT, yesTearInit, ToyboxMod.TEAR_YES)
-
----@param tear EntityTear
-local function yesTearUpdate(_, tear)
-    playYesTearAnim(tear, true)
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, yesTearUpdate, ToyboxMod.TEAR_YES)
-
----@param tear EntityTear
-local function aidsTearDeath(_, tear)
-    sfx:Play(SoundEffect.SOUND_SPLATTER, 1, 0, false, 1.0)
-
-	if(tear.TearFlags & TearFlags.TEAR_EXPLOSIVE == TearFlags.TEAR_EXPLOSIVE) then return end
-
-    local poof = Isaac.Spawn(1000, ToyboxMod:getTearPoofVariantFromTear(tear), 0, tear.Position, Vector.Zero, tear):ToEffect()
-
-    poof:GetSprite().Color = tear:GetSprite().Color*Color(255/185,236/207,135/255,1)
-    if(tear.Scale > 0.8) then
-        poof.SpriteScale = Vector(1, 1)*(tear.Scale*0.8)
-    end
-    poof.PositionOffset = tear.PositionOffset
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_TEAR_DEATH, aidsTearDeath, ToyboxMod.TEAR_YES)
 
 local function familiarPriority(_, fam)
     return FollowerPriority.SHOOTER

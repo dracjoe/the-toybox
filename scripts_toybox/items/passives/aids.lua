@@ -19,6 +19,15 @@ local FLAGS_TO_ADD = {
 }
 local DMG_MULT = 3
 
+ToyboxMod:registerTearVariant(
+    ToyboxMod.TEAR_AIDS,
+    nil, nil, function(tear, splat)
+        splat:GetSprite():SetCustomShader("shaders_tb/rainbow")
+
+        local col = Color(0,0,0,1,0,0,0,ToyboxMod.GAME:GetFrameCount()/15+(tear.Position.X+tear.Position.Y)/250,0,0,0)
+        splat:GetSprite().Color = col
+    end, false, false, nil
+)
 
 ---@param pl EntityPlayer
 ---@param params TearParams
@@ -39,30 +48,3 @@ local function evalParams(_, pl, params, weap, dmg, tearDisp, source)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_EVALUATE_TEAR_HIT_PARAMS, evalParams)
-
----@param tear EntityTear
-local function aidsTearInit(_, tear)
-    ToyboxMod:playTearScaleAnim(tear, true)
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_TEAR_INIT, aidsTearInit, ToyboxMod.TEAR_AIDS)
-
----@param tear EntityTear
-local function aidsTearUpdate(_, tear)
-    ToyboxMod:playTearScaleAnim(tear, false)
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_TEAR_UPDATE, aidsTearUpdate, ToyboxMod.TEAR_AIDS)
-
----@param tear EntityTear
-local function aidsTearDeath(_, tear)
-    sfx:Play(SoundEffect.SOUND_SPLATTER, 1, 0, false, 1.0)
-
-	if(tear.TearFlags & TearFlags.TEAR_EXPLOSIVE == TearFlags.TEAR_EXPLOSIVE) then return end
-
-    local poof = Isaac.Spawn(1000, ToyboxMod:getTearPoofVariantFromTear(tear), 0, tear.Position, Vector.Zero, tear):ToEffect()
-    poof:GetSprite().Color = tear:GetSprite().Color
-    if(tear.Scale > 0.8) then
-        poof.SpriteScale = Vector(1, 1)*(tear.Scale*0.8)
-    end
-    poof.PositionOffset = tear.PositionOffset
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_TEAR_DEATH, aidsTearDeath, ToyboxMod.TEAR_AIDS)
