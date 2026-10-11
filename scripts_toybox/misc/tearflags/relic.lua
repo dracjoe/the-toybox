@@ -36,6 +36,26 @@ local function applyTearFlagEffect(_, npc, player, source, weapon, params)
             end
         end
         if(newNpc) then
+            local copydata = {
+                newNpc.Type, newNpc.Variant, newNpc.SubType, newNpc.Position, newNpc.Velocity,
+                newNpc.MaxHitPoints, newNpc.HitPoints, newNpc.Mass, newNpc.Size, newNpc.SizeMulti, newNpc.SpawnerEntity
+            }
+
+            local newNpc2 = Isaac.Spawn(copydata[1], copydata[2], copydata[3], copydata[4], copydata[5], copydata[11]):ToNPC()
+            newNpc2.MaxHitPoints = copydata[6]
+            newNpc2.HitPoints = copydata[7]
+            newNpc2.Mass = copydata[8]
+            newNpc2.Size = copydata[9]
+            newNpc2.SizeMulti = copydata[10]
+
+            newNpc:Remove()
+            newNpc:Update()
+
+            newNpc = newNpc2
+
+            newNpc.HitPoints = newNpc.MaxHitPoints*npc.HitPoints/npc.MaxHitPoints
+            newNpc:AddHealth(0)
+
             ToyboxMod:setEntityData(newNpc, "CURSE_STACKS", prevStacks+1)
             if(ToyboxMod:getEntityData(newNpc, "CURSE_STACKS")==curseStacks) then
                 ToyboxMod:setEntityData(newNpc, "MAX_CURSE", true)
