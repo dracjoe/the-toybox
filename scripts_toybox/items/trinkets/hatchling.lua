@@ -1,5 +1,3 @@
---TODO: Isaacguru desc mentions the spider cap
-
 local SPAWN_FREQ = 30
 local SPIDER_CHANCE = 0.15
 local SPIDER_CHANCE_PER_PIT = 0.015

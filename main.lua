@@ -90,6 +90,9 @@ include("scripts_toybox.misc.tear_variants")
     include("scripts_toybox.misc.tearflags.musical")
     include("scripts_toybox.misc.tearflags.bloody")
     include("scripts_toybox.misc.tearflags.relic")
+
+    include("scripts_toybox.misc.tearflags.bomb_blessed")
+    include("scripts_toybox.misc.tearflags.bomb_quake")
 -- TINTED ROOMS
 include("scripts_toybox.misc.tinted_rooms.enums")
 include("scripts_toybox.misc.tinted_rooms.tinted_room_logic")
