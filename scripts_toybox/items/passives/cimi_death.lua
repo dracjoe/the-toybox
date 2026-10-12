@@ -132,8 +132,16 @@ local function tryPlaceNewSacrificeRoom(_, slot, conf, seed)
         
         while(#possibleRooms>0 and not finalRoom) do
             local idx = rng:RandomInt(#possibleRooms)+1
+            local isRegularGroup = true
+            for _, neighbor in pairs(level:GetNeighboringRooms(possibleRooms[idx], newBossRoom.Shape, level:GetDimension())) do
+                if(neighbor.Data and neighbor:GetGroup()~=-1) then
+                    isRegularGroup = false
+                end
+            end
         
-            finalRoom = level:TryPlaceRoom(newBossRoom, possibleRooms[idx], level:GetDimension(), 0, true, true, false)
+            if(isRegularGroup) then
+                finalRoom = level:TryPlaceRoom(newBossRoom, possibleRooms[idx], level:GetDimension(), 0, true, true, false)
+            end
             table.remove(possibleRooms, idx)
         end
     end

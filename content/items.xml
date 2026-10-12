@@ -1651,6 +1651,24 @@
     customtags=""
     cache=""
 />
+<passive id="179" name="Power Crystal"
+    description="I know that I know nothing"
+    gfx="power_crystal.png"
+    quality="1"
+    tags="offensive summonable"
+    customtags=""
+    cache=""
+
+    shotspeed="0.16"
+/>
+<passive id="180" name="Geode"
+    description="Stuffed tinted rocks"
+    gfx="geode.png"
+    quality="3"
+    tags="offensive summonable"
+    customtags=""
+    cache=""
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"

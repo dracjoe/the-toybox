@@ -7,6 +7,7 @@ ToyboxMod.ROOM_TYPE_DATA = {
         MinimapIcon = "ToyboxGraveyardRoom",
         Backdrop = ToyboxMod.BACKDROP_GRAVEYARD,
         DoorGfx = "gfx_tb/grid/graveyard_door.png",
+        PedestalGfx = "gfx_tb/pickups/pickup_grave_altar.png",
         Locked = true,
         Pool = ToyboxMod.POOL_GRAVEYARD,
     },
@@ -16,6 +17,7 @@ ToyboxMod.ROOM_TYPE_DATA = {
         MinimapIcon = "ToyboxTempleRoom",
         Backdrop = ToyboxMod.BACKDROP_TEMPLE,
         DoorGfx = "gfx_tb/grid/temple_door.png",
+        PedestalGfx = "gfx_tb/pickups/pickup_caban_altar.png",
         Pool = ToyboxMod.POOL_TEMPLE,
     }
 }
@@ -129,6 +131,46 @@ local function makeSpecialRoomDoorsLate(_)
     end
 end
 ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_NEW_LEVEL, CallbackPriority.LATE+1, makeSpecialRoomDoorsLate)
+
+local function replaceCollectiblePedestal(_, pickup)
+    local room = ToyboxMod.GAME:GetLevel():GetCurrentRoomDesc()
+    if(not (room.Data and room.Data.Type==ToyboxMod.SPECIAL_ROOM_TYPE_TEMPLATE and ID_TO_TABLEKEY[room.Data.Subtype])) then return end
+
+    local data = ToyboxMod.ROOM_TYPE_DATA[ID_TO_TABLEKEY[room.Data.Subtype]]
+    if(not data.PedestalGfx) then return end
+
+    local sprite = pickup:GetSprite()
+    local layer = sprite:GetLayer("altar") or sprite:GetLayer(0)
+    if(not layer) then return end
+
+    local oldImg = sprite:GetSpritesheet(layer:GetLayerID())
+    local newImg = Renderer.CreateImage(oldImg:GetWidth(), oldImg:GetHeight(), oldImg:GetName().."2")
+    local altarImg = Renderer.LoadImage(data.PedestalGfx)
+    Renderer.RenderToImage(newImg,
+        function()
+            local brCorner = Vector(newImg:GetWidth(), newImg:GetHeight())
+            local sQuad1 = ToyboxMod:makeQuadFromCorners(Vector(32,0), brCorner, true, false, false)
+            local dQuad1 = ToyboxMod:makeQuadFromCorners(Vector(32,0), brCorner, false, false, false)
+            oldImg:Render(sQuad1, dQuad1, KColor(1,1,1,1))
+
+            local sQuad2 = ToyboxMod:makeQuadFromCorners(Vector(0,32), Vector(32,brCorner.Y), true, false, false)
+            local dQuad2 = ToyboxMod:makeQuadFromCorners(Vector(0,32), Vector(32,brCorner.Y), false, false, false)
+            oldImg:Render(sQuad2, dQuad2, KColor(1,1,1,1))
+
+            local topRight = Vector(0,0)
+            local bottomRight = Vector(32,32)
+
+            altarImg:Render(
+                ToyboxMod:makeQuadFromCorners(Vector(0,0), Vector(1,1), true, true, false),
+                ToyboxMod:makeQuadFromCorners(topRight, bottomRight, false, false, false),
+                KColor(1,1,1,1)
+            )
+        end
+    )
+    sprite:SetSpritesheet(layer:GetLayerID(), newImg)
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_PICKUP_INIT, CallbackPriority.LATE+1, replaceCollectiblePedestal, PickupVariant.PICKUP_COLLECTIBLE)
+
 
 -- room icon rendering
 

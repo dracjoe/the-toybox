@@ -26,6 +26,7 @@
     <costume id="143" anm2path="costume_ix_jaguar.anm2" type="passive" hasSkinAlt="true"/>
     <costume id="153" anm2path="costume_rhubarb.anm2" type="passive" priority="1" skinColor="2" overwriteColor="true" />
     <costume id="178" anm2path="costume_runic_sap.anm2" type="passive" hasSkinAlt="true"/>
+    <costume id="179" anm2path="costume_power_crystal.anm2" type="passive"/>
 
     <costume id="39" anm2path="costume_fake_beard.anm2" type="trinket"/>
 

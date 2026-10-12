@@ -2241,6 +2241,29 @@ enums.FUNCTIONS.AddItem({
         },
     }
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_POWER_CRYSTAL,
+    Name = "Power Crystal",
+    Description = {
+        "\1 +0.16 Shotspeed",
+        "Increased tear knockback",
+        "{{Battery}} Fully charges and overcharges held active items on pickup",
+    },
+})
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_GEODE,
+    Name = "Geode",
+    Description = {
+        enums.CONSTANTS.Icon_CardMantleRock.." Tinted rocks will additionally drop a random Mantle consumable and 0-2 random pickups",
+    },
+    StackModifiers = {
+        {
+            ToModify = {
+                "Tinted rocks drop +2 random pickups per stack",
+            }
+        },
+    }
+})
 
 --- OTHER ITEM MODIFIERS ---
 

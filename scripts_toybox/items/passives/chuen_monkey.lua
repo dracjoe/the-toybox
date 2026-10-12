@@ -128,7 +128,13 @@ local function dupeItem(_, pickup)
         toRemove = (extraData.CHUEN_MONKEY_TOREMOVE or 0)-((extraData.CHUEN_MONKEY_REMOVED_PERROOM or {})[roomIdx] or 0)
     end
 
-    removeCycles(pickup, toRemove or 0)
+    if(shouldDupe) then
+        removeCycles(pickup, toRemove or 0)
+    else
+        Isaac.CreateTimer(function()
+            removeCycles(pickup, toRemove or 0)
+        end, 0, 1, false)
+    end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, dupeItem, PickupVariant.PICKUP_COLLECTIBLE)
 

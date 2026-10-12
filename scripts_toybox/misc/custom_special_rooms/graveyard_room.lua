@@ -1,4 +1,4 @@
-local BASE_CHANCE = 0.2 -- 0.05
+local BASE_CHANCE = 0.15 -- 0.05
 local INCREMENT_PER_MISSING_HEAR = 0.05
 local LOST_BASE_CHANCE = 0.1
 
@@ -36,8 +36,16 @@ local function addNewBossRoom(_)
         local finalRoom
         while(#possibleRooms>0 and not finalRoom) do
             local idx = rng:RandomInt(#possibleRooms)+1
-        
-            finalRoom = level:TryPlaceRoom(newBossRoom, possibleRooms[idx], level:GetDimension(), 0, true, true, false)
+            local isRegularGroup = true
+            for _, neighbor in pairs(level:GetNeighboringRooms(possibleRooms[idx], newBossRoom.Shape, level:GetDimension())) do
+                if(neighbor.Data and neighbor:GetGroup()~=-1) then
+                    isRegularGroup = false
+                end
+            end
+
+            if(isRegularGroup) then
+                finalRoom = level:TryPlaceRoom(newBossRoom, possibleRooms[idx], level:GetDimension(), 0, true, true, false)
+            end
             table.remove(possibleRooms, idx)
         end
 
@@ -160,19 +168,6 @@ local function mistUpdate(_, effect)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, mistUpdate, EffectVariant.MIST)
-
-local function replaceCollectiblePedestal(_, pickup)
-    if(not ToyboxMod:isCustomSpecialRoom(ToyboxMod.GAME:GetLevel():GetCurrentRoomDesc(), "GRAVEYARD_ROOM")) then return end
-
-    if(pickup:GetAlternatePedestal()==PedestalType.DEFAULT) then
-        Isaac.CreateTimer(function()
-            if(pickup:GetAlternatePedestal()==PedestalType.DEFAULT) then
-                pickup:GetSprite():ReplaceSpritesheet(5, "gfx_tb/pickups/pickup_grave_altar.png", true)
-            end
-        end, 1, 1, false)
-    end
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, replaceCollectiblePedestal, PickupVariant.PICKUP_COLLECTIBLE)
 
 local function addPedestalTrinkets(_, pickup)
     if(not ToyboxMod:isCustomSpecialRoom(ToyboxMod.GAME:GetLevel():GetCurrentRoomDesc(), "GRAVEYARD_ROOM")) then return end

@@ -56,8 +56,6 @@ local function getEvilTintedRockMorph(ent, rng)
             end
         end
     end
-
-    return EVIL_TINTEDROCK_PICKUP_MORPHS[1].MORPH[1]
 end
 
 ---@param rock GridEntityRock
@@ -117,7 +115,9 @@ local function replaceEvilTintedRockDrops(_, rock, type, immediate)
         pickup = pickup:ToPickup() ---@cast pickup EntityPickup
         if(pickup.Position:Distance(rock.Position)<10 and pickup.FrameCount==0) then
             local newData = getEvilTintedRockMorph(pickup, rng)
-            pickup:Morph(newData[1], newData[2], newData[3])
+            if(newData) then
+                pickup:Morph(newData[1], newData[2], newData[3])
+            end
         end
     end
 end

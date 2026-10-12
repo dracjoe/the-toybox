@@ -88,6 +88,8 @@
         <Item Name="Brotherhood" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Snowcone" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Runic Sap"/>
+        <Item Name="Power Crystal"/>
+        <Item Name="Geode"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -175,6 +177,8 @@
         <Item Name="Brotherhood" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Snowcone" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Runic Sap"/>
+        <Item Name="Power Crystal"/>
+        <Item Name="Geode"/>
     </Pool>
 
     <Pool Name="boss">
@@ -192,6 +196,7 @@
         <Item Name="Loose Bowels"/>
         <Item Name="Bodybag"/>
         <Item Name="Krokodil"/>
+        <Item Name="Power Crystal" Weight="0.5" DecreaseBy="0.5"/>
     </Pool>
     <Pool Name="greedBoss">
         <Item Name="Caramel Apple"/>
@@ -208,6 +213,7 @@
         <Item Name="Loose Bowels"/>
         <Item Name="Bodybag"/>
         <Item Name="Krokodil"/>
+        <Item Name="Power Crystal" Weight="0.5" DecreaseBy="0.5"/>
     </Pool>
 
     <Pool Name="shop">
@@ -384,6 +390,7 @@
         <Item Name="Mutagen"/>
         <Item Name="Breakthrough" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="RETROFALL"/>
+        <Item Name="Geode"/>
     </Pool>
     <Pool Name="greedSecret">
         <Item Name="Fatal Signal"/>
@@ -403,6 +410,7 @@
         <Item Name="Mutagen"/>
         <Item Name="Breakthrough" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="RETROFALL"/>
+        <Item Name="Geode"/>
     </Pool>
 
     <Pool Name="library">

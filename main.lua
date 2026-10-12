@@ -351,6 +351,8 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.passives.greedy_pot")
     include("scripts_toybox.items.passives.brotherhood")
     include("scripts_toybox.items.passives.runic_sap")
+    include("scripts_toybox.items.passives.power_crystal")
+    include("scripts_toybox.items.passives.geode")
 
     include("scripts_toybox.items.passives.the_elder_scroll") -- just the shader fo now
 --ACTIVES

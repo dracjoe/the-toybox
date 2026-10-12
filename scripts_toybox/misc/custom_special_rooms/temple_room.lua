@@ -758,20 +758,3 @@ local function playEpicSound(_)
     ToyboxMod.GAME:ShakeScreen(20)
 end
 ToyboxMod:AddCallback(ToyboxMod.CUSTOM_CALLBACKS.POST_ROOM_CLEAR, playEpicSound)
-
-
-local function replaceCollectiblePedestal(_, pickup)
-    local level = ToyboxMod.GAME:GetLevel()
-    local room = level:GetCurrentRoomDesc()
-    local templeMainData = ToyboxMod:getExtraData("TEMPLE_MAIN_ROOMS") or {}
-    if(templeMainData[tostring(room.SafeGridIndex)]) then
-        if(pickup:GetAlternatePedestal()==PedestalType.DEFAULT) then
-            Isaac.CreateTimer(function()
-                if(pickup:GetAlternatePedestal()==PedestalType.DEFAULT) then
-                    pickup:GetSprite():ReplaceSpritesheet(5, "gfx_tb/pickups/pickup_caban_altar.png", true)
-                end
-            end, 1, 1, false)
-        end
-    end
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, replaceCollectiblePedestal, PickupVariant.PICKUP_COLLECTIBLE)
