@@ -108,6 +108,47 @@ local COMMANDS = {
         end
         --]]
     },
+    CUSTOM_CHAMPION = {
+        Name = "modchamp",
+        Description = "Spawns an entity with a Toybox champion variant",
+        Help = "Spawns an entity with a Toybox champion variant;\n Param is the entity's type/var/sub/[champId/champName].",
+        Function = function(data, params)
+            local tvsc = {0, 0, 0, ToyboxMod:getModChampionPicker():PickOutcome(ToyboxMod:generateRng())}
+            local startIdx = 1
+            for i=1, 4 do
+                local dotIdx = string.find(params, "%.", startIdx+1)
+                local sub = string.sub(params, startIdx, -1)
+                if(dotIdx) then
+                    sub = string.sub(params, startIdx, dotIdx-1)
+                end
+
+                if(i==4) then
+                    local champId = tonumber(sub) and tonumber(sub) or (ToyboxMod.CUSTOM_CHAMPIONS[string.upper(sub)] or {}).Idx
+                    if(champId) then
+                        tvsc[i] = champId
+                    end
+                else
+                    tvsc[i] = tonumber(sub) or 0
+                end
+
+                if(not dotIdx) then
+                    break
+                end
+                startIdx = dotIdx+1
+            end
+
+            local conf = EntityConfig.GetEntity(tvsc[1], tvsc[2], tvsc[3])
+            
+            local room = ToyboxMod.GAME:GetRoom()
+            local desiredPos = room:FindFreePickupSpawnPosition(room:GetCenterPos(), 0, true)
+
+            local ent = Isaac.Spawn(tvsc[1], tvsc[2], tvsc[3], desiredPos, Vector.Zero, nil):ToNPC()
+            if(conf and conf:CanBeChampion()) then
+                ToyboxMod:MakeModChampion(ent, ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[tvsc[4]], true)
+            end
+        end,
+        Autocomplete = AutocompleteType.ENTITY,
+    }
 }
 
 for _, data in pairs(COMMANDS) do

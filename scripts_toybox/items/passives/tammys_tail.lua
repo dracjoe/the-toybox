@@ -1,3 +1,5 @@
+--TODO: Make it increase enemy HP by 50% or smth
+
 local sfx = SFXManager()
 
 local CLEAR_RETRIGGERS = 1

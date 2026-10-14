@@ -9,8 +9,45 @@ function ToyboxMod:getModChampionIdx(npc)
     return ToyboxMod:getEntityData(npc, "CUSTOM_CHAMPION_IDX")
 end
 
+function ToyboxMod:getModChampionPicker()
+    local level = ToyboxMod.GAME:GetLevel()
+
+    local picker = WeightedOutcomePicker()
+    for _, data in pairs(ToyboxMod.CUSTOM_CHAMPIONS) do
+        if((data.Weight or 1)>0 and (data.StageReq==nil or level:GetAbsoluteStage()>=data.StageReq)) then
+            picker:AddOutcomeFloat(data.Idx, data.Weight or 1)
+        end
+    end
+    return picker
+end
+
+local function initModChampData(npc)
+    local result = ToyboxMod.CUSTOM_CHAMPIONS[ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[ToyboxMod:getModChampionIdx(npc)]]
+    if(not result) then return end
+
+    npc.MaxHitPoints = npc.MaxHitPoints*result.HPMult
+    npc.HitPoints = npc.HitPoints*result.HPMult
+    if(npc.CollisionDamage>0) then
+        npc.CollisionDamage = 2
+    end
+    npc.Scale = npc.Scale*1.15
+    
+    local spr = npc:GetSprite()
+    for _, layer in pairs(spr:GetAllLayers()) do
+        local path = layer:GetSpritesheetPath()
+        path = string.sub(path, 1, -5).."_champion.png"
+        if(pcall(Renderer.LoadImage, path)) then
+            spr:ReplaceSpritesheet(layer:GetLayerID(), path, false)
+        end
+    end
+    spr:LoadGraphics()
+    spr:SetCustomShader("shaders_tb/custom_champion")
+
+    Isaac.RunCallbackWithParam(ToyboxMod.CUSTOM_CALLBACKS.POST_CUSTOM_CHAMPION_INIT, result.Idx, npc, result.Idx)
+end
+
 function ToyboxMod:MakeModChampion(npc, id, init)
-    local outcome = id or ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[ToyboxMod.CUSTOM_CHAMPION_PICKER:PickOutcome(npc:GetDropRNG())]
+    local outcome = id or ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[ToyboxMod:getModChampionPicker():PickOutcome(npc:GetDropRNG())]
 
     ToyboxMod.DENY_CHAMP_ROLL = true
     
@@ -45,17 +82,9 @@ function ToyboxMod:MakeModChampion(npc, id, init)
     end
 
     local result = ToyboxMod.CUSTOM_CHAMPIONS[outcome]
+    ToyboxMod:setEntityData(newNpc:ToNPC(), "CUSTOM_CHAMPION_IDX", result.Idx)
 
-    ToyboxMod:setEntityData(newNpc, "CUSTOM_CHAMPION_IDX", result.Idx)
-    newNpc.Color = result.Color
-    newNpc.MaxHitPoints = newNpc.MaxHitPoints*result.HPMult
-    newNpc.HitPoints = newNpc.HitPoints*result.HPMult
-    if(newNpc.CollisionDamage>0) then
-        newNpc.CollisionDamage = 2
-    end
-    newNpc.Scale = newNpc.Scale*1.15
-
-    Isaac.RunCallbackWithParam(ToyboxMod.CUSTOM_CALLBACKS.POST_CUSTOM_CHAMPION_INIT, result.Idx, newNpc, result.Idx)
+    initModChampData(newNpc)
 
     return newNpc
 end
@@ -94,3 +123,20 @@ local function championProjDealDamage(_, _, amount, flags, source, frames)
     end
 end
 ToyboxMod:AddPriorityCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, -math.huge, championProjDealDamage, EntityType.ENTITY_PLAYER)
+
+local function updateShader(_, npc)
+    local id = ToyboxMod:getModChampionIdx(npc)
+    if(id) then
+        local color = ToyboxMod.CUSTOM_CHAMPIONS[ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[id]].Color
+
+        local npcCol = npc.Color
+        npcCol:SetColorize(color.R, color.G, color.B, color.Mode)
+        npc.Color = npcCol
+    end
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_PRE_NPC_UPDATE, updateShader)
+
+local function npcInit(_, npc)
+    initModChampData(npc)
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_NPC_MORPH, npcInit)

@@ -1107,50 +1107,39 @@ ToyboxMod.MANTLE_SHARD_GRAVITY = 7
 --#endregion
 
 ToyboxMod.CUSTOM_CHAMPIONS = {
-    FEAR = {
-        Idx = 1,
-        Color = Color(0.8,0.8,0.8,1,0.1,0,0.1,1,0,1,1),
-        HPMult = 1.5,
-    },
     ETERNAL = {
         Idx = 2,
-        Color = Color(0.8,0.8,0.8,1,0.1,0,0.1,1,0,1,1),
-        HPMult = 1,
+        Color = {R=1, G=1, B=0.8, Mode=0},
+        HPMult = 2,
+        Weight = 0.25,
+        StageReq = LevelStage.STAGE3_1,
     },
     DROWNED = {
         Idx = 3,
-        Color = Color(0.5,0.9,1,1,0,0,0,0,1,1,1),
+        Color = {R=0.1, G=0.5, B=0.66, Mode=0},
         HPMult = 2,
+        Weight = 1,
     },
     SPIDERS = {
         Idx = 4,
-        Color = Color(0.8,0.8,0.8,1,0.1,0,0.1,1,0,1,1),
+        Color = {R=1, G=1, B=1, Mode=0},
         HPMult = 1,
+        Weight = 0,
     },
     GOLDEN = {
         Idx = 5,
-        Color = Color(0.8,0.8,0.8,1,0.1,0,0.1,1,0,1,1),
+        Color = {R=1, G=1, B=1, Mode=0},
         HPMult = 1,
+        Weight = 0,
     },
     JELLY = {
         Idx = 6,
-        Color = Color(1,1.3,1,1,0,0,0,0.3,1,0,1),
+        Color = {R=0.3, G=1, B=0, Mode=0},
         HPMult = 2,
+        Weight = 1,
     },
 }
-ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME = {
-    "FEAR",
-    "ETERNAL",
-    "DROWNED",
-    "SPIDERS",
-    "GOLDEN",
-    "JELLY",
-}
-
-ToyboxMod.CUSTOM_CHAMPION_PICKER = WeightedOutcomePicker()
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(1, 0, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(2, 0, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(3, 1000, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(4, 0, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(5, 0, 1000)
-ToyboxMod.CUSTOM_CHAMPION_PICKER:AddOutcomeFloat(6, 1000, 1000)
+ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME = {}
+for name, data in pairs(ToyboxMod.CUSTOM_CHAMPIONS) do
+    ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[data.Idx] = name
+end
