@@ -1,3 +1,5 @@
+--TODO: Make color not affected by stuff that sets colorize
+
 ---@param npc EntityNPC
 ---@return boolean
 function ToyboxMod:isModChampion(npc)
@@ -43,14 +45,22 @@ local function initModChampData(npc)
     spr:LoadGraphics()
     spr:SetCustomShader("shaders_tb/custom_champion")
 
+    local color = result.Color
+    local npcCol = npc.Color
+    npcCol:SetColorize(color.R, color.G, color.B, color.Mode)
+    npc.Color = npcCol
+
     Isaac.RunCallbackWithParam(ToyboxMod.CUSTOM_CALLBACKS.POST_CUSTOM_CHAMPION_INIT, result.Idx, npc, result.Idx)
 end
 
+---@param npc EntityNPC
+---@param id string
+---@param init boolean?
 function ToyboxMod:MakeModChampion(npc, id, init)
     local outcome = id or ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[ToyboxMod:getModChampionPicker():PickOutcome(npc:GetDropRNG())]
 
     ToyboxMod.DENY_CHAMP_ROLL = true
-    
+
     local newNpc = npc
     if(init) then newNpc = nil end
     while(not (newNpc and newNpc:Exists() and not newNpc:IsChampion())) do

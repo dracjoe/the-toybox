@@ -1138,6 +1138,12 @@ ToyboxMod.CUSTOM_CHAMPIONS = {
         HPMult = 2,
         Weight = 1,
     },
+    RECURSIVE = {
+        Idx = 7,
+        Color = {R=0, G=0, B=0, Mode=1},
+        HPMult = 1.25,
+        Weight = 1,
+    },
 }
 ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME = {}
 for name, data in pairs(ToyboxMod.CUSTOM_CHAMPIONS) do

@@ -12,11 +12,33 @@ varying lowp float PixelationAmountOut;
 varying lowp vec3 ClipPlaneOut;
 uniform sampler2D Texture0;
 const lowp vec3 _lum = vec3(0.212671, 0.715160, 0.072169);
+const lowp float _pi =  3.14159265359;
 
 #define USE_PREMULTIPLIED_ALPHA
 
+lowp vec2 getPixelatedCoord(lowp vec2 coord)
+{
+	lowp vec2 pa = vec2(1.0+PixelationAmountOut, 1.0+PixelationAmountOut) / TextureSizeOut;
+	return PixelationAmountOut > 0.0 ? coord - mod(coord, pa) + pa * 0.5 : coord;
+}
+
 lowp vec4 getChampionColor(lowp vec3 baseColor, lowp float modifier)
 {
+	if(modifier>=1.0 && modifier<2.0)
+	{
+		lowp vec4 defaultColor = vec4(0.851, 0.4353, 0.1569, 1.0);
+		//vec4(0.6078, 0.3843, 0.1608, 1.0);
+
+		lowp vec2 centeredCoord = (abs(gl_FragCoord.xy-baseColor.gb)/100.0)*10.0;
+		lowp float pixelScale = 0.25;
+		centeredCoord = floor(centeredCoord/pixelScale)*pixelScale;
+
+		lowp float dist = (sin((length(centeredCoord)+(modifier-1.0)*2.0*_pi)*9.0)+1.0)*0.5;
+		dist = pow(dist, 0.25)*0.5+0.5;
+
+		return vec4(defaultColor.rgb*dist, defaultColor.a);
+	}
+
 	return vec4(baseColor, 1.0);
 }
 
@@ -27,12 +49,12 @@ void main(void)
 		discard;
 	
 	// Pixelate
-	lowp vec2 pa = vec2(1.0+PixelationAmountOut, 1.0+PixelationAmountOut) / TextureSizeOut;
+	
 
 	lowp float modifier = ColorizeOut.a;
 	lowp vec4 champColor = getChampionColor(ColorizeOut.rgb, modifier);
 	
-	lowp vec4 SourceColor = texture2D(Texture0, PixelationAmountOut > 0.0 ? TexCoord0 - mod(TexCoord0, pa) + pa * 0.5 : TexCoord0);
+	lowp vec4 SourceColor = texture2D(Texture0, getPixelatedCoord(TexCoord0));
 	if(SourceColor.a < 0.5)
 	{
 		// alpha < 0.5, leave color unchanged and remap opacity to [0;1]

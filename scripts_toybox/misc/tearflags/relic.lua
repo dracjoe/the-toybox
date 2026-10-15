@@ -31,8 +31,8 @@ local function applyTearFlagEffect(_, npc, player, source, weapon, params)
         ToyboxMod.GAME:DevolveEnemy(npc)
         local newNpc = nil
         for _, ent in ipairs(Isaac.GetRoomEntities()) do
-            if(ent and ent.FrameCount==0 and ent.Position:Distance(npc.Position)<3) then
-                newNpc = ent
+            if(ent and ent.FrameCount==0 and ent.Position:Distance(npc.Position)<3 and ent:ToNPC()) then
+                newNpc = ent:ToNPC()
             end
         end
         if(newNpc) then
