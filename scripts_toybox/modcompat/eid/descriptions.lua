@@ -2264,6 +2264,22 @@ enums.FUNCTIONS.AddItem({
         },
     }
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_SUN_MASK,
+    Name = "Sun Mask",
+    Description = {
+        "{{Card20}} Spawns \"XIX - The Sun\"",
+        "Reduces boss health based on how much of the map has been revealed, up to -20% HP",
+        "{{SecretRoom}} Secret/Super Secret rooms and red rooms do not count towards full percentage and instead count as a bonus"
+    },
+    StackModifiers = {
+        {
+            ToModify = {
+                "Boss health is reduced by up to -15% HP more per stack",
+            }
+        },
+    }
+})
 
 --- OTHER ITEM MODIFIERS ---
 

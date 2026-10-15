@@ -90,6 +90,7 @@
         <Item Name="Runic Sap"/>
         <Item Name="Power Crystal"/>
         <Item Name="Geode"/>
+        <Item Name="Sun Mask"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -179,6 +180,7 @@
         <Item Name="Runic Sap"/>
         <Item Name="Power Crystal"/>
         <Item Name="Geode"/>
+        <Item Name="Sun Mask"/>
     </Pool>
 
     <Pool Name="boss">
@@ -323,6 +325,7 @@
         <Item Name="Frankincense"/>
         <Item Name="Steel Soul"/>
         <Item Name="Brotherhood"/>
+        <Item Name="Sun Mask"/>
     </Pool>
     <Pool Name="greedAngel">
         <Item Name="Silk Bag"/>
@@ -337,6 +340,7 @@
         <Item Name="Frankincense"/>
         <Item Name="Steel Soul"/>
         <Item Name="Brotherhood"/>
+        <Item Name="Sun Mask"/>
     </Pool>
 
     <Pool Name="curse">

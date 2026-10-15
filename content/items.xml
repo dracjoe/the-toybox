@@ -1669,6 +1669,14 @@
     customtags=""
     cache=""
 />
+<passive id="181" name="Sun Mask"
+    description="Smite your foes"
+    gfx="sun_mask.png"
+    quality="2"
+    tags="offensive summonable"
+    customtags=""
+    cache=""
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"
