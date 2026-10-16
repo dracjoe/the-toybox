@@ -360,6 +360,7 @@ ToyboxMod.TRINKET_FAT_LEECH = Isaac.GetTrinketIdByName("Fat Leech")
 ToyboxMod.TRINKET_FLUKIE = Isaac.GetTrinketIdByName("Flukie")
 ToyboxMod.TRINKET_BUG_SPRAY = Isaac.GetTrinketIdByName("Bug Spray")
 ToyboxMod.TRINKET_HATCHLING = Isaac.GetTrinketIdByName("Hatchling")
+ToyboxMod.TRINKET_PETRIFIED_BABY = Isaac.GetTrinketIdByName("Petrified Baby")
 
 
 --ToyboxMod.TRINKET_LIMIT_BREAK = Isaac.GetTrinketIdByName("LIMIT BREAK")               --*UNUSED
@@ -463,6 +464,7 @@ ToyboxMod.FAMILIAR_PSYCHO_BABY = Isaac.GetEntityVariantByName("Psycho Baby") ---
 ToyboxMod.FAMILIAR_GIMP_BABY = Isaac.GetEntityVariantByName("Gimp Baby") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_CRAZED_BOBBY = Isaac.GetEntityVariantByName("Crazed Bobby") ---@type FamiliarVariant
 ToyboxMod.FAMILIAR_LIL_POT = Isaac.GetEntityVariantByName("Lil Pot") ---@type FamiliarVariant
+ToyboxMod.FAMILIAR_PETRIFIED_BABY = Isaac.GetEntityVariantByName("Petrified Baby") ---@type FamiliarVariant
 --#endregion
 --#region FAMILIAR SUBTYPE
 

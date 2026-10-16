@@ -3572,6 +3572,25 @@ enums.FUNCTIONS.AddTrinket({
         },
     },
 })
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_PETRIFIED_BABY,
+    Name = "Petrified Baby",
+    Description = {
+        "Familiar that follows you and blocks projectiles",
+        "{{Conjoined}} Counts as 1 item towards the Conjoined transformation while held",
+    },
+    Modifiers = {
+        {
+            Condition = function(descObj)
+                return (descObj.ObjSubType & TrinketType.TRINKET_GOLDEN_FLAG ~= 0)
+            end,
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"1 item", "{{ColorGold}}2{{CR}} items"},
+            }
+        }
+    },
+})
 
 enums.FUNCTIONS.AddCard({
     ID = ToyboxMod.CARD_PRISMSTONE,

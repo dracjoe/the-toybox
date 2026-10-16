@@ -2063,6 +2063,11 @@
     gfx="hatchling.png"
     cache=""
 />
+<trinket id="52" name="Petrified Baby"
+    description="Rock-hard buddy"
+    gfx="petrified_baby.png"
+    cache="familiars"
+/>
 
 <!-- UNUSED ITEMS
 

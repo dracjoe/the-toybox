@@ -458,6 +458,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.trinkets.flukie")
     include("scripts_toybox.items.trinkets.bug_spray")
     include("scripts_toybox.items.trinkets.hatchling")
+    include("scripts_toybox.items.trinkets.petrified_baby")
 --UNUSED
     --include("scripts_toybox.items.unused.btrain")
     --include("scripts_toybox.items.unused.laser_pointer")

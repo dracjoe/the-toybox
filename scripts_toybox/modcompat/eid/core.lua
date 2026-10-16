@@ -440,6 +440,9 @@ EID:addGridEntityConditional(
     end
 )
 
+-- for petrified baby
+EID:assignTransformation("trinket", ToyboxMod.TRINKET_PETRIFIED_BABY, "4")
+
 for i, categoryData in ipairs(EID.ItemReminderCategories) do
     if(categoryData.id=="Passives") then
         local function getHomunculusItems(player) ---@param player EntityPlayer
