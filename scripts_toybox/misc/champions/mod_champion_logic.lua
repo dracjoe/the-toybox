@@ -11,6 +11,60 @@ function ToyboxMod:getModChampionIdx(npc)
     return ToyboxMod:getEntityData(npc, "CUSTOM_CHAMPION_IDX")
 end
 
+local function packColor(r, g, b)
+    return math.floor(r*1000) + math.floor(g*100)/100 + math.floor(b*100)/100000
+end
+
+local function unpackColor(c)
+    return math.floor(c/10.0)/100.0, math.floor((c%10.0)*100.0)/100.0, (c*1000.0)%10.0
+end
+
+-- {R=0.1, G=0.5, B=0.66, Mode=0
+--print(packColor(0.1,0.5,0.66))
+--print(unpackColor(packColor(0.1,0.5,0.66)))
+
+---@param npc EntityNPC
+---@param id integer
+---@param timeDuration integer
+---@param cancelShader boolean?
+function ToyboxMod:getModChampColor(npc, id, timeDuration, cancelShader)
+    id = id or ToyboxMod:getModChampionIdx(npc)
+    local defaultColor = ToyboxMod.CUSTOM_CHAMPIONS[ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[ToyboxMod:getModChampionIdx(npc)]].Color
+
+    local npcColor = Color.Lerp(npc.Color, Color.Default, 0)
+    npcColor:SetColorize(defaultColor.R, defaultColor.G, defaultColor.B, defaultColor.Mode)
+
+    local basePosition = Isaac.WorldToRenderPosition(npc.Position+npc.Velocity)
+    local overlayOffset = npc.SpriteOffset+Vector(0,-6)*npc.SpriteScale
+    local frame = npc:GetSprite():GetNullFrame("OverlayEffect") or npc:GetSprite():GetOverlayNullFrame("OverlayEffect")
+    if(frame) then
+        overlayOffset = overlayOffset+frame:GetPos()+Vector(0,8)
+    else
+        overlayOffset = overlayOffset+Vector(0,-npc.Size*1.25)*npc.SizeMulti+Vector(0,8)
+    end
+
+    if(defaultColor.Mode == 1) then
+        local centerPos = Isaac.WorldToScreen(Isaac.RenderToWorld(basePosition+npc.SpriteOffset+overlayOffset/2))
+        centerPos = centerPos*Vector(2.0, 2.0)
+
+        local colorFloat = packColor(defaultColor.R, defaultColor.G, defaultColor.B)
+        npcColor:SetColorize(colorFloat, centerPos.X, centerPos.Y, defaultColor.Mode+(npc.FrameCount/timeDuration)%1)
+    elseif(defaultColor.Mode == 2) then
+        local centerPos = Isaac.WorldToScreen(Isaac.RenderToWorld(basePosition+npc.SpriteOffset+overlayOffset/2))
+        centerPos = centerPos*Vector(2.0, 2.0)
+
+        local colorFloat = packColor(defaultColor.R, defaultColor.G, defaultColor.B)
+        npcColor:SetColorize(colorFloat, centerPos.X, centerPos.Y, defaultColor.Mode+(npc.FrameCount/timeDuration)%1)
+    end
+
+    if(cancelShader) then
+        local colorize = npcColor:GetColorize()
+        npcColor:SetColorize(colorize.R, colorize.G, colorize.B, -colorize.A-1.0)
+    end
+
+    return npcColor
+end
+
 function ToyboxMod:getModChampionPicker()
     local level = ToyboxMod.GAME:GetLevel()
 
@@ -33,22 +87,22 @@ local function initModChampData(npc)
         npc.CollisionDamage = 2
     end
     npc.Scale = npc.Scale*1.15
-    
+
+    local replacedAnything = false
     local spr = npc:GetSprite()
     for _, layer in pairs(spr:GetAllLayers()) do
         local path = layer:GetSpritesheetPath()
         path = string.sub(path, 1, -5).."_champion.png"
         if(pcall(Renderer.LoadImage, path)) then
             spr:ReplaceSpritesheet(layer:GetLayerID(), path, false)
+            replacedAnything = true
         end
     end
     spr:LoadGraphics()
     spr:SetCustomShader("shaders_tb/custom_champion")
 
-    local color = result.Color
-    local npcCol = npc.Color
-    npcCol:SetColorize(color.R, color.G, color.B, color.Mode)
-    npc.Color = npcCol
+    npc.Color = ToyboxMod:getModChampColor(npc, result.Idx, result.Color.Duration, not replacedAnything)
+    ToyboxMod:setEntityData(npc, "CANCEL_CHAMPION_SHADER", not replacedAnything)
 
     Isaac.RunCallbackWithParam(ToyboxMod.CUSTOM_CALLBACKS.POST_CUSTOM_CHAMPION_INIT, result.Idx, npc, result.Idx)
 end
@@ -138,10 +192,7 @@ local function updateShader(_, npc)
     local id = ToyboxMod:getModChampionIdx(npc)
     if(id) then
         local color = ToyboxMod.CUSTOM_CHAMPIONS[ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[id]].Color
-
-        local npcCol = npc.Color
-        npcCol:SetColorize(color.R, color.G, color.B, color.Mode)
-        npc.Color = npcCol
+        npc.Color = ToyboxMod:getModChampColor(npc, id, color.Duration, ToyboxMod:getEntityData(npc, "CANCEL_CHAMPION_SHADER"))
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_PRE_NPC_UPDATE, updateShader)

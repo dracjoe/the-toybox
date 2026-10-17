@@ -1119,13 +1119,13 @@ ToyboxMod.CUSTOM_CHAMPIONS = {
     },
     DROWNED = {
         Idx = 3,
-        Color = {R=0.1, G=0.5, B=0.66, Mode=0},
+        Color = {R=0.1, G=0.5, B=0.66, Mode=2, Duration=80},
         HPMult = 2,
         Weight = 1,
     },
     SPIDERS = {
         Idx = 4,
-        Color = {R=1, G=1, B=1, Mode=0},
+        Color = {R=1, G=1, B=1, Mode=3, Duration=0},
         HPMult = 1,
         Weight = 0,
     },
@@ -1137,15 +1137,22 @@ ToyboxMod.CUSTOM_CHAMPIONS = {
     },
     JELLY = {
         Idx = 6,
-        Color = {R=0.3, G=1, B=0, Mode=0},
+        Color = {R=0.3, G=1, B=0, Mode=2, Duration=80},
         HPMult = 2,
         Weight = 1,
     },
     RECURSIVE = {
         Idx = 7,
-        Color = {R=0, G=0, B=0, Mode=1},
+        Color = {R=0.85, G=0.44, B=0.16, Mode=1, Duration=80},
         HPMult = 1.25,
         Weight = 1,
+    },
+    SOULLESS = {
+        Idx = 8,
+        Color = {R=1, G=1, B=1, Mode=3, Duration=0},
+        HPMult = 2.5,
+        Weight = 1,
+        StageReq = LevelStage.STAGE3_1,
     },
 }
 ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME = {}

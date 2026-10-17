@@ -111,11 +111,11 @@ local COMMANDS = {
     CUSTOM_CHAMPION = {
         Name = "modchamp",
         Description = "Spawns an entity with a Toybox champion variant",
-        Help = "Spawns an entity with a Toybox champion variant;\n Param is the entity's type/var/sub/[champId/champName].",
+        Help = "Spawns an entity with a Toybox champion variant;\n Param is the entity's type/var/sub/[champId/champName]/force.",
         Function = function(data, params)
-            local tvsc = {0, 0, 0, ToyboxMod:getModChampionPicker():PickOutcome(ToyboxMod:generateRng())}
+            local tvsc = {0, 0, 0, ToyboxMod:getModChampionPicker():PickOutcome(ToyboxMod:generateRng()), 0}
             local startIdx = 1
-            for i=1, 4 do
+            for i=1, 5 do
                 local dotIdx = string.find(params, "%.", startIdx+1)
                 local sub = string.sub(params, startIdx, -1)
                 if(dotIdx) then
@@ -143,7 +143,7 @@ local COMMANDS = {
             local desiredPos = room:FindFreePickupSpawnPosition(room:GetCenterPos(), 0, true)
 
             local ent = Isaac.Spawn(tvsc[1], tvsc[2], tvsc[3], desiredPos, Vector.Zero, nil):ToNPC()
-            if(conf and conf:CanBeChampion()) then
+            if(tvsc[5]~=0 or (conf and conf:CanBeChampion())) then
                 ToyboxMod:MakeModChampion(ent, ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME[tvsc[4]], true)
             end
         end,
