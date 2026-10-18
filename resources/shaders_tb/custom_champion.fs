@@ -65,9 +65,28 @@ lowp vec4 getChampionColor(lowp vec3 baseColor, lowp float modifier)
 
 		return vec4(defaultColor.rgb*dist, defaultColor.a);
 	}
-	else if(modifier>=3.0 && modifier<4.0)
+	else if(modifier>=4.0 && modifier<5.0)
 	{
+		lowp vec4 defaultColor = vec4(unpackColor(baseColor.r), 1.0);
 
+		lowp vec2 centeredCoord = ((gl_FragCoord.xy-baseColor.gb)/100.0)*10.0;
+		lowp float pixelScale = 0.25;
+		centeredCoord = floor(centeredCoord/pixelScale)*pixelScale;
+
+/*
+		lowp float dist = 1.0;
+		if(centeredCoord.y*1.5+centeredCoord.x < 0.0)
+		{
+			dist += pow(-(centeredCoord.y*1.5+centeredCoord.x)*0.2, 2.0)*0.5;
+		}
+		*/
+
+		lowp float dist = 2.4-(1.0-centeredCoord.y*0.1);
+		//dist = 1.0;
+
+		//dist *= pow((cos(abs(centeredCoord.x)*4.0)+1.0)*0.5, 0.1);
+
+		return vec4(defaultColor.rgb*dist, 1.0);
 	}
 
 	return vec4(baseColor, 1.0);
@@ -85,6 +104,74 @@ lowp vec4 evaluateFinalColor(lowp vec4 currentColor, lowp vec3 baseColor, lowp f
 		else
 		{
 			currentColor.rgb = vec3(0.0, 0.0, 0.0);
+		}
+
+		return currentColor;
+	}
+	else if(modifier>=4.0 && modifier<5.0)
+	{
+		lowp vec2 centeredCoord = ((gl_FragCoord.xy-baseColor.gb)/100.0)*10.0;
+		lowp float pixelScale = 0.25;
+		centeredCoord = floor(centeredCoord/pixelScale)*pixelScale;
+
+		lowp float baseA = 0.0;
+		
+		if(dot(currentColor.rgb, _lum)>0.01)
+		{
+			lowp mat3 sobelX = mat3(-1.0, -2.0, -1.0,
+									 0.0,  0.0, 0.0,
+									 1.0,  2.0,  1.0);
+			lowp mat3 sobelY = mat3(-1.0,  0.0,  1.0,
+									-2.0,  0.0, 2.0,
+									-1.0,  0.0,  1.0); 
+			lowp float sumX = 0.0;	// x-axis change
+			lowp float sumY = 0.0;	// y-axis change
+			
+			for(int i = -1; i <= 1; i++)
+			{
+				for(int j = -1; j <= 1; j++)
+				{
+					// texture coordinates should be between 0.0 and 1.0
+					lowp float x = TexCoord0.x + float(i)/TextureSizeOut.x;	
+					lowp float y =  TexCoord0.y + float(j)/TextureSizeOut.y;
+
+					lowp vec4 tex = texture2D(Texture0, getPixelatedCoord(vec2(x,y)));
+
+					// Convolve kernels with image
+					sumX += length(tex.rgb) * float(sobelX[1+i][1+j]);
+					sumY += length(tex.rgb) * float(sobelY[1+i][1+j]);
+				}
+			}
+
+			lowp float dist = -(centeredCoord.y+centeredCoord.x*1.5);
+			if(dist<0.0)
+			{
+				dist = dist*0.75;
+			}
+
+			lowp float g = abs(sumX) + abs(sumY);
+			currentColor.rgb += min(1.0, g)*pow(dist*0.1, 2.0)*0.75;
+		}
+
+		lowp float time = mod(modifier, 1.0);
+
+		lowp float thresh = 0.66;
+		if(time>=thresh)
+		{
+			time = (time-thresh)/(1.0-thresh);
+
+			lowp float newCoord = centeredCoord.x+centeredCoord.y+time*45.0-20.0;
+
+			lowp float needed = 1.75;
+			needed += 0.95*max(0.0, 1.0-dot(currentColor.rgb, _lum)*4.0);
+			needed *= 1.5;
+
+			if(newCoord>1.0-needed && newCoord<1.0+needed)
+			{
+				newCoord = (newCoord+(needed-1.0))/needed;
+
+				currentColor.rgb += 1.0*pow(1.0-abs(newCoord-1.0), 0.9)*(pow(max(0.0, dot(currentColor.rgb, _lum)-0.5), 0.1)+0.5)*currentColor.a; 
+			}
 		}
 
 		return currentColor;

@@ -85,6 +85,8 @@ include("scripts_toybox.misc.champions.mod_champion_logic")
     include("scripts_toybox.misc.champions.champion_effects.eternal")
     include("scripts_toybox.misc.champions.champion_effects.recursive")
     include("scripts_toybox.misc.champions.champion_effects.soulless")
+    include("scripts_toybox.misc.champions.champion_effects.metal")
+    include("scripts_toybox.misc.champions.champion_effects.devolver")
 include("scripts_toybox.misc.champions.champions_in_greed")
 include("scripts_toybox.misc.tear_variants")
 -- CUSTOM TEARFLAGS

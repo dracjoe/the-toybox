@@ -43,7 +43,7 @@ local function preNpcRender(_, npc, offset)
         if(frame) then
             overlayOffset = overlayOffset+frame:GetPos()+Vector(0,8)
         else
-            overlayOffset = overlayOffset+Vector(0,-npc.Size*1.25)*npc.SizeMulti+Vector(0,20)
+            overlayOffset = overlayOffset+Vector(0,-npc.Size*1.25)*npc.SizeMulti+Vector(0,8)
         end
 
         local rpos = Isaac.WorldToRenderPosition(npc.Position)+offset+overlayOffset

@@ -625,13 +625,13 @@
     <!-- NPCS -->
     <entity name="Stumpy"
         id="783" variant="1" subtype="0" anm2path="enemies/stumpy.anm2" friction="1"
-        baseHP="15" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="16"
+        baseHP="15" boss="0" champion="1" collisionDamage="1" collisionMass="100" collisionRadius="16"
         numGridCollisionPoints="12" shadowSize="0" stageHP="3">
 		<gibs amount="5" blood="1" bone="0" dust="0" eye="0" gut="0" large="0" rock="0"/>
     </entity>
     <entity name="Tonsil"
         id="783" variant="2" subtype="0" anm2path="enemies/tonsil.anm2" friction="1"
-        baseHP="10" boss="0" champion="0" collisionDamage="1" collisionMass="14" collisionRadius="14"
+        baseHP="10" boss="0" champion="1" collisionDamage="1" collisionMass="14" collisionRadius="14"
         numGridCollisionPoints="12" shadowSize="18" stageHP="3">
 		<gibs amount="3" blood="1" bone="0" dust="0" eye="0" gut="0" large="0" rock="0"/>
     </entity>

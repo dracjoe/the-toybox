@@ -1109,50 +1109,59 @@ ToyboxMod.MANTLE_SHARD_GRAVITY = 7
 
 --#endregion
 
+ToyboxMod.CHAMPION_VFX = {
+    SPIRAL = 1,
+    WAVES = 2,
+    SHADY = 3,
+    SHINE = 4,
+}
+
 ToyboxMod.CUSTOM_CHAMPIONS = {
     ETERNAL = {
-        Idx = 2,
+        Idx = 1,
         Color = {R=1, G=1, B=0.8, Mode=0},
         HPMult = 2,
         Weight = 0.25,
         StageReq = LevelStage.STAGE3_1,
     },
     DROWNED = {
-        Idx = 3,
-        Color = {R=0.1, G=0.5, B=0.66, Mode=2, Duration=80},
+        Idx = 2,
+        Color = {R=0.1, G=0.5, B=0.66, Mode=ToyboxMod.CHAMPION_VFX.WAVES, Duration=80},
         HPMult = 2,
         Weight = 1,
     },
-    SPIDERS = {
-        Idx = 4,
-        Color = {R=1, G=1, B=1, Mode=3, Duration=0},
-        HPMult = 1,
-        Weight = 0,
-    },
-    GOLDEN = {
-        Idx = 5,
-        Color = {R=1, G=1, B=1, Mode=0},
-        HPMult = 1,
-        Weight = 0,
+    METAL = {
+        Idx = 3,
+        Color = {R=0.33, G=0.33, B=0.33, Mode=ToyboxMod.CHAMPION_VFX.SHINE, Duration=200},
+        HPMult = 1.5,
+        Weight = 0.5,
+        StageReq = LevelStage.STAGE2_1,
     },
     JELLY = {
-        Idx = 6,
-        Color = {R=0.3, G=1, B=0, Mode=2, Duration=80},
+        Idx = 4,
+        Color = {R=0.3, G=1, B=0, Mode=ToyboxMod.CHAMPION_VFX.WAVES, Duration=80},
         HPMult = 2,
         Weight = 1,
     },
     RECURSIVE = {
-        Idx = 7,
-        Color = {R=0.85, G=0.44, B=0.16, Mode=1, Duration=80},
+        Idx = 5,
+        Color = {R=0.85, G=0.44, B=0.16, Mode=ToyboxMod.CHAMPION_VFX.SPIRAL, Duration=80},
         HPMult = 1.25,
         Weight = 1,
     },
     SOULLESS = {
-        Idx = 8,
-        Color = {R=1, G=1, B=1, Mode=3, Duration=0},
+        Idx = 6,
+        Color = {R=1, G=1, B=1, Mode=ToyboxMod.CHAMPION_VFX.SHADY, Duration=0},
         HPMult = 2.5,
         Weight = 1,
         StageReq = LevelStage.STAGE3_1,
+    },
+    DEVOLVER = {
+        Idx = 7,
+        Color = {R=0.36, G=0.16, B=0.04, Mode=ToyboxMod.CHAMPION_VFX.SPIRAL, Duration=80},
+        HPMult = 4,
+        Weight = 0.75,
+        StageReq = LevelStage.STAGE2_1,
     },
 }
 ToyboxMod.CUSTOM_CHAMPION_IDX_TO_NAME = {}

@@ -23,6 +23,12 @@ end
 --print(packColor(0.1,0.5,0.66))
 --print(unpackColor(packColor(0.1,0.5,0.66)))
 
+local NEEDS_TIME_POS = {
+    [ToyboxMod.CHAMPION_VFX.SPIRAL] = true,
+    [ToyboxMod.CHAMPION_VFX.WAVES] = true,
+    [ToyboxMod.CHAMPION_VFX.SHINE] = true,
+}
+
 ---@param npc EntityNPC
 ---@param id integer
 ---@param timeDuration integer
@@ -43,13 +49,7 @@ function ToyboxMod:getModChampColor(npc, id, timeDuration, cancelShader)
         overlayOffset = overlayOffset+Vector(0,-npc.Size*1.25)*npc.SizeMulti+Vector(0,8)
     end
 
-    if(defaultColor.Mode == 1) then
-        local centerPos = Isaac.WorldToScreen(Isaac.RenderToWorld(basePosition+npc.SpriteOffset+overlayOffset/2))
-        centerPos = centerPos*Vector(2.0, 2.0)
-
-        local colorFloat = packColor(defaultColor.R, defaultColor.G, defaultColor.B)
-        npcColor:SetColorize(colorFloat, centerPos.X, centerPos.Y, defaultColor.Mode+(npc.FrameCount/timeDuration)%1)
-    elseif(defaultColor.Mode == 2) then
+    if(NEEDS_TIME_POS[defaultColor.Mode]) then
         local centerPos = Isaac.WorldToScreen(Isaac.RenderToWorld(basePosition+npc.SpriteOffset+overlayOffset/2))
         centerPos = centerPos*Vector(2.0, 2.0)
 
