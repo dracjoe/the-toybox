@@ -72,3 +72,11 @@ local function hitPlayer(_, ent, _, _, source)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_ENTITY_TAKE_DMG, hitPlayer, EntityType.ENTITY_PLAYER)
+
+---@param npc EntityNPC
+local function recursiveChampionDie(_, npc)
+    local pos = ToyboxMod.GAME:GetRoom():FindFreePickupSpawnPosition(npc.Position,0)
+
+    local heart = Isaac.Spawn(5,PickupVariant.PICKUP_LOCKEDCHEST,0,pos,Vector.Zero,npc):ToPickup()
+end
+ToyboxMod:AddCallback(ToyboxMod.CUSTOM_CALLBACKS.POST_CUSTOM_CHAMPION_DEATH, recursiveChampionDie, ToyboxMod.CUSTOM_CHAMPIONS.ETERNAL.Idx)

@@ -73,6 +73,32 @@ local function replaceSpriteSheets(familiar)
     end
 end
 
+---@param tear EntityTear
+local function familiarFireProj(_, tear)
+    local familiar = tear.SpawnerEntity and tear.SpawnerEntity:ToFamiliar() ---@type EntityFamiliar
+    if(not familiar) then return end
+
+    tear:ChangeVariant(TearVariant.BONE)
+
+    local vel = tear.Velocity-familiar.Player:GetTearMovementInheritance(tear.Velocity:Normalized())
+    tear.Velocity = vel:Resized((familiar.SubType&(1<<0)~=0 and BFFS_BONE_SPEED or BONE_SPEED))
+    tear.Scale = 1.2
+    tear.Color = (familiar.SubType&(1<<0)~=0 and Color(0.3,0.3,0.3,1) or Color(1,1,1,1))
+
+    if(familiar.SubType & 1<<1 ~= 0) then
+        tear.FallingAcceleration = 1.6
+        tear.FallingSpeed = -5*(tear.FallingAcceleration+0.1)
+        ToyboxMod:setEntityData(tear, "BONEBOY_HOLY_BONE", true)
+    end
+
+    if(familiar.Player:HasTrinket(TrinketType.TRINKET_BABY_BENDER)) then
+        tear:AddTearFlags(TearFlags.TEAR_HOMING)
+        tear.Color = tear.Color*Color.TearHoming
+    end
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_FAMILIAR_FIRE_PROJECTILE, CallbackPriority.IMPORTANT, familiarFireProj, ToyboxMod.FAMILIAR_BONE_BOY)
+
+
 ---@param familiar EntityFamiliar
 local function boneBoyInit(_, familiar)
     familiar.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_GROUND
@@ -132,7 +158,12 @@ local function boneBoyUpdate(_, familiar)
                 data.BONEBOY_TIME_SINCE_LAST_TARGET = data.BONEBOY_TIME_SINCE_LAST_SHOT+10
                 data.BONEBOY_BONES_LEFT = (familiar.SubType&(1<<0)~=0 and (BFFS_FIRE_NUM-1) or 0)
             else
-                data.BONEBOY_TIME_SINCE_LAST_SHOT = (data.BONEBOY_TIME_SINCE_LAST_SHOT or 0)-1
+                local toRemove = 1
+                local lullabyMult = familiar.Player:GetTrinketMultiplier(TrinketType.TRINKET_FORGOTTEN_LULLABY)
+                if(lullabyMult>0) then
+                    toRemove = toRemove+lullabyMult//2+(familiar.FrameCount%2<=lullabyMult%2 and 1 or 0)
+                end
+                data.BONEBOY_TIME_SINCE_LAST_SHOT = math.max(0, (data.BONEBOY_TIME_SINCE_LAST_SHOT or 0)-toRemove)
 
                 if(data.BONEBOY_TIME_SINCE_LAST_SHOT<=0) then
                     data.BONEBOY_TIME_SINCE_LAST_TARGET = 0
@@ -171,17 +202,8 @@ local function boneBoyUpdate(_, familiar)
                 dir=(familiar.TargetPosition-familiar.Position)
                 target = familiar.TargetPosition
             end
-            local bone = Isaac.Spawn(2,TearVariant.BONE,0,familiar.Position,dir:Resized((familiar.SubType&(1<<0)~=0 and BFFS_BONE_SPEED or BONE_SPEED)),familiar):ToTear()
-            bone.Scale = 1.2
-            bone.CollisionDamage = (familiar.SubType&(1<<0)~=0 and BFFS_BONE_DMG or BONE_DMG)
-            bone.Color = boneColor
 
-            if(familiar.SubType & 1<<1 ~= 0) then
-                local liveFrames = math.ceil(dir:Length()/bone.Velocity:Length())
-                bone.FallingAcceleration = 1.6
-                bone.FallingSpeed = -5*(bone.FallingAcceleration+0.1)
-                ToyboxMod:setEntityData(bone, "BONEBOY_HOLY_BONE", true)
-            end
+            local bone = familiar:FireProjectile(dir:Normalized())
 
             if((data.BONEBOY_BONES_LEFT or 0)>0) then
                 data.BONEBOY_BONES_LEFT = (data.BONEBOY_BONES_LEFT or 0)-1
