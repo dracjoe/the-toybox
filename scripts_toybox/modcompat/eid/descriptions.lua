@@ -1919,7 +1919,7 @@ enums.FUNCTIONS.AddItem({
     Name = "Krokodil",
     Description = {
         "\1 +0.7 Tears",
-        "\1 +0.15 Shotspeed",
+        "\1 +0.16 Shotspeed",
         "{{RottenHeart}} Turns all of your Red Hearts into Rotten Hearts",
     },
 })

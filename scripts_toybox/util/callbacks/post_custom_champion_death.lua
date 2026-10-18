@@ -9,7 +9,6 @@ end
 ---@param npc Entity
 local function markChampionAsDead(_, npc)
     if(not ToyboxMod:getEntityData(npc, "CUSTOM_CHAMPION_IDX")) then return end
-
     CHAMPIONS_JUST_DIED[getNpcKey(npc)] = ToyboxMod:getEntityData(npc, "CUSTOM_CHAMPION_IDX")
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_ENTITY_KILL, markChampionAsDead, EntityType.ENTITY_NPC)

@@ -3,8 +3,9 @@ local function recursiveChampionDie(_, npc)
     ToyboxMod.DENY_CHAMP_ROLL = true
 
     local devolvedCorrectly = false
-
-    if(npc:CanDevolve()) then
+    
+    local conf0 = EntityConfig.GetEntity(npc.Type, npc.Variant, npc.SubType)
+    if(npc:CanDevolve() and (conf0 and conf0:GetDevolvedEntity())) then
         ToyboxMod.GAME:DevolveEnemy(npc)
 
         local newNpc = nil
@@ -15,7 +16,7 @@ local function recursiveChampionDie(_, npc)
         end
         if(newNpc) then
             local conf = EntityConfig.GetEntity(newNpc.Type, newNpc.Variant, newNpc.SubType)
-            if(conf and conf:CanBeChampion()) then
+            if((conf and conf:CanBeChampion()) or PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_MALICE)) then
                 ToyboxMod:MakeModChampion(newNpc, "RECURSIVE", true)
 
                 devolvedCorrectly = true

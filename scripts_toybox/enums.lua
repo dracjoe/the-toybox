@@ -1159,7 +1159,7 @@ ToyboxMod.CUSTOM_CHAMPIONS = {
     DEVOLVER = {
         Idx = 7,
         Color = {R=0.36, G=0.16, B=0.04, Mode=ToyboxMod.CHAMPION_VFX.SPIRAL, Duration=80},
-        HPMult = 4,
+        HPMult = 3,
         Weight = 0.75,
         StageReq = LevelStage.STAGE2_1,
     },
