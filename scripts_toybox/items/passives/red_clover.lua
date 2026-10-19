@@ -11,12 +11,19 @@ local function evalCache(_, pl, flag)
 
     local mult = pl:GetCollectibleNum(ToyboxMod.COLLECTIBLE_RED_CLOVER)
 
-    if(flag==CacheFlag.CACHE_LUCK) then
+    if(flag==CacheFlag.CACHE_LUCK and alreadyUpdating~="LUCK") then
         pl.Luck = pl.Luck+LUCK_UP*mult
 
         if(not alreadyUpdating) then
-            alreadyUpdating = true
+            alreadyUpdating = "LUCK"
             pl:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
+            pl:EvaluateItems()
+            alreadyUpdating = false
+        end
+    elseif(flag==CacheFlag.CACHE_DAMAGE and alreadyUpdating~="DAMAGE") then
+        if(not alreadyUpdating) then
+            alreadyUpdating = "DAMAGE"
+            pl:AddCacheFlags(CacheFlag.CACHE_LUCK)
             pl:EvaluateItems()
             alreadyUpdating = false
         end

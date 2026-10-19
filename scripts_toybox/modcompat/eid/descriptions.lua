@@ -28,14 +28,6 @@ enums.FUNCTIONS.AddItem({
                 "{{Collectible304}} Stats are distributed more towards tears and not at all towards damage",
             },
         },
-        {
-            Condition = function(descObj)
-                return PlayerManager.AnyoneHasCollectible(CollectibleType.COLLECTIBLE_ROCK_BOTTOM)
-            end,
-            ToModify = {
-                "{{Collectible562}} Damage remains unchangeable",
-            },
-        },
     }
 })
 enums.FUNCTIONS.AddItem({

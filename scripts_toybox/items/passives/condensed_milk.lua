@@ -21,7 +21,9 @@ local function evalCache(_, player, flag)
             alreadyUpdating = nil
 
             ogDamage = player.Damage
-            player.Damage = 3.5
+            if(not player:HasCollectible(CollectibleType.COLLECTIBLE_ROCK_BOTTOM)) then
+                player.Damage = 3.5
+            end
         end
 
         local mult = FIREDELAY_MULT^player:GetCollectibleNum(ToyboxMod.COLLECTIBLE_CONDENSED_MILK)
@@ -34,7 +36,9 @@ local function evalCache(_, player, flag)
             player:EvaluateItems()
             alreadyUpdating = nil
 
-            player.Damage = 3.5
+            if(not player:HasCollectible(CollectibleType.COLLECTIBLE_ROCK_BOTTOM)) then
+                player.Damage = 3.5
+            end
         end
     end
 end
