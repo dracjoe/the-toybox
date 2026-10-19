@@ -362,6 +362,7 @@ ToyboxMod.TRINKET_FLUKIE = Isaac.GetTrinketIdByName("Flukie")
 ToyboxMod.TRINKET_BUG_SPRAY = Isaac.GetTrinketIdByName("Bug Spray")
 ToyboxMod.TRINKET_HATCHLING = Isaac.GetTrinketIdByName("Hatchling")
 ToyboxMod.TRINKET_PETRIFIED_BABY = Isaac.GetTrinketIdByName("Petrified Baby")
+ToyboxMod.TRINKET_SUPEREGO = Isaac.GetTrinketIdByName("Superego")
 
 
 --ToyboxMod.TRINKET_LIMIT_BREAK = Isaac.GetTrinketIdByName("LIMIT BREAK")               --*UNUSED

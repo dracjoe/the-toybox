@@ -2078,6 +2078,11 @@
     gfx="petrified_baby.png"
     cache="familiars"
 />
+<trinket id="53" name="Superego"
+    description="Superiority complex"
+    gfx="superego.png"
+    cache=""
+/>
 
 <!-- UNUSED ITEMS
 

@@ -1,5 +1,3 @@
-
-
 local RESPAWN_CHANCE = 0.1
 local BOSS_CHANCE_MOD = 1/1000
 
@@ -8,7 +6,7 @@ local HP_MOD = 0.5
 ---@param npc EntityNPC
 local function resummonOnKill(_, npc)
     if(not PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_GOLDEN_CALF)) then return end
-    if(npc:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) or not ToyboxMod:isValidEnemy(npc)) then return end
+    if(npc:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) or not (npc:IsEnemy() and npc:IsActiveEnemy(true))) then return end
 
     local pl = PlayerManager.FirstCollectibleOwner(ToyboxMod.COLLECTIBLE_GOLDEN_CALF)
     local rng = pl:GetCollectibleRNG(ToyboxMod.COLLECTIBLE_GOLDEN_CALF)

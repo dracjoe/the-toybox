@@ -52,7 +52,7 @@ for id, _ in pairs(ToyboxMod.COMBAT_ACTIVES) do
         local charges = conf.MaxCharges/30
         weightMod = weightMod*(1/math.max(1, charges-(TIMED_BASELINE-1)))^WEIGHT_POW
 
-        weightMod = weightMod*TIMED_WEIGHT^WEIGHT_POW
+        weightMod = (weightMod*TIMED_WEIGHT)^WEIGHT_POW
     end
 
     if(conf.ChargeType==ItemConfig.CHARGE_SPECIAL or conf.Hidden) then

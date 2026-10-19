@@ -3591,6 +3591,29 @@ enums.FUNCTIONS.AddTrinket({
         }
     },
 })
+enums.FUNCTIONS.AddTrinket({
+    ID = ToyboxMod.TRINKET_SUPEREGO,
+    Name = "Superego",
+    Description = {
+        "{{Charm}} If a killed enemy's max HP is lower than your damage stat, 33% chance to revive it as a friendly copy",
+    },
+    DoubleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"33%%", "67%%"},
+            }
+        },
+    },
+    TripleModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"33%%", "100%%"},
+            }
+        },
+    },
+})
 
 enums.FUNCTIONS.AddCard({
     ID = ToyboxMod.CARD_PRISMSTONE,
