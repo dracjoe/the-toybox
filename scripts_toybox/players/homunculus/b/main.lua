@@ -91,3 +91,24 @@ local function preGetCollectible(_, pool, decrease, seed)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_PRE_GET_COLLECTIBLE, preGetCollectible)
+
+local HEART_CANCEL = {
+    [HeartSubType.HEART_SOUL] = 1,
+    [HeartSubType.HEART_HALF_SOUL] = 1,
+    [HeartSubType.HEART_BLACK] = 1,
+    
+    [HeartSubType.HEART_BLENDED] = 2,
+}
+
+---@param pickup EntityPickup
+---@param pl Entity
+local function cancelHeartColl(_, pickup, pl)
+    if(not (pl and pl:ToPlayer() and pl:ToPlayer():GetPlayerType()==ToyboxMod.PLAYER_HOMUNCULUS_B)) then return end
+    pl = pl:ToPlayer() ---@cast pl EntityPlayer
+
+    local canPick = HEART_CANCEL[pickup.SubType]
+    if(canPick==1 or (canPick==2 and not pl:CanPickRedHearts())) then
+        return false
+    end
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, CallbackPriority.IMPORTANT-50, cancelHeartColl, PickupVariant.PICKUP_HEART)

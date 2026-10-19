@@ -72,4 +72,4 @@ local function consumeHeart(_, pickup, pl)
 
     return true
 end
-ToyboxMod:AddPriorityCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, CallbackPriority.IMPORTANT, consumeHeart, PickupVariant.PICKUP_HEART)
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, CallbackPriority.IMPORTANT+1, consumeHeart, PickupVariant.PICKUP_HEART)
