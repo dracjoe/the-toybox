@@ -91,6 +91,7 @@
         <Item Name="Power Crystal"/>
         <Item Name="Geode"/>
         <Item Name="Sun Mask"/>
+        <Item Name="Mo Bomba"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -181,6 +182,7 @@
         <Item Name="Power Crystal"/>
         <Item Name="Geode"/>
         <Item Name="Sun Mask"/>
+        <Item Name="Mo Bomba"/>
     </Pool>
 
     <Pool Name="boss">
@@ -499,6 +501,7 @@
     <Pool Name="bombBum">
         <Item Name="Quake Bombs"/>
         <Item Name="Blessed Bombs"/>
+        <Item Name="Mo Bomba"/>
     </Pool>
 
     <Pool Name="batteryBum">

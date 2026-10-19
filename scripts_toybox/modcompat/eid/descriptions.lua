@@ -2272,6 +2272,14 @@ enums.FUNCTIONS.AddItem({
         },
     }
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_MO_BOMBA,
+    Name = "Mo Bomba",
+    Description = {
+        "Throw a golden troll bomb that deals 90 damage",
+        "The bomb inherits your bomb modifiers and has a slightly larger explosion radius",
+    },
+})
 
 --- OTHER ITEM MODIFIERS ---
 

@@ -17,7 +17,14 @@ local function postAddTearFlag(_, entity, player, _, weaponFlag)
         elseif(name=="gfx/004.000_Bomb") then
             sp:Load("gfx_tb/bombs/quake2.anm2", true)
             Isaac.CreateTimer(function()
-                sp:Load("gfx_tb/bombs/quake2.anm2", true)
+                name = sp:GetFilename()
+                name = string.gsub(name, "gfx/items/pick ups/bombs/", "")
+                name = string.gsub(name, ".anm2", "")
+                if(string.lower(string.sub(name,1,-2))=="bomb") then
+                    sp:ReplaceSpritesheet(0, "gfx_tb/bombs/quake_bomb.png", true)
+                elseif(name=="gfx/004.000_Bomb") then
+                    sp:Load("gfx_tb/bombs/quake2.anm2", true)
+                end
             end, 0, 1, false)
         end
     end

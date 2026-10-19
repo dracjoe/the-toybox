@@ -1499,7 +1499,7 @@
     gfx="instant_gratification.png"
     quality="1"
     tags="offensive"
-    customtags=""
+    customtags="fancy"
     cache=""
 
     maxcharges="4"
@@ -1638,7 +1638,7 @@
     gfx="brotherhood.png"
     quality="1"
     tags="offensive summonable"
-    customtags=""
+    customtags="fancy"
     cache=""
 
     achievement="Brotherhood"
@@ -1676,6 +1676,16 @@
     tags="offensive summonable"
     customtags=""
     cache=""
+/>
+<active id="182" name="Mo Bomba"
+    description="Bad ass boom"
+    gfx="mo_bomba.png"
+    quality="3"
+    tags="offensive"
+    customtags="combat fancy"
+    cache=""
+
+    maxcharges="5"
 />
 
 <passive id="450" name="TMTAMER"
