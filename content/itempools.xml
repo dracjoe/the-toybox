@@ -502,6 +502,7 @@
         <Item Name="Quake Bombs"/>
         <Item Name="Blessed Bombs"/>
         <Item Name="Mo Bomba"/>
+        <Item Name="Big Red Button" Weight="0.1" DecreaseBy="0.1"/>
     </Pool>
 
     <Pool Name="batteryBum">
