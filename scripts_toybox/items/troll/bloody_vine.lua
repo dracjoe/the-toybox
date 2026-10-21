@@ -28,22 +28,24 @@ local function playerUpdate(_, player)
         return
     end
 
-    if(not data.DELAYED_INPUTS or #data.DELAYED_INPUTS<DELAY_FRAMES) then
+    local delay = DELAY_FRAMES*player:GetCollectibleNum(ToyboxMod.COLLECTIBLE_BLOODY_VINE)
+
+    if(not data.DELAYED_INPUTS or #data.DELAYED_INPUTS<delay) then
         data.DELAYED_INPUTS = {}
-        for i=1, DELAY_FRAMES do
+        for i=1, delay do
             data.DELAYED_INPUTS[i] = {}
         end
     end
 
     table.remove(data.DELAYED_INPUTS, 1)
 
-    data.DELAYED_INPUTS[DELAY_FRAMES] = {}
+    data.DELAYED_INPUTS[delay] = {}
     for _, hook in pairs(InputHook) do
         for _, action in pairs(ButtonAction) do
             local val = Input[HOOK_TO_FUNC[hook]](action, player.ControllerIndex)
             local str = tostring(hook).."."..tostring(action)
 
-            data.DELAYED_INPUTS[DELAY_FRAMES][str] = val
+            data.DELAYED_INPUTS[delay][str] = val
         end
     end
 end

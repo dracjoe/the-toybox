@@ -182,6 +182,7 @@ enums.FUNCTIONS.AddItem({
         "\1 +1 Luck",
     },
 })
+--[[] ]
 enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_SIGIL_OF_GREED,
     Name = "Sigil of Greed",
@@ -192,6 +193,7 @@ enums.FUNCTIONS.AddItem({
         "{{Coin}} Killing a golden enemy spawns coins"
     },
 })
+--]]
 enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_EVIL_ROCK,
     Name = "Evil Rock",
@@ -2285,7 +2287,7 @@ enums.FUNCTIONS.AddItem({
     Name = "Sigil of Greed",
     Description = {
         "Every 7 seconds, a random enemy will become Gilded for 4 seconds",
-        enums.CONSTANTS.Icon_StatusGilded.." Gilded enemies will drop 1-3 coins on death that disappear after 3 seconds",
+        enums.CONSTANTS.Icon_StatusGilded.." Gilded enemies will drop 1-3 pennies on death that disappear after 3 seconds",
     },
     StackModifiers = {
         {
@@ -5251,6 +5253,13 @@ enums.FUNCTIONS.AddItem({
         "\1 x1.3 Damage multiplier",
         "All inputs are delayed by 0.1 seconds"
     },
+    StackModifiers = {
+        {
+            ToModify = {
+                "+0.1 second input delay per stack",
+            }
+        }
+    }
 })
 
 enums.MISC.death_sacrifice = {
