@@ -24,7 +24,7 @@ local function spawnCoinsOnDeath(_, npc)
     local numCoins = COIN_PICKER:PickOutcome(rng)
     for i=1, numCoins do
         local dir = rng:RandomVector()*3
-        local pickup = Isaac.Spawn(5,20,0,npc.Position,dir,npc):ToPickup()
+        local pickup = Isaac.Spawn(5,PickupVariant.PICKUP_COIN,CoinSubType.COIN_PENNY,npc.Position,dir,npc):ToPickup()
 
         --pickup:AppearFast()
         pickup:SetDropDelay(i-1)
