@@ -15,6 +15,7 @@ local PLAYER_FILENAMES = {
     "gfx_tb/ui/player_portraits/atlas_tar_portrait.png",
     "gfx_tb/ui/player_portraits/jonas_portrait.png",
     "gfx_tb/ui/player_portraits/milcom_portrait.png",
+    "gfx_tb/ui/player_portraits/homunculus_portrait.png",
 }
 local PLAYER_SPRITE = Sprite("gfx_tb/ui/awesome_title_screen.anm2", true)
 PLAYER_SPRITE:Play("Character", true)
@@ -183,7 +184,7 @@ local function postMenuRender(_)
             local y = math.cos(radlat)*math.sin(radlon)
             local z = math.sin(radlat)
 
-            if(1+z<0.05) then
+            if(1+z<0.02) then
                 itemdata.ID = DEATH_INDEXES[math.random(1,#DEATH_INDEXES)]
                 itemdata.Color2 = Color(1,1,1,1,math.random()*0.5+0.2,math.random()*0.5+0.2,math.random()*0.5+0.2)
             end

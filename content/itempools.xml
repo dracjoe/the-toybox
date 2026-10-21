@@ -294,7 +294,7 @@
     </Pool>
     <Pool Name="greedDevil">
         <Item Name="Blood Ritual"/>
-        <Item Name="Sigil of Greed" Weight="0.1" DecreaseBy="0.1"/>
+        <Item Name="Sigil of Greed" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Atheism" Weight="0.5" DecreaseBy="0.5"/>
         <Item Name="Cursed Eulogy"/>
         <Item Name="Catharsis"/>
@@ -585,6 +585,7 @@
         <Item Name="Twisted Heart"/>
         <Item Name="Carrion"/>
         <Item Name="Jam"/>
+        <Item Name="Sigil of Greed"/>
     </Pool>
 
     <Pool Name="toybox-graveyard">

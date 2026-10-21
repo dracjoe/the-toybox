@@ -15,7 +15,7 @@ end
 function ToyboxMod:addOverlayEffect(statusName, animName, applyCondition, overlayColor, priority)
     table.insert(ToyboxMod.OVERLAY_EFFECTS,
         {
-            Animation = animName,
+            Animation = animName or nil,
             Condition = applyCondition or (statusName and function(ent)
                 return ToyboxMod:hasStatusEffect(ent, statusName)
             end),
@@ -72,7 +72,7 @@ function ToyboxMod:applyStatusEffect(ent, name, duration, source, setColor, igno
     end
     duration = ent:ComputeStatusEffectDuration(math.abs(duration), source)
 
-    local data = ToyboxMod:getEntityDataTable(ent)
+    local data = EntitySaveStateManager.GetEntityData(ToyboxMod, ent)
     local oldStatusDuration = data["STATUS_"..name.."_DURATION"] or 0
     if(additive) then
         data["STATUS_"..name.."_DURATION"] = (data["STATUS_"..name.."_DURATION"] or 0)+duration
@@ -85,7 +85,7 @@ function ToyboxMod:applyStatusEffect(ent, name, duration, source, setColor, igno
 
     local statusIdx = (setColor~=false) and getStatusIndexByName(name)
     if(statusIdx and finalDuration>oldStatusDuration) then
-        ent:SetColor(ToyboxMod.OVERLAY_EFFECTS[statusIdx].EntityColor, finalDuration, ToyboxMod.OVERLAY_EFFECTS[statusIdx].Priority, false, false)
+        ent:SetColor(ToyboxMod.OVERLAY_EFFECTS[statusIdx].EntityColor, finalDuration, ToyboxMod.OVERLAY_EFFECTS[statusIdx].Priority, false, true)
     end
 
     local visited = {}
@@ -94,8 +94,9 @@ function ToyboxMod:applyStatusEffect(ent, name, duration, source, setColor, igno
         if(visited[ch.InitSeed]) then break end
         visited[ch.InitSeed] = true
 
-        ToyboxMod:setEntityData(ch, "STATUS_"..name.."_DURATION", finalDuration)
-        ToyboxMod:setEntityData(ch, "STATUS_"..name.."_SOURCE", source)
+        local childData = EntitySaveStateManager.GetEntityData(ToyboxMod, ch)
+        childData["STATUS_"..name.."_DURATION"] = finalDuration
+        childData["STATUS_"..name.."_SOURCE"] = source
 
         if(ent:IsBoss() and ch:IsBoss()) then
             ch:SetBossStatusEffectCooldown(ent:GetBossStatusEffectCooldown())
@@ -107,18 +108,18 @@ end
 ---@param ent Entity
 ---@param name string
 function ToyboxMod:hasStatusEffect(ent, name)
-    return (ToyboxMod:getEntityData(ent, "STATUS_"..name.."_DURATION") or 0)>0
+    return (EntitySaveStateManager.GetEntityData(ToyboxMod, ent)["STATUS_"..name.."_DURATION"] or 0)>0
 end
 ---@param ent Entity
 ---@param name string
 function ToyboxMod:getStatusEffectSource(ent, name)
-    return ToyboxMod:getEntityData(ent, "STATUS_"..name.."_SOURCE")
+    return EntitySaveStateManager.GetEntityData(ToyboxMod, ent)["STATUS_"..name.."_SOURCE"]
 end
 
 ---@param ent Entity
 local function getHighestPriorityStatus(ent)
     for i, data in ipairs(ToyboxMod.OVERLAY_EFFECTS) do
-        if(data.Condition(ent)) then
+        if(data.Animation and data.Condition(ent)) then
             return i
         end
     end
@@ -152,12 +153,12 @@ local function renderOverlays(_, npc, offset)
 
     local data = ToyboxMod.OVERLAY_EFFECTS[status]
     if(not data) then return end
-    local overlayFrame = npc:GetSprite():GetNullFrame("OverlayEffect")
+
+    local overlayFrame = npc:GetSprite():GetNullFrame("OverlayEffect") or npc:GetSprite():GetOverlayNullFrame("OverlayEffect")
     if(not overlayFrame) then return end
-    
 
     local pos = overlayFrame:GetPos()
-    local rPos = pos+Isaac.WorldToScreen(npc.Position)+offset-ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
+    local rPos = pos+Isaac.WorldToRenderPosition(npc.Position)+offset-ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
     overlaySprite:SetFrame(data.Animation, npc.FrameCount%overlaySprite:GetAnimationData(data.Animation):GetLength())
     overlaySprite:Render(rPos)
 end
@@ -165,7 +166,7 @@ ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_NPC_RENDER, math.huge, render
 
 ---@param npc EntityNPC
 local function npcUpdate(_, npc)
-    local data = ToyboxMod:getEntityDataTable(npc)
+    local data = EntitySaveStateManager.GetEntityData(ToyboxMod, npc)
     for _, sData in ipairs(ToyboxMod.OVERLAY_EFFECTS) do
         if(sData.StatusName and ToyboxMod:hasStatusEffect(npc, sData.StatusName)) then
             data["STATUS_"..sData.StatusName.."_DURATION"] = (data["STATUS_"..sData.StatusName.."_DURATION"] or 0)-1

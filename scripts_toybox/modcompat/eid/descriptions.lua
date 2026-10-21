@@ -2280,6 +2280,21 @@ enums.FUNCTIONS.AddItem({
         "The bomb inherits your bomb modifiers and has a slightly larger explosion radius",
     },
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_SIGIL_OF_GREED,
+    Name = "Sigil of Greed",
+    Description = {
+        "Every 7 seconds, a random enemy will become Gilded for 4 seconds",
+        enums.CONSTANTS.Icon_StatusGilded.." Gilded enemies will drop 1-3 coins on death that disappear after 3 seconds",
+    },
+    StackModifiers = {
+        {
+            ToModify = {
+                "Gilds +1 additional enemy per stack every 7 seconds",
+            }
+        },
+    }
+})
 
 --- OTHER ITEM MODIFIERS ---
 

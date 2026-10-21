@@ -72,6 +72,7 @@ include("scripts_toybox.misc.transformations.core")
     include("scripts_toybox.misc.transformations.effects.hydra")
 -- STATUS EFFECTS
 include("scripts_toybox.misc.status_effects.earworm")
+include("scripts_toybox.misc.status_effects.gilded")
 -- TEMPORARY ITEMS
 include("scripts_toybox.misc.temporary_items")
 -- PILL POOL LIBRARY
@@ -472,6 +473,8 @@ include("scripts_toybox.challenges.safari_zone")
     --include("scripts_toybox.items.unused.malicious_brain")
     --include("scripts_toybox.items.unused.limit_break")
     --include("scripts_toybox.items.unused.sine_worm")
+    --include("scripts_toybox.items.unused.brainfreeze")
+    --include("scripts_toybox.items.unused.sigil_of_greed")
 --JOKE
     include("scripts_toybox.items.troll.golden_prayer_card")
     include("scripts_toybox.items.troll.golden_schoolbag")

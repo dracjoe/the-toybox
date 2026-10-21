@@ -237,6 +237,7 @@ EID:addIcon("ToyboxIconJuice", "Misc", 7, 16, 16, 0, 0, iconSprite)
 EID:addIcon("ToyboxIconEarwormStatus", "Misc", 8, 16, 16, 0, 0, iconSprite)
 EID:addIcon("ToyboxIconBloodCoin", "Misc", 9, 16, 16, 0, 0, iconSprite)
 EID:addIcon("ToyboxIconAltTarot", "Misc", 10, 16, 16, 0, 0, iconSprite)
+EID:addIcon("ToyboxIconGildedStatus", "Misc", 11, 16, 16, 0, 0, iconSprite)
 
 --- COLORS
 EID:addColor("ToyboxColorLimitBreak", nil, MakeSwagColor({{162,164,222},{255,234,160}}, 40))
@@ -313,6 +314,7 @@ STORED.CONSTANTS = {
     Icon_StatusElectrified = "{{ToyboxIconElectrifiedStatus}}",
     Icon_StatusOverflowing = "{{ToyboxIconOverflowingStatus}}",
     Icon_StatusEarworm = "{{ToyboxIconEarwormStatus}}",
+    Icon_StatusGilded = "{{ToyboxIconGildedStatus}}",
     Icon_HorsePill = "{{ToyboxIconHorsePill}}",
     Icon_GoldenPill = "{{ToyboxIconGoldenPill}}",
     Icon_GoldenHorsePill = "{{ToyboxIconGoldenHorsePill}}",

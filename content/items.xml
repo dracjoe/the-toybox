@@ -217,14 +217,13 @@
     cache=""
 />
 <passive id="24" name="Sigil of Greed"
-    description="Turn foes to $$$"
+    description="Cash rules everything around me"
     gfx="sigil_of_greed.png"
     quality="3"
-    tags="summonable offensive noeden"
+    tags="summonable offensive"
     cache=""
 
-    devilprice="2" 
-    hidden="true"
+    devilprice="1"
 />
 <passive id="25" name="Pepper X"
     description="Flame breath"
