@@ -483,6 +483,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.troll.super_hamburger")
     include("scripts_toybox.items.troll.cursed_d6")
     include("scripts_toybox.items.troll.so_many_options")
+    include("scripts_toybox.items.troll.bloody_vine")
 
 
 --PICKUPS

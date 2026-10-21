@@ -1699,6 +1699,18 @@
 />
 
 
+<passive id="492" name="Bloody Vine"
+    description="DMG up + input lag"
+    gfx="bloody_vine.png"
+    quality="2"
+    tags="offensive noeden"
+    cache=""
+
+    damage="0.7"
+    damagemult="1.3"
+
+    hidden="true"
+/>
 <passive id="493" name="So Many Options"
     description="So little time"
     gfx="so_many_options.png"

@@ -300,6 +300,7 @@ ToyboxMod.COLLECTIBLE_SUPER_HAMBURGER = Isaac.GetItemIdByName("Super Hamburger")
 ToyboxMod.COLLECTIBLE_CURSED_D6 = Isaac.GetItemIdByName("Cursed D6")
 ToyboxMod.COLLECTIBLE_PORTABLE_TELLER = Isaac.GetItemIdByName("Portable Teller")
 ToyboxMod.COLLECTIBLE_SO_MANY_OPTIONS = Isaac.GetItemIdByName("So Many Options")
+ToyboxMod.COLLECTIBLE_BLOODY_VINE = Isaac.GetItemIdByName("Bloody Vine")
 
 --ToyboxMod.COLLECTIBLE_LASER_POINTER = Isaac.GetItemIdByName("Laser Pointer")          --*UNUSED (i dont like the item)
 --ToyboxMod.COLLECTIBLE_TOY_GUN = Isaac.GetItemIdByName("Toy Gun")                      --*UNUSED (same as above)

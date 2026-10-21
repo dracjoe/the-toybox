@@ -5243,6 +5243,15 @@ enums.FUNCTIONS.AddItem({
         "Enemies are frozen until Isaac makes the choice by damaging one of the 2 enemies"
     },
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_BLOODY_VINE,
+    Name = "Bloody Vine",
+    Description = {
+        "\1 +0.7 Damage",
+        "\1 x1.3 Damage multiplier",
+        "All inputs are delayed by 0.1 seconds"
+    },
+})
 
 enums.MISC.death_sacrifice = {
     {
