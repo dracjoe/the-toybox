@@ -219,7 +219,7 @@ local function cancelDrillChallengeRecharges(_)
 
     return false
 end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_PLAYER_TRIGGER_ROOM_CLEAR, cancelDrillChallengeRecharges)
+ToyboxMod:AddCallback(ModCallbacks.MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR, cancelDrillChallengeRecharges)
 
 local function cancelDrillChallengeAwards(_)
     local data = ToyboxMod:getExtraDataTable().DRILLDATA
