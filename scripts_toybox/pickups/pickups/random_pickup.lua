@@ -12,13 +12,13 @@ local ALT_TAROT_DATA = {
     {ToyboxMod.CARD_EXCALIBUR, 1.0},
     {ToyboxMod.CARD_FATE, 1.0},
     {ToyboxMod.CARD_THE_IDOL, 1.0},
+    {ToyboxMod.CARD_THE_CARAVAN, 1.0},
+    {ToyboxMod.CARD_MIRAGE, 1.0},
+
     --[[] ]
     
     {ToyboxMod.CARD_MEMORY, 1.0},
-    {ToyboxMod.CARD_THE_CARAVAN, 1.0},
-    
     {ToyboxMod.CARD_THE_PHANTOM, 1.0},
-    {ToyboxMod.CARD_MIRAGE, 1.0},
     
     --]]
 }

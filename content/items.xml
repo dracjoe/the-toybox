@@ -943,6 +943,7 @@
     quality="4"
     tags="offensive summonable dead"
     cache=""
+    customcache="room-clear-retriggers"
 />
 <passive id="101" name="Malice"
     description="Everything is terrible"

@@ -19,11 +19,6 @@ local PINK_RESPAWN_CHANCE = 0.15
 local YELLOW_COIN_TIMEOUT = 30*2
 
 local BLACK_RETRIGGERS = 2
-local BLACK_CANCEL_RETRIGGER = false
-local BLACK_INVALID_ROOMTYPES = {
-    [RoomType.ROOM_BOSS] = true,
-    [RoomType.ROOM_BOSSRUSH] = true,
-}
 
 ---@param pl EntityPlayer
 ---@param flag CacheFlag
@@ -49,6 +44,15 @@ local function evalStat(_, pl, stat, val)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_EVALUATE_STAT, evalStat)
+
+---@param pl EntityPlayer
+---@param val number
+local function postEvaluateCustomCache(_, pl, flag, val)
+    if(ToyboxMod:hasTintedRoomTint("BLACK")) then
+        return val+BLACK_RETRIGGERS
+    end
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_EVALUATE_CUSTOM_CACHE, postEvaluateCustomCache, "room-clear-retriggers")
 
 ---@param pl EntityPlayer
 local function playerUpdate(_, pl)
@@ -105,26 +109,3 @@ local function npcDeath(_, npc)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, npcDeath)
-
-local function blackRetriggerClear(_, _)
-    local room = ToyboxMod.GAME:GetRoom()
-    if(not BLACK_CANCEL_RETRIGGER and ToyboxMod:hasTintedRoomTint("BLACK") and not BLACK_INVALID_ROOMTYPES[room:GetType()]) then
-        BLACK_CANCEL_RETRIGGER = true
-        for _=1, BLACK_RETRIGGERS do
-            room:TriggerClear(true)
-        end
-        BLACK_CANCEL_RETRIGGER = false
-    end
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_ROOM_TRIGGER_CLEAR, blackRetriggerClear)
----@param pl EntityPlayer
-local function blackRetriggerClearPlayer(_, pl)
-    if(not BLACK_CANCEL_RETRIGGER and ToyboxMod:hasTintedRoomTint("BLACK") and BLACK_INVALID_ROOMTYPES[ToyboxMod.GAME:GetRoom():GetType()]) then
-        BLACK_CANCEL_RETRIGGER = true
-        for _=1, BLACK_RETRIGGERS do
-            pl:TriggerRoomClear()
-        end
-        BLACK_CANCEL_RETRIGGER = false
-    end
-end
-ToyboxMod:AddCallback(ModCallbacks.MC_POST_PLAYER_TRIGGER_ROOM_CLEAR, blackRetriggerClearPlayer)

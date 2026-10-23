@@ -47,6 +47,7 @@ end
 local function evaluateTintedRoomEffects()
     for _, pl in ipairs(PlayerManager.GetPlayers()) do
         pl:AddCacheFlags(CacheFlag.CACHE_ALL)
+        pl:AddCustomCacheTag({"room-clear-retriggers"}, true)
         ToyboxMod:setEntityData(pl, "IN_TINTED_ROOM", ToyboxMod:isTintedRoom())
     end
     Isaac.RunCallback(ToyboxMod.CUSTOM_CALLBACKS.POST_NEW_ROOM_TINTED)

@@ -3926,6 +3926,38 @@ enums.FUNCTIONS.AddCard({
     }
 })
 enums.FUNCTIONS.AddCard({
+    ID = ToyboxMod.CARD_MIRAGE,
+    Name = "XVS - Mirage",
+    Description = {
+        "The next room clear will trigger 4 additional times, granting more rewards and active charges",
+    },
+    TarotClothModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            ToModify = {
+                {"4", "8"}
+            }
+        },
+    }
+})
+enums.FUNCTIONS.AddCard({
+    ID = ToyboxMod.CARD_THE_CARAVAN,
+    Name = "XIS - The Caravan",
+    Description = {
+        "{{Coin}} On use, removes all of your coins and grants 1 bomb and 1 key for every 3 coins removed",
+    },
+    TarotClothModifiers = {
+        {
+            Type = enums.CONSTANTS.DescriptionModifier.REPLACE,
+            IgnoreMarkup = true,
+            ToModify = {
+                {"3 coins", "{{ColorShinyPurple}}2{{CR}} coins"},
+                {" and 1 key", ", 1 key, {{ColorShinyPurple}}and heals half a heart{{CR}}"}
+            }
+        },
+    }
+})
+enums.FUNCTIONS.AddCard({
     ID = ToyboxMod.CARD_GREYHOUND,
     Name = "Greyhound",
     Description = {

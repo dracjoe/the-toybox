@@ -66,6 +66,8 @@ include("scripts_toybox.util.data")
 -- ACHIEVEMENTS
 include("scripts_toybox.util.achievements.core")
 include("scripts_toybox.util.achievements.event_counters")
+
+include("scripts_toybox.misc.room_clear_retriggers")
 -- TRANSFORMATIONS
 include("scripts_toybox.misc.transformations.core")
     include("scripts_toybox.misc.transformations.effects.fancy")
@@ -511,14 +513,14 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.pickups.cards.the_baron")
     include("scripts_toybox.pickups.cards.the_angel")
 
-    include("scripts_toybox.pickups.cards.the_trickster") -- done
+    include("scripts_toybox.pickups.cards.the_trickster")
     include("scripts_toybox.pickups.cards.memory")
     include("scripts_toybox.pickups.cards.the_caravan")
-    include("scripts_toybox.pickups.cards.excalibur") -- done
-    include("scripts_toybox.pickups.cards.fate") -- done
+    include("scripts_toybox.pickups.cards.excalibur")
+    include("scripts_toybox.pickups.cards.fate")
     include("scripts_toybox.pickups.cards.the_phantom")
     include("scripts_toybox.pickups.cards.mirage")
-    include("scripts_toybox.pickups.cards.the_idol") -- done???
+    include("scripts_toybox.pickups.cards.the_idol")
 
     include("scripts_toybox.pickups.cards.greyhound")
     
