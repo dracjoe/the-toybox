@@ -2337,6 +2337,21 @@ enums.FUNCTIONS.AddItem({
         },
     }
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_THICK_WATER,
+    Name = "Thick Water",
+    Description = {
+        "Spawns a random trinket",
+        "At the start of every floor, gulps all held trinkets and permanently grants \1 +1 Luck per trinket gulped",
+    },
+    StackModifiers = {
+        {
+            ToModify = {
+                "Gulped trinkets grant +1 Luck per stack",
+            }
+        },
+    }
+})
 
 --- OTHER ITEM MODIFIERS ---
 

@@ -17,3 +17,19 @@ function ToyboxMod:createLionSkull(seed)
     end
 end
 
+function ToyboxMod:didyTestStr(a, b)
+    local str = "\1*"
+    for i=a, b do
+        str = str..string.char(i)
+    end
+    str = str.."*"
+    Game():GetHUD():ShowItemText(str)
+end
+
+function ToyboxMod:didyTestStr2(arr)
+    local str = "\1"
+    for _, val in ipairs(arr) do
+        str = str..string.char(val)
+    end
+    Game():GetHUD():ShowItemText("", str)
+end

@@ -1687,6 +1687,16 @@
 
     maxcharges="5"
 />
+<passive id="183" name="Thick Water"
+    description="Goes down easy"
+    gfx="no_sprite.png"
+    quality="2"
+    tags="offensive summonable"
+    customtags=""
+    cache="luck"
+
+    effectluck="1" persistent="true"
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"
