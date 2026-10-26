@@ -91,3 +91,46 @@ local function updateBloodCreep(_, effect)
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, updateBloodCreep, EffectVariant.PLAYER_CREEP_LEMON_PARTY)
 
+-- < BOOK OF VIRTUES > --
+
+local EYESORE_CHANCE = 0.5
+local EYESORE_MAX_NUM = 3
+
+---@param baseTear EntityTear?
+local function virtuesWispFire(_, baseTear)
+    if(not baseTear) then return end
+
+    local fam = baseTear.SpawnerEntity and baseTear.SpawnerEntity:ToFamiliar()
+    if(not (fam.Variant==FamiliarVariant.WISP and fam.SubType==ToyboxMod.COLLECTIBLE_BLOODY_WHISTLE)) then return end
+
+    local rng = fam:GetDropRNG()
+    if(rng:RandomFloat()<EYESORE_CHANCE) then
+        local num = rng:RandomInt(1, EYESORE_MAX_NUM)
+        for _=1, num do
+            local vel = baseTear.Velocity:Rotated(rng:RandomInt(1,360))
+            local pos = baseTear.Position-baseTear.Velocity+vel
+
+            local newTear = Isaac.Spawn(baseTear.Type, baseTear.Variant, baseTear.SubType, pos, vel, baseTear.SpawnerEntity):ToTear()
+            if(newTear) then
+                newTear.Scale = baseTear.Scale
+                newTear.CollisionDamage = baseTear.CollisionDamage
+
+                newTear:ClearTearFlags(newTear.TearFlags)
+                newTear:AddTearFlags(baseTear.TearFlags)
+            end
+        end
+    end
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_FAMILIAR_FIRE_PROJECTILE, CallbackPriority.IMPORTANT, virtuesWispFire, FamiliarVariant.WISP)
+
+---@param fam EntityFamiliar
+local function virtuesWispUpdate(_, fam)
+    if(not (fam.Variant==FamiliarVariant.WISP and fam.SubType==ToyboxMod.COLLECTIBLE_BLOODY_WHISTLE)) then return end
+
+    if(fam:GetSprite():GetFrame()%8==4) then
+        local splat = Isaac.Spawn(1000, 7, 0, fam.Position, Vector.Zero, nil)
+        splat.SpriteScale = Vector(1,1)*0.2
+        splat:Update()
+    end
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_FAMILIAR_UPDATE, CallbackPriority.EARLY, virtuesWispUpdate, FamiliarVariant.WISP)

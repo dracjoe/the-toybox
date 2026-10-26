@@ -1,0 +1,22 @@
+* Pliers: L1 | HP4 | DMG3; red meat??, faster firerate
+* Blood Ritual: L0 | HP1 | DMG3; black+red regular, grants 3 wisps
+* D0: L2 | HP2 | DMG3; dark gray regular, when destroyed removes 15 seconds from the game timer
+* Sunk Costs: L1 | HP2 | DMG3; greenish coin, 5% chance to inflict midas touch on tear hit
+* Gilded Apple: L1 | HP4 | DMG3; yellow heart; when destroyed does the golden heart destroy effect
+* Hostile Takeover: L1 | HP3 | DMG4; black regular; when item's effect is active, damage and firerate scales with the effect's temporary stats and wisp's core turns white
+* Candy Dispenser: L1 | HP4 | DMG3; grants a wisp based on used consumable; wisp has a 10% chance to spawn their respective consumable type on kill
+* Ascension: L2 | HP4 | DMG1; gray regular; wisp damage is massively increased while the item's effect is active, wisps become yellow and get a smiley face while effect is active; wisps disappear on room exit
+* Drill: L2 | HP2 | DMG3; brown + yellow coin; grants wisps equal to the number of waves; if theyre boss waves, the wisps flame will be red and they will deal double damage
+* Alphabet Box: grants the wisp of a random active; rerolls all wisps into the wisp of the next active item alphabetically, or a random one otherwise
+* White Daisy: L1 | HP6 | DMG4; white+yellow regular; grants wisps equal to number of white daisy uses this floor; the wisps disappear on room exit
+* Melted Candle: L1 | HP1 | DMG0.5; greenish regular; 10% chance to burn enemies on hit, has massive firerate; only lasts for room
+* Bloody Whistle: L1 | HP2 | DMG3; red drippy; drips red creep every other shot; has eyesore effect
+- Art of War: L1 | HP2 | DMG3; red + gray regular; copies isaac's tear effects
+- Big Bang: L0 | HP4 | DMG2; blue + white star-like; when destroyed, triggers a random active item used this run; respawns wisp on room clear if destroyed
+- Chocolate Bar: L1 | HP3 | DMG3; brown heart; when destroyed, spawns a half red heart
+- Delivery Box: L1 | HP2 | DMG3; light/dark gray, key/bomb; wisp depends on the type of pickup NOT spawned by the item, 25% chance to drop the respective pickup on death
+- Mom's Photobook: L1 | HP2 | DMG3: gray + black regular; 8% chance to confuse on hit
+- Pythagoras' Cup: L1 | HP3 | DMG4: gray-ish + cool cup core
+- Big Red Button: L1 | HP2 | DMG3: red + nuclear core, spawns gold troll bomb when destroyed
+- Oil Painting: L2 | HP2 | DMG3: gray + yellow coin core, spawns 1 wisp for every 4 cents of value the item had before use
+- Coloring Book: L1 | HP2 | DMG3: faded rainbow + smiley, deals increased damage + takes no damage from champion enemies

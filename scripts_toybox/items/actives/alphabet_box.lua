@@ -51,13 +51,27 @@ function ToyboxMod:getNextAlphabetItem(val, reverseOrder)
         end
     end
 
-    return idx
+    return ToyboxMod.ABOX_ITEMS_ALPHABETICAL[idx][2]
+end
+
+local function getName(id)
+    for key, i in pairs(CollectibleType) do
+        if(i==id) then
+            return key
+        end
+    end
+    for key, i in pairs(ToyboxMod) do
+        if(string.find(key, "COLLECTIBLE_")) then
+            if(i==id) then
+                return key
+            end
+        end
+    end
+    return "NO NAME :("
 end
 
 ---@param player EntityPlayer
 local function useAlphabetBox(_, id, rng, player, flags)
-    local itemConfig = Isaac.GetItemConfig()
-
     for _, item in ipairs(Isaac.FindByType(5,100)) do
         item = item:ToPickup()
         if(item.SubType~=0) then
@@ -65,7 +79,7 @@ local function useAlphabetBox(_, id, rng, player, flags)
             local shouldRemoveItem = true
 
             if(idx~=-1) then
-                item:Morph(5,100,(ToyboxMod.ABOX_ITEMS_ALPHABETICAL[idx][2] or 0), true)
+                item:Morph(5,100,(idx or 0), true)
                 local poof = Isaac.Spawn(1000,15,2,item.Position,Vector.Zero,item)
 
                 shouldRemoveItem = false
@@ -75,6 +89,27 @@ local function useAlphabetBox(_, id, rng, player, flags)
                 item:TryRemoveCollectible()
             end
         end
+    end
+
+    if(player:HasCollectible(CollectibleType.COLLECTIBLE_BOOK_OF_VIRTUES)) then
+        local conf = Isaac.GetItemConfig()
+        for _, ent in ipairs(Isaac.FindByType(3,FamiliarVariant.WISP)) do
+            if(ent:ToFamiliar() and GetPtrHash(ent:ToFamiliar().Player)==GetPtrHash(player)) then
+                local idx = ent.SubType
+                repeat
+                    idx = ToyboxMod:getNextAlphabetItem(idx)
+                until(idx==-1 or (conf:GetCollectible(idx) and conf:GetCollectible(idx):HasTags(ItemConfig.TAG_WISP)))
+
+                if(idx==-1) then
+                    idx = ToyboxMod:getRandomWisp(rng)
+                end
+
+                ent:Remove()
+                player:AddWisp(idx, ent.Position)
+            end
+        end
+
+        player:AddWisp(ToyboxMod:getRandomWisp(rng), player.Position)
     end
 
     return {

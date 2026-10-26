@@ -33,3 +33,12 @@ local function tryUseHeldCandle(_, player)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, tryUseHeldCandle)
+
+-- < BOOK OF VIRTUES > --
+
+local function removeWisps()
+    for _, ent in ipairs(Isaac.FindByType(3,FamiliarVariant.WISP,ToyboxMod.COLLECTIBLE_MELTED_CANDLE)) do
+        ent:Remove()
+    end
+end
+ToyboxMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, removeWisps)

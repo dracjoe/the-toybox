@@ -57,18 +57,31 @@ local function gildedAppleUse(_, _, rng, player, flags, slot, vdata)
 
         local isBoss = false
 
+        local numWaves = 0
+
         local ogPrice = nearestShopPickup.Price
         local devilWaves = (ogPrice>0 and 0 or (DEVIL_PRICE_TO_WAVES[ogPrice] or 1))
         if(devilWaves<=0) then
             if(ogPrice>=PRICE_PER_BOSSWAVE) then
-                Ambush.SetMaxBossChallengeWaves(1+ogPrice//PRICE_PER_BOSSWAVE)
+                numWaves = 1+ogPrice//PRICE_PER_BOSSWAVE
+                Ambush.SetMaxBossChallengeWaves(numWaves)
                 isBoss = true
             else
-                Ambush.SetMaxChallengeWaves(math.max(1, math.ceil(ogPrice/PRICE_PER_WAVE)))
+                numWaves = math.max(1, math.ceil(ogPrice/PRICE_PER_WAVE))
+                Ambush.SetMaxChallengeWaves(numWaves)
             end
         else
+            numWaves = devilWaves
             Ambush.SetMaxBossChallengeWaves(devilWaves)
             isBoss = true
+        end
+
+        if(player:HasCollectible(CollectibleType.COLLECTIBLE_BOOK_OF_VIRTUES)) then
+            local idToUse = (isBoss and ToyboxMod.COLLECTIBLE_CLOWN_PHD or ToyboxMod.COLLECTIBLE_DRILL)
+            
+            for _=1, numWaves do
+                player:AddWisp(idToUse, player.Position)
+            end
         end
 
         local ogSprite = nearestShopPickup:GetSprite()
@@ -118,10 +131,16 @@ local function gildedAppleUse(_, _, rng, player, flags, slot, vdata)
             IGNORE_RESET_DATA = 1,
         })
         --]]
+
+        return {
+            Discharge = true,
+            Remove = false,
+            ShowAnim = true,
+        }
     end
 
     return {
-        Discharge = true,
+        Discharge = false,
         Remove = false,
         ShowAnim = true,
     }

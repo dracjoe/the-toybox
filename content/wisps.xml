@@ -200,7 +200,7 @@
         flameColor="flame_red" coreColor="core_red" coreGfx="meat.png"   tearColor="tear_red"
     />
     <!-- Blood Ritual -->
-	<wisp id="14"   count="3" layer="0"    hp="1" damage="3"
+	<wisp id="14"   count="3" layer="0"    hp="1" damage="2"
         flameColor="flame_black" coreColor="core_red"
     />
     <!-- D -->
@@ -244,5 +244,32 @@
 	<!-- Ascension -->
 	<wisp id="43"   count="1" layer="2"    hp="3" damage="1"
         flameColor="flame_beige" coreColor="core_beige"
+    />
+	<!-- Drill - Real ID is 48, other ID is a passive item -->
+		<!-- Boss Wave --> <!-- Clown PHD -->
+		<wisp id="47"   count="0" layer="1"    hp="2" damage="6"
+			flameColor="flame_dark_red" coreColor="core_gold" coreGfx="coin.png"
+		/>
+		<!-- Regular Wave --> <!-- Real ID! -->
+		<wisp id="48"   count="0" layer="1"    hp="2" damage="3"
+			flameColor="flame_brown" coreColor="core_gold" coreGfx="coin.png"
+		/>
+	<!-- Alphabet Box (no wisp) -->
+	<wisp id="49"   count="0" layer="1"    hp="2" damage="3"
+        flameColor="flame_blue" coreColor="core_blue"
+    />
+	<!-- White Daisy -->
+	<wisp id="55"   count="0" layer="1"    hp="6" damage="4"
+        flameColor="flame_white" coreColor="core_yellow"
+    />
+	<!-- Melted Candle -->
+	<wisp id="56"   count="1" layer="1"    hp="1" damage="0.5" fireDelay="7"
+		tearFlags2="22" procChance="0.1" tearVariant2="5"
+        flameColor="flame_lime" coreColor="core_yellow"
+    />
+	<!-- Bloody Whistle -->
+	<wisp id="58"   count="1" layer="1"    hp="2" damage="3"
+        flameColor="core_dark_red" coreColor="core_red" coreGfx="dripping.png"
+		tearVariant="1"
     />
 </wisps>

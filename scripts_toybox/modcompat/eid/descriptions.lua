@@ -773,6 +773,16 @@ enums.FUNCTIONS.AddItem({
                 {"next item", "second next item"},
             }
         },
+    },
+    WispProperties = {
+        Layer = 1,
+        Amount = 0,
+        HP = 2,
+        Damage = 3,
+        Description = {
+            "Spawns 1 random wisp",
+            "Rerolls all wisps into the next special wisp in alphabetical order"
+        },
     }
 })
 enums.FUNCTIONS.AddItem({
@@ -815,6 +825,15 @@ enums.FUNCTIONS.AddItem({
         "The creep deals 21 damage per second",
         "The creep spawns blood tears that deal 7 damage"
     },
+    WispProperties = {
+        Layer = 1,
+        Amount = 1,
+        HP = 2,
+        Damage = 3,
+        Description = {
+            "Chance to shoot 1-3 extra tears in random directions",
+        },
+    }
 })
 enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_D,
@@ -1339,6 +1358,16 @@ enums.FUNCTIONS.AddItem({
         "{{Blank}} \2 -1 Damage",
         "{{Blank}} \2 -2 Luck",
     },
+    WispProperties = {
+        Layer = 1,
+        Amount = 0,
+        HP = 6,
+        Damage = 4,
+        Description = {
+            "Grants wisps equal to how many times the item has been used this floor",
+            "Wisps disappear on new room"
+        },
+    }
 })
 enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_MELTED_CANDLE,
@@ -1347,6 +1376,17 @@ enums.FUNCTIONS.AddItem({
         "Start shooting out a stream of flames that block enemy shots and deal contact damage",
         "The stream lasts for 1 second and can be controlled by shooting/movement inputs",
     },
+    WispProperties = {
+        Layer = 1,
+        Amount = 1,
+        HP = 1,
+        Damage = 0.5,
+        Description = {
+            "Fires 4x as often",
+            "Tears have a 10% chance to burn enemies",
+            "Wisps disappear on new room",
+        },
+    }
 })
 enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_DRILL,
@@ -5012,10 +5052,10 @@ enums.FUNCTIONS.AddGlobalModifier({
                         boxDesc = boxDesc.."Item disappears"
                         break
                     else
-                        boxDesc = boxDesc.."{{Collectible"..ToyboxMod.ABOX_ITEMS_ALPHABETICAL[idx][2].."}}"
+                        boxDesc = boxDesc.."{{Collectible"..idx.."}}"
                     end
                     
-                    idx = ToyboxMod:getNextAlphabetItem(ToyboxMod.ABOX_ITEMS_ALPHABETICAL[idx][2], false)
+                    idx = ToyboxMod:getNextAlphabetItem(idx, false)
                 end
 
                 return boxDesc

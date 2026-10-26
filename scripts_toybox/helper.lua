@@ -1120,6 +1120,25 @@ function ToyboxMod:getRandomSpecialRoom(roomType, rng, roomVariant, visited, ign
     end
 end
 
+local WISP_IDS = {}
+
+---@param rng RNG
+---@return CollectibleType
+function ToyboxMod:getRandomWisp(rng)
+    if(#WISP_IDS==0) then
+        local conf = Isaac.GetItemConfig()
+        for i=1, conf:GetCollectibles().Size-1 do
+            local item = conf:GetCollectible(i)
+
+            if(item and item.ID and item:HasTags(ItemConfig.TAG_WISP)) then
+                table.insert(WISP_IDS, item.ID)
+            end
+        end
+    end
+
+    return WISP_IDS[rng:RandomInt(1, #WISP_IDS)]
+end
+
 ---@param r number
 ---@param g number
 ---@param b number
