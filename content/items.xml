@@ -1689,13 +1689,24 @@
 />
 <passive id="183" name="Thick Water"
     description="Goes down easy"
-    gfx="no_sprite.png"
-    quality="2"
+    gfx="thick_water.png"
+    quality="1"
     tags="offensive summonable"
     customtags=""
     cache="luck"
 
     effectluck="1" persistent="true"
+/>
+<passive id="184" name="Iodine"
+    description="Speed up"
+    gfx="iodine.png"
+    quality="2"
+    tags="offensive summonable"
+    customtags=""
+    cache=""
+
+    speed="0.2"
+    hearts="99"
 />
 
 <passive id="450" name="TMTAMER"

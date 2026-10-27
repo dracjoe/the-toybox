@@ -1,6 +1,3 @@
---TODO: Add to itempools
---TODO: Add sprite
-
 ---@param player EntityPlayer
 local function postAddItem(_, _, _, firstTime, slot, vData, player)
     if(firstTime~=true) then return end

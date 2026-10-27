@@ -92,6 +92,7 @@
         <Item Name="Geode"/>
         <Item Name="Sun Mask"/>
         <Item Name="Mo Bomba"/>
+        <Item Name="Thick Water"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -183,6 +184,7 @@
         <Item Name="Geode"/>
         <Item Name="Sun Mask"/>
         <Item Name="Mo Bomba"/>
+        <Item Name="Thick Water"/>
     </Pool>
 
     <Pool Name="boss">
@@ -201,6 +203,7 @@
         <Item Name="Bodybag"/>
         <Item Name="Krokodil"/>
         <Item Name="Power Crystal" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Iodine"/>
     </Pool>
     <Pool Name="greedBoss">
         <Item Name="Caramel Apple"/>
@@ -218,6 +221,7 @@
         <Item Name="Bodybag"/>
         <Item Name="Krokodil"/>
         <Item Name="Power Crystal" Weight="0.5" DecreaseBy="0.5"/>
+        <Item Name="Iodine"/>
     </Pool>
 
     <Pool Name="shop">

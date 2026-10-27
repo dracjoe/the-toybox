@@ -2352,6 +2352,14 @@ enums.FUNCTIONS.AddItem({
         },
     }
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_IODINE,
+    Name = "Iodine",
+    Description = {
+        "\1 +0.2 Speed",
+        "{{HealingRed}} Full health",
+    },
+})
 
 --- OTHER ITEM MODIFIERS ---
 
