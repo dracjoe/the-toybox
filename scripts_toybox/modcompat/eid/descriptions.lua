@@ -2360,6 +2360,21 @@ enums.FUNCTIONS.AddItem({
         "{{HealingRed}} Full health",
     },
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_OFFERING,
+    Name = "Offering",
+    Description = {
+        "{{Trinket}} Item pedestals in Angel Rooms and Boss Rooms have a random trinket attached",
+        "The trinket will be granted upon collecting the item pedestal"
+    },
+    StackModifiers = {
+        {
+            ToModify = {
+                "+1 trinket attached to pedestals per stack",
+            }
+        },
+    }
+})
 
 --- OTHER ITEM MODIFIERS ---
 

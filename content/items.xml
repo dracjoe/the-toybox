@@ -1708,6 +1708,14 @@
     speed="0.2"
     hearts="99"
 />
+<passive id="185" name="Offering"
+    description="Gift pedestals"
+    gfx="no_sprite.png"
+    quality="3"
+    tags="offensive summonable"
+    customtags=""
+    cache=""
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"

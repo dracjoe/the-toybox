@@ -366,6 +366,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.passives.geode")
     include("scripts_toybox.items.passives.sun_mask")
     include("scripts_toybox.items.passives.thick_water")
+    include("scripts_toybox.items.passives.offering")
 
     include("scripts_toybox.items.passives.the_elder_scroll") -- just the shader fo now
 --ACTIVES

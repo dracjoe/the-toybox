@@ -332,6 +332,7 @@
         <Item Name="Steel Soul"/>
         <Item Name="Brotherhood"/>
         <Item Name="Sun Mask"/>
+        <Item Name="Offering"/>
     </Pool>
     <Pool Name="greedAngel">
         <Item Name="Silk Bag"/>
@@ -347,6 +348,7 @@
         <Item Name="Steel Soul"/>
         <Item Name="Brotherhood"/>
         <Item Name="Sun Mask"/>
+        <Item Name="Offering"/>
     </Pool>
 
     <Pool Name="curse">
