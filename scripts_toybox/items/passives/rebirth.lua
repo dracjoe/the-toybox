@@ -17,6 +17,8 @@ local function triggerRevives(_, player)
         player:AddCollectibleEffect(ToyboxMod.COLLECTIBLE_REBIRTH, false)
 
         player:AddNullCostume(FLIGHT_COSTUME)
+
+        ToyboxMod.GAME:StartRoomTransition(ToyboxMod.GAME:GetLevel():GetPreviousRoomIndex(), Direction.NO_DIRECTION, RoomTransitionAnim.WALK, player)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES, triggerRevives)

@@ -2382,7 +2382,7 @@ enums.FUNCTIONS.AddItem({
     Description = {
         "\1 +1 Life",
         "Upon death:",
-        "Respawns Isaac in the same room with 6 red hearts and soul hearts",
+        "Respawns Isaac in the previous room with 6 red hearts and soul hearts",
         "Grants flight"
     },
     StackModifiers = {
