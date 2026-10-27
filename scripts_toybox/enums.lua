@@ -292,6 +292,8 @@ ToyboxMod.COLLECTIBLE_MO_BOMBA = Isaac.GetItemIdByName("Mo Bomba")
 ToyboxMod.COLLECTIBLE_THICK_WATER = Isaac.GetItemIdByName("Thick Water")
 ToyboxMod.COLLECTIBLE_IODINE = Isaac.GetItemIdByName("Iodine")
 ToyboxMod.COLLECTIBLE_OFFERING = Isaac.GetItemIdByName("Offering")
+ToyboxMod.COLLECTIBLE_REBIRTH = Isaac.GetItemIdByName("Rebirth")
+ToyboxMod.COLLECTIBLE_MOMS_EYELINER = Isaac.GetItemIdByName("Mom's Eyeliner")
 
 ToyboxMod.COLLECTIBLE_TMTAMER = Isaac.GetItemIdByName("TMTAMER")
 
@@ -696,6 +698,8 @@ ToyboxMod.TEARFLAGS = {
     LANGTON = TearFlagsLib.RegisterTearFlag("TOYBOX_LANGTON"),
     BLOODY = TearFlagsLib.RegisterTearFlag("TOYBOX_BLOODY"),
     RELIC = TearFlagsLib.RegisterTearFlag("TOYBOX_RELIC"),
+    POISON_AURA = TearFlagsLib.RegisterTearFlag("TOYBOX_POISON_AURA"),
+    SLOWING_AURA = TearFlagsLib.RegisterTearFlag("TOYBOX_SLOWING_AURA"),
 
     BOMB_QUAKE = TearFlagsLib.RegisterTearFlag("TOYBOX_BOMB_QUAKE"),
     BOMB_BLESSED = TearFlagsLib.RegisterTearFlag("TOYBOX_BOMB_BLESSED"),

@@ -1716,6 +1716,25 @@
     customtags=""
     cache=""
 />
+<passive id="186" name="Rebirth"
+    description="On the third day..."
+    gfx="no_sprite.png"
+    quality="2"
+    tags="summonable nolostbr"
+    customtags="revive flyingeffect"
+    cache=""
+/>
+<passive id="187" name="Mom's Eyeliner"
+    description="Am I pretty?"
+    gfx="moms_eyeliner.png"
+    quality="3"
+    tags="offensive summonable mom"
+    customtags=""
+    cache=""
+
+    blackhearts="2"
+    tears="0.4"
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"

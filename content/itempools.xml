@@ -93,6 +93,7 @@
         <Item Name="Sun Mask"/>
         <Item Name="Mo Bomba"/>
         <Item Name="Thick Water"/>
+        <Item Name="Mom's Eyeliner"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -185,6 +186,7 @@
         <Item Name="Sun Mask"/>
         <Item Name="Mo Bomba"/>
         <Item Name="Thick Water"/>
+        <Item Name="Mom's Eyeliner"/>
     </Pool>
 
     <Pool Name="boss">
@@ -333,6 +335,7 @@
         <Item Name="Brotherhood"/>
         <Item Name="Sun Mask"/>
         <Item Name="Offering"/>
+        <Item Name="Rebirth"/>
     </Pool>
     <Pool Name="greedAngel">
         <Item Name="Silk Bag"/>
@@ -349,6 +352,7 @@
         <Item Name="Brotherhood"/>
         <Item Name="Sun Mask"/>
         <Item Name="Offering"/>
+        <Item Name="Rebirth"/>
     </Pool>
 
     <Pool Name="curse">
@@ -476,10 +480,12 @@
         <Item Name="Mom's Photobook"/>
         <Item Name="Dad's Prescription"/>
         <Item Name="Dad's Pipe"/>
+        <Item Name="Mom's Eyeliner"/>
     </Pool>
 
     <Pool Name="momsChest">
         <Item Name="Mom's Photobook"/>
+        <Item Name="Mom's Eyeliner"/>
     </Pool>
 
     <Pool Name="beggar">

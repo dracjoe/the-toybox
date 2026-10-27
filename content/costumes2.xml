@@ -50,4 +50,5 @@
     <costume id="1205" anm2path="costume_pump_1.anm2" type="none" hasSkinAlt="true" priority="1"/>
     <costume id="1206" anm2path="costume_pump_2.anm2" type="none" hasSkinAlt="true" priority="1"/>
     <costume id="1207" anm2path="costume_pump_3.anm2" type="none" hasSkinAlt="true" priority="1"/>
+    <costume id="1208" anm2path="costume_generic_wings.anm2" type="none" hasSkinAlt="true" isFlying="true"/>
 </costumes>

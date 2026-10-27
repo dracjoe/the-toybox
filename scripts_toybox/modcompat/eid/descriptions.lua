@@ -2006,6 +2006,7 @@ enums.FUNCTIONS.AddItem({
     Description = {
         "+1 Life",
         "On death, revive with an extra clone player that copies half of your passive items",
+        "!!! If the clone player dies, you also die"
     },
 })
 enums.FUNCTIONS.AddItem({
@@ -2374,6 +2375,32 @@ enums.FUNCTIONS.AddItem({
             }
         },
     }
+})
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_REBIRTH,
+    Name = "Rebirth",
+    Description = {
+        "\1 +1 Life",
+        "Upon death:",
+        "Respawns Isaac in the same room with 6 red hearts and soul hearts",
+        "Grants flight"
+    },
+    StackModifiers = {
+        {
+            ToModify = {
+                "+1 trinket attached to pedestals per stack",
+            }
+        },
+    }
+})
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_MOMS_EYELINER,
+    Name = "Mom's Eyeliner",
+    Description = {
+        "\1 +0.4 Tears",
+        "{{BlackHeart}} +1 Black Heart",
+        "{{Slow}} Tears gain an aura that slows enemies",
+    },
 })
 
 --- OTHER ITEM MODIFIERS ---

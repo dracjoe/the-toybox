@@ -98,6 +98,8 @@ include("scripts_toybox.misc.tear_variants")
     include("scripts_toybox.misc.tearflags.musical")
     include("scripts_toybox.misc.tearflags.bloody")
     include("scripts_toybox.misc.tearflags.relic")
+    include("scripts_toybox.misc.tearflags.poison_aura")
+    include("scripts_toybox.misc.tearflags.slowing_aura")
 
     include("scripts_toybox.misc.tearflags.bomb_blessed")
     include("scripts_toybox.misc.tearflags.bomb_quake")
@@ -367,6 +369,8 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.passives.sun_mask")
     include("scripts_toybox.items.passives.thick_water")
     include("scripts_toybox.items.passives.offering")
+    include("scripts_toybox.items.passives.rebirth")
+    include("scripts_toybox.items.passives.moms_eyeliner")
 
     include("scripts_toybox.items.passives.the_elder_scroll") -- just the shader fo now
 --ACTIVES

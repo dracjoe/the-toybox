@@ -18,8 +18,6 @@ local function triggerRevives(_, player)
 
         player:SetMinDamageCooldown(60*3)
 
-        if(player:GetOtherTwin()) then return end
-
         local newPlayer = PlayerManager.SpawnCoPlayer2(player:GetPlayerType())
         newPlayer.Parent = player
         newPlayer.Position = player.Position+RandomVector()
@@ -49,16 +47,34 @@ local function triggerRevives(_, player)
         for _=1, numitems do
             local idx = rng:RandomInt(1,#items)
             local picked = items[idx]
-            
+
             newPlayer:AddCollectible(picked[1], nil, false, nil, nil, picked[2])
             table.remove(items, idx)
         end
+
+        local ogPlayerData = EntitySaveStateManager.GetEntityData(ToyboxMod, player)
+        ogPlayerData.CLONE_CHILDREN = ogPlayerData.CLONE_CHILDREN or {}
+        table.insert(ogPlayerData.CLONE_CHILDREN, newPlayer:GetPlayerIndex())
 
         EntitySaveStateManager.GetEntityData(ToyboxMod, newPlayer).CLONE_PLAYER = true
         newPlayer:AddCacheFlags(CacheFlag.CACHE_COLOR, 1)
     end
 end
 ToyboxMod:AddCallback(ModCallbacks.MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES, triggerRevives)
+
+local preventDeathLoop = false
+
+---@param player EntityPlayer
+local function checkIfReallyDead(_, player)
+    if(preventDeathLoop) then return end
+
+    if(EntitySaveStateManager.GetEntityData(ToyboxMod, player).CLONE_PLAYER) then
+        if(player.Parent and not player.Parent:IsDead()) then
+            player.Parent:Die()
+        end
+    end
+end
+ToyboxMod:AddPriorityCallback(ModCallbacks.MC_PRE_TRIGGER_PLAYER_DEATH, CallbackPriority.IMPORTANT-1, checkIfReallyDead)
 
 -- for the cosutme
 ---@param pl EntityPlayer
