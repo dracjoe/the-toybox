@@ -171,16 +171,15 @@
 
     soulhearts="2"
 />
-<active id="19" name="Brainfreeze"
-    description="Chill aura"
-    gfx="brainfreeze.png"
+<active id="19" name="Tech-10k"
+    description="Big freaking laser"
+    gfx="tech10k.png"
     quality="2"
-    tags="offensive noeden"
+    tags="offensive tech"
     customtags="combat"
     cache=""
     
-    maxcharges="4"
-    hidden="true"
+    maxcharges="3"
 />
 <passive id="20" name="Fatal Signal"
     description="HP up + memory overfl"
@@ -843,7 +842,7 @@
     description="Less is more...?"
     gfx="pythagoras_cup.png"
     quality="2"
-    tags="offensive summonable"
+    tags="offensive"
     cache=""
 
     maxcharges="0"
@@ -1556,7 +1555,7 @@
     description="Eureka!"
     gfx="breakthrough.png"
     quality="3"
-    tags="offensive summonable"
+    tags="offensive"
     customtags="combat"
     cache=""
 

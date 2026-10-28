@@ -94,6 +94,7 @@
         <Item Name="Mo Bomba"/>
         <Item Name="Thick Water"/>
         <Item Name="Mom's Eyeliner"/>
+        <Item Name="Tech-10k"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -187,6 +188,7 @@
         <Item Name="Mo Bomba"/>
         <Item Name="Thick Water"/>
         <Item Name="Mom's Eyeliner"/>
+        <Item Name="Tech-10k"/>
     </Pool>
 
     <Pool Name="boss">
@@ -579,6 +581,7 @@
         <Item Name="Rhubarb"/>
         <Item Name="Anaphylaxis"/>
         <Item Name="Instant Gratification"/>
+        <Item Name="Tech-10k"/>
     </Pool>
 
     <Pool Name="ultraSecret">

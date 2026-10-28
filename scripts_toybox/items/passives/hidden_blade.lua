@@ -1,4 +1,4 @@
-local GIVE_ITEM_CHANCE = 0.66
+local GIVE_ITEM_CHANCE = 0.66 + 1
 
 local PICKER_WEIGHT_MULTS = {
     [CollectibleType.COLLECTIBLE_THE_NAIL] = 0.25,
@@ -25,6 +25,7 @@ local PICKER_WEIGHT_MULTS = {
     [ToyboxMod.COLLECTIBLE_HAND_PUMP] = 0.5, -- lowered cuz its kind of useless
     [ToyboxMod.COLLECTIBLE_BLUE_WHALE] = 0.5, -- lowered because its just a free 1.5x dmg
     [ToyboxMod.COLLECTIBLE_BREAKTHROUGH] = 0, -- removed for giving bonus that lasts outside the current room
+    [ToyboxMod.COLLECTIBLE_TECH10K] = 0.5, -- maybe its 2 strong
 
     --[ToyboxMod.COLLECTIBLE_MELTED_CANDLE] = 10000,
     --[CollectibleType.COLLECTIBLE_CANDLE] = 10000,

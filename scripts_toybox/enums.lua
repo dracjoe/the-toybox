@@ -294,6 +294,7 @@ ToyboxMod.COLLECTIBLE_IODINE = Isaac.GetItemIdByName("Iodine")
 ToyboxMod.COLLECTIBLE_OFFERING = Isaac.GetItemIdByName("Offering")
 ToyboxMod.COLLECTIBLE_REBIRTH = Isaac.GetItemIdByName("Rebirth")
 ToyboxMod.COLLECTIBLE_MOMS_EYELINER = Isaac.GetItemIdByName("Mom's Eyeliner")
+ToyboxMod.COLLECTIBLE_TECH10K = Isaac.GetItemIdByName("Tech-10k")
 
 ToyboxMod.COLLECTIBLE_TMTAMER = Isaac.GetItemIdByName("TMTAMER")
 
@@ -574,6 +575,7 @@ ToyboxMod.TEAR_COOL = Isaac.GetEntityVariantByName("Cool Tear") ---@type TearVar
 ToyboxMod.TEAR_AIDS = Isaac.GetEntityVariantByName("AIDS Tear") ---@type TearVariant
 ToyboxMod.TEAR_YES = Isaac.GetEntityVariantByName("Yes Tear") ---@type TearVariant
 ToyboxMod.TEAR_RELIC = Isaac.GetEntityVariantByName("Relic Tear") ---@type TearVariant
+ToyboxMod.TEAR_PLASMA = Isaac.GetEntityVariantByName("Tech-10k Tear") ---@type TearVariant
 --ToyboxMod.TEAR_METEOR = Isaac.GetEntityVariantByName("Meteor Tear") ---@type TearVariant
 --ToyboxMod.TEAR_BULLET = Isaac.GetEntityVariantByName("Foam Bullet Tear") ---@type TearVariant
 --ToyboxMod.TEAR_SOUNDWAVE = Isaac.GetEntityVariantByName("Soundwave Tear") ---@type TearVariant
@@ -663,6 +665,10 @@ ToyboxMod.SFX_EUREKA = Isaac.GetSoundIdByName("(TOYBOX) Eureka")
 ToyboxMod.SFX_EUREKA_DISCHARGE = Isaac.GetSoundIdByName("(TOYBOX) Eureka Discharge")
 ToyboxMod.SFX_EQUIP = Isaac.GetSoundIdByName("(TOYBOX) Equip")
 ToyboxMod.SFX_SPRAY = Isaac.GetSoundIdByName("(TOYBOX) Spray")
+ToyboxMod.SFX_BFG_ARC = Isaac.GetSoundIdByName("(TOYBOX) BFG Arc")
+ToyboxMod.SFX_BFG_FIRE = Isaac.GetSoundIdByName("(TOYBOX) BFG Fire")
+ToyboxMod.SFX_BFG_IDLE = Isaac.GetSoundIdByName("(TOYBOX) BFG Idle")
+ToyboxMod.SFX_BFG_RAISE = Isaac.GetSoundIdByName("(TOYBOX) BFG Raise")
 
 ToyboxMod.SFX_SLIDE_WHISTLE = Isaac.GetSoundIdByName("(TOYBOX) Slide Whistle")
 ToyboxMod.SFX_MR_KRABS_WALK = Isaac.GetSoundIdByName("(TOYBOX) Mr Krabs Walk")

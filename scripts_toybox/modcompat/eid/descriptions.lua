@@ -2402,6 +2402,14 @@ enums.FUNCTIONS.AddItem({
         "{{Slow}} Tears gain an aura that slows enemies",
     },
 })
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_TECH10K,
+    Name = "Tech-10k",
+    Description = {
+        "Fires a plasma ball that shoots lasers at enemies and in random directions",
+        "The plasma ball explodes on contact",
+    },
+})
 
 --- OTHER ITEM MODIFIERS ---
 

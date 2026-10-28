@@ -142,6 +142,20 @@
 	<sound name="(TOYBOX) Spray">
 		<sample weight="1" path="spray.wav" />
 	</sound>
+	<sound name="(TOYBOX) BFG Arc">
+		<sample weight="1" path="bfg_arc_1.wav" />
+		<sample weight="1" path="bfg_arc_3.wav" />
+		<sample weight="1" path="bfg_arc_4.wav" />
+	</sound>
+	<sound name="(TOYBOX) BFG Fire">
+		<sample weight="1" path="bfg_fire.wav" />
+	</sound>
+	<sound name="(TOYBOX) BFG Idle">
+		<sample weight="1" path="bfg_idle.wav" />
+	</sound>
+	<sound name="(TOYBOX) BFG Raise">
+		<sample weight="1" path="bfg_raise.wav" />
+	</sound>
 
 	<sound name="(TOYBOX) Water Loop (Copy)">
 		<sample weight="1" path="water_loop_copy.wav" />

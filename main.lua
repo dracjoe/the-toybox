@@ -417,6 +417,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.actives.xenotransfusion")
     include("scripts_toybox.items.actives.blue_whale")
     include("scripts_toybox.items.actives.mo_bomba")
+    include("scripts_toybox.items.actives.tech10k")
 --TRINKETS
     include("scripts_toybox.items.trinkets.wonder_drug")
     include("scripts_toybox.items.trinkets.antibiotics")
