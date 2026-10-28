@@ -1,4 +1,4 @@
-local GIVE_ITEM_CHANCE = 0.66 + 1
+local GIVE_ITEM_CHANCE = 0.66
 
 local PICKER_WEIGHT_MULTS = {
     [CollectibleType.COLLECTIBLE_THE_NAIL] = 0.25,
