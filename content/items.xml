@@ -1717,7 +1717,7 @@
 />
 <passive id="186" name="Rebirth"
     description="On the third day..."
-    gfx="no_sprite.png"
+    gfx="rebirth.png"
     quality="2"
     tags="summonable nolostbr"
     customtags="revive flyingeffect"

@@ -12,13 +12,6 @@ local EXPLOSION_LASERS = 17
 local EXPLOSION_DAMAGE = 85
 local LASER_DAMAGE = 6
 
---[[
-ToyboxMod.SFX_BFG_ARC = Isaac.GetSoundIdByName("(TOYBOX) BFG Arc")
-ToyboxMod.SFX_BFG_FIRE = Isaac.GetSoundIdByName("(TOYBOX) BFG Fire")
-ToyboxMod.SFX_BFG_IDLE = Isaac.GetSoundIdByName("(TOYBOX) BFG Idle")
-ToyboxMod.SFX_BFG_RAISE = Isaac.GetSoundIdByName("(TOYBOX) BFG Raise")
-]]
-
 local function spawnSpark(pos, angle, dist, tear, dmg, scale)
     local player = tear.SpawnerEntity and tear.SpawnerEntity:ToPlayer() or Isaac.GetPlayer()
 
