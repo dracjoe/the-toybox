@@ -1708,8 +1708,8 @@
     hearts="99"
 />
 <passive id="185" name="Offering"
-    description="Gift pedestals"
-    gfx="no_sprite.png"
+    description="Gifted pedestals"
+    gfx="offering.png"
     quality="3"
     tags="offensive summonable"
     customtags=""
