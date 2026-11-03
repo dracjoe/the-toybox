@@ -85,7 +85,7 @@
 	/>
 
 	<player birthright="Cauterized wounds" name="Homunculus"
-		nameimage="jonas_name.png" portrait="homunculus_portrait.png" skin="character_homunculus_b.png"
+		nameimage="jonas_name.png" portrait="homunculus_b_portrait.png" skin="character_homunculus_b.png"
 		costumeSuffix="homunculus_a" skinColor="-1"
 		modcostume="1102"
 

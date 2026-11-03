@@ -579,7 +579,7 @@ enums.FUNCTIONS.AddItem({
         "\1 +1 Range",
         "\1 +0.1 Shotspeed",
         "\1 +1 Luck",
-        "At the start of next floor, will turn into an item from the itempool it was obtained froom"
+        "At the start of the next floor, will turn into an item from the itempool it was obtained from"
     },
     Modifiers = {
         {
@@ -589,7 +589,7 @@ enums.FUNCTIONS.AddItem({
                 local poolName = EID:getDescriptionEntry("itemPoolNames")[lastPool]
                 local poolIcon = (EID.ItemPoolTypeToMarkup[lastPool] or "{{ItemPoolTreasure}}")
 
-                return string.gsub(descObj.Description, "itempool it was obtained froom", poolIcon.." {{ColorSilver}}"..poolName.."{{CR}} itempool")
+                return string.gsub(descObj.Description, "itempool it was obtained from", poolIcon.." {{ColorSilver}}"..poolName.."{{CR}} itempool")
             end
         },
     }
@@ -2408,6 +2408,15 @@ enums.FUNCTIONS.AddItem({
     Description = {
         "Fires a plasma ball that shoots lasers at enemies and in random directions",
         "The plasma ball explodes on contact",
+    },
+})
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_GREY_GOO,
+    Name = "Grey Goo",
+    Description = {
+        "Size up",
+        "Isaac deals 24 damage per second",
+        "{{HealingRed}} Killing 4 enemies via contact damage heals 1 full red heart"
     },
 })
 

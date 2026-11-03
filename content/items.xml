@@ -1734,6 +1734,16 @@
     blackhearts="2"
     tears="0.4"
 />
+<passive id="188" name="Grey Goo"
+    description="Eat everything"
+    gfx="grey_goo.png"
+    quality="0"
+    tags="nolostbr summonable"
+    customtags=""
+    cache="size"
+
+    persistent="true"
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"

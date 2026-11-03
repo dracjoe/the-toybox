@@ -126,6 +126,7 @@ local BASEDATA = {
     CITRUSBERRY_TRIGGERED = false,
     FAT_LEECH_ATE = -1,
     MIRAGE_USES = 0,
+    GREY_GOO_KILLS = 0,
 
     TEMPORARY_ITEMS = {},
     TEMPORARY_ITEMS_ROOM = {},

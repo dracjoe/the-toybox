@@ -95,6 +95,7 @@
         <Item Name="Thick Water"/>
         <Item Name="Mom's Eyeliner"/>
         <Item Name="Tech-10k"/>
+        <Item Name="Grey Goo"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -189,6 +190,7 @@
         <Item Name="Thick Water"/>
         <Item Name="Mom's Eyeliner"/>
         <Item Name="Tech-10k"/>
+        <Item Name="Grey Goo"/>
     </Pool>
 
     <Pool Name="boss">

@@ -33,6 +33,8 @@ local BIG_ITEMS = {
 }
 
 local ITEM_FILENAMES = {}
+local FILENAME_PICKER = WeightedOutcomePicker()
+local FILENAME_RNG = ToyboxMod:generateRng()
 local DEATH_INDEXES = {}
 
 for key, id in pairs(ToyboxMod) do
@@ -46,9 +48,10 @@ for key, id in pairs(ToyboxMod) do
         iconf = conf:GetTrinket(id)
     end
 
-    if(iconf and not iconf.Hidden) then
+    if(iconf) then
         table.insert(ITEM_FILENAMES, iconf.GfxFileName)
-        if(isCollectible) then
+        FILENAME_PICKER:AddOutcomeFloat(#ITEM_FILENAMES, (iconf.Hidden and 0.2 or 1))
+        if(isCollectible and not iconf.Hidden) then
             table.insert(DEATH_INDEXES, id)
         end
     end
@@ -56,7 +59,7 @@ end
 
 
 local function getRandomItemGfx()
-    return ITEM_FILENAMES[math.random(#ITEM_FILENAMES)]
+    return ITEM_FILENAMES[FILENAME_PICKER:PickOutcome(FILENAME_RNG)]
 end
 local function randomItemPos()
     return Vector(-ITEM_POS_PADDING.X, math.random(MENU_SIZE.Y+ITEM_POS_PADDING.Y*2)-ITEM_POS_PADDING.Y)
