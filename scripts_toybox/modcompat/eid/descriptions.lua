@@ -1621,6 +1621,16 @@ enums.FUNCTIONS.AddItem({
         "{{Luck}} 50% chance at 20 luck",
         "{{BleedingOut}} Bleeding enemies heal you for {{HalfHeart}} half a heart when they die",
     },
+    Modifiers = {
+        {
+            Condition = function(descObj)
+                return PlayerManager.AnyoneHasCollectible(ToyboxMod.COLLECTIBLE_GARLIC)
+            end,
+            ToModify = {
+                "{{Collectible"..ToyboxMod.COLLECTIBLE_GARLIC.."}} Can't heal you!",
+            }
+        },
+    },
 })
 enums.FUNCTIONS.AddItem({
     ID = ToyboxMod.COLLECTIBLE_PROSPECTORS_PICK,
@@ -2415,7 +2425,7 @@ enums.FUNCTIONS.AddItem({
     Name = "Grey Goo",
     Description = {
         "Size up",
-        "Isaac deals 24 damage per second",
+        "Isaac deals 24 contact damage per second",
         "{{HealingRed}} Killing 4 enemies via contact damage heals 1 full red heart"
     },
 })

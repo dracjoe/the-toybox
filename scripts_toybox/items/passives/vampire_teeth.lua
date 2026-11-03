@@ -26,7 +26,7 @@ local function healOnBleedKill(_, npc)
 
     for i=0, ToyboxMod.GAME:GetNumPlayers()-1 do
         local pl = Isaac.GetPlayer(i)
-        if(pl:HasCollectible(ToyboxMod.COLLECTIBLE_VAMPIRE_TEETH)) then
+        if(pl:HasCollectible(ToyboxMod.COLLECTIBLE_VAMPIRE_TEETH) and not pl:HasCollectible(ToyboxMod.COLLECTIBLE_GARLIC)) then
             pl:AddHearts(1)
 
             local maxdist = npc.Position:Distance(pl.Position)

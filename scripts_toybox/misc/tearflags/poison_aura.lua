@@ -13,7 +13,7 @@ local LASER_AURA_ALPHA = 0.08
 local function applyEffect(ent, ref, dmg)
     local countdown = ent:GetPoisonCountdown()
     if(countdown<POISON_AMOUNT) then
-        ent:AddPoison(plRef, POISON_AMOUNT-countdown, POISON_DMG_MULT*dmg)
+        ent:AddPoison(ref, POISON_AMOUNT-countdown, POISON_DMG_MULT*dmg)
     end
 end
 
