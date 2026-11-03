@@ -372,6 +372,7 @@ include("scripts_toybox.challenges.safari_zone")
     include("scripts_toybox.items.passives.rebirth")
     include("scripts_toybox.items.passives.moms_eyeliner")
     include("scripts_toybox.items.passives.grey_goo")
+    include("scripts_toybox.items.passives.bulletproof_vest")
 
     include("scripts_toybox.items.passives.the_elder_scroll") -- just the shader fo now
 --ACTIVES

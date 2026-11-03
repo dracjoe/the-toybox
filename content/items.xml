@@ -1744,6 +1744,16 @@
 
     persistent="true"
 />
+<passive id="189" name="Bullet Vest"
+    description="Speed down + weaker projectiles"
+    gfx="bulletproof_vest.png"
+    quality="0"
+    tags="nolostbr summonable"
+    customtags=""
+    cache=""
+
+    speed="-0.2"
+/>
 
 <passive id="450" name="TMTAMER"
     description="In the lion's den"

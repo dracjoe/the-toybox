@@ -296,6 +296,7 @@ ToyboxMod.COLLECTIBLE_REBIRTH = Isaac.GetItemIdByName("Rebirth")
 ToyboxMod.COLLECTIBLE_MOMS_EYELINER = Isaac.GetItemIdByName("Mom's Eyeliner")
 ToyboxMod.COLLECTIBLE_TECH10K = Isaac.GetItemIdByName("Tech-10k")
 ToyboxMod.COLLECTIBLE_GREY_GOO = Isaac.GetItemIdByName("Grey Goo")
+ToyboxMod.COLLECTIBLE_BULLETPROOF_VEST = Isaac.GetItemIdByName("Bullet Vest")
 
 ToyboxMod.COLLECTIBLE_TMTAMER = Isaac.GetItemIdByName("TMTAMER")
 

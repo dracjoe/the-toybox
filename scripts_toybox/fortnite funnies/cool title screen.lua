@@ -32,10 +32,37 @@ local BIG_ITEMS = {
     --["gfx_tb/items/collectibles/gambling_addiction.png"] = true,
 }
 
+local MAYAN_WEIGHT = 0.2
+local ITEM_WEIGHTS = {
+    [ToyboxMod.COLLECTIBLE_CHICCHAN_SERPENT] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_ETZNAB_KNIFE] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_OC_DOG] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_IMIX_CROCODILE] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_CIB_VULTURE] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_MEN_EAGLE] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_CABAN_EARTH] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_LAMAT_RABBIT] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_MULAC_WATER] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_IK_WIND] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_EB_GRASS] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_KAN_LIZARD] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_MANIK_DEER] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_IX_JAGUAR] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_AHAU_FLOWER] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_CHUEN_MONKEY] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_AKBAL_HOUSE] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_CIMI_DEATH] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_BEN_REED] = MAYAN_WEIGHT,
+    [ToyboxMod.COLLECTIBLE_CAUAC_STORM] = MAYAN_WEIGHT,
+}
+
 local ITEM_FILENAMES = {}
 local FILENAME_PICKER = WeightedOutcomePicker()
 local FILENAME_RNG = ToyboxMod:generateRng()
 local DEATH_INDEXES = {}
+
+local DEATH_PICKER = WeightedOutcomePicker()
+local DEATH_RNG = ToyboxMod:generateRng()
 
 for key, id in pairs(ToyboxMod) do
     local iconf
@@ -50,9 +77,9 @@ for key, id in pairs(ToyboxMod) do
 
     if(iconf) then
         table.insert(ITEM_FILENAMES, iconf.GfxFileName)
-        FILENAME_PICKER:AddOutcomeFloat(#ITEM_FILENAMES, (iconf.Hidden and 0.2 or 1))
-        if(isCollectible and not iconf.Hidden) then
-            table.insert(DEATH_INDEXES, id)
+        FILENAME_PICKER:AddOutcomeFloat(#ITEM_FILENAMES, (iconf.Hidden and 0.2 or 1)*(isCollectible and ITEM_WEIGHTS[id] or 1))
+        if(isCollectible) then
+            DEATH_PICKER:AddOutcomeFloat(id, (iconf.Hidden and 0.2 or 1)*(isCollectible and ITEM_WEIGHTS[id] or 1))
         end
     end
 end
@@ -135,9 +162,7 @@ local DEATH_SPRITES = {
 }
 for i=1, #DEATH_SPRITES do
     for _=1, DEATH_SPRITES[i].NumItems do
-        local idx = DEATH_INDEXES[math.random(1,#DEATH_INDEXES)]
-
-        local rng = ToyboxMod:generateRng()
+        local idx = DEATH_PICKER:PickOutcome(DEATH_RNG)
 
         table.insert(DEATH_SPRITES[i].Items,
         {
@@ -188,7 +213,7 @@ local function postMenuRender(_)
             local z = math.sin(radlat)
 
             if(1+z<0.02) then
-                itemdata.ID = DEATH_INDEXES[math.random(1,#DEATH_INDEXES)]
+                itemdata.ID = DEATH_PICKER:PickOutcome(DEATH_RNG)
                 itemdata.Color2 = Color(1,1,1,1,math.random()*0.5+0.2,math.random()*0.5+0.2,math.random()*0.5+0.2)
             end
 

@@ -2376,7 +2376,7 @@ enums.FUNCTIONS.AddItem({
     Name = "Offering",
     Description = {
         "{{Trinket}} Item pedestals in Angel Rooms and Boss Rooms have a random trinket attached",
-        "The trinket will be granted upon collecting the item pedestal"
+        "The trinket will be granted (not smelted) upon collecting the item pedestal"
     },
     StackModifiers = {
         {
@@ -2428,6 +2428,22 @@ enums.FUNCTIONS.AddItem({
         "Isaac deals 24 contact damage per second",
         "{{HealingRed}} Killing 4 enemies via contact damage heals 1 full red heart"
     },
+})
+enums.FUNCTIONS.AddItem({
+    ID = ToyboxMod.COLLECTIBLE_BULLETPROOF_VEST,
+    Name = "Bullet Vest",
+    Description = {
+        "\2 -0.2 Speed",
+        "Projectile damage taken is reduced to half a heart",
+        "{{Luck}} 33% chance for projectiles to deal no damage (100% at 10 Luck)"
+    },
+    StackModifiers = {
+        {
+            ToModify = {
+                "Base chance increased by 16% per stack",
+            }
+        },
+    }
 })
 
 --- OTHER ITEM MODIFIERS ---

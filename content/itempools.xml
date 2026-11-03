@@ -96,6 +96,7 @@
         <Item Name="Mom's Eyeliner"/>
         <Item Name="Tech-10k"/>
         <Item Name="Grey Goo"/>
+        <Item Name="Bullet Vest"/>
     </Pool>
     <Pool Name="greedTreasure">
         <Item Name="4 4"/>
@@ -191,6 +192,7 @@
         <Item Name="Mom's Eyeliner"/>
         <Item Name="Tech-10k"/>
         <Item Name="Grey Goo"/>
+        <Item Name="Bullet Vest"/>
     </Pool>
 
     <Pool Name="boss">
