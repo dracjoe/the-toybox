@@ -3492,7 +3492,7 @@ enums.FUNCTIONS.AddTrinket({
     ID = ToyboxMod.TRINKET_LIL_GRUB,
     Name = "Lil Grub",
     Description = {
-        "On room clear, spawn 3 blue flies",
+        "On room clear, spawn 3 blue flies (up to 5 max)",
         "The blue flies may be of a {{Collectible"..ToyboxMod.COLLECTIBLE_UNSTABLE_DNA.."}} stronger variant and may have a random locust color",
         "!!! Once picked up, can only be removed with {{Trinket"..ToyboxMod.TRINKET_DEWORMER.."}} Dewormer",
     },

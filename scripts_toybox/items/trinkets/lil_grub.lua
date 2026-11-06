@@ -2,12 +2,23 @@ local FLIES_TO_SPAWN = 3
 local MUTANT_CHANCE = 0.5
 local LOCUST_CHANCE = 0.167
 
+local MAX_FLIES = 5
+
 ToyboxMod:makeParasiteTrinket(ToyboxMod.TRINKET_LIL_GRUB, ToyboxMod.TRINKET_DEWORMER, SoundEffect.SOUND_POISON_HURT)
 
 ---@param player EntityPlayer
 local function spawnFlies(_, player)
     if(not player:HasTrinket(ToyboxMod.TRINKET_LIL_GRUB)) then return end
     local rng = player:GetTrinketRNG(ToyboxMod.TRINKET_LIL_GRUB)
+
+    local existingFlies = 0
+    for _, ent in ipairs(Isaac.FindByType(3,FamiliarVariant.BLUE_FLY,-1)) do
+        if(ent and ToyboxMod:getEntityData(ent, "LIL_GRUB_FLY")) then
+            existingFlies = existingFlies+1
+        end
+    end
+
+    if(existingFlies >= MAX_FLIES) then return end
 
     local numFlies = FLIES_TO_SPAWN*player:GetTrinketMultiplier(ToyboxMod.TRINKET_LIL_GRUB)
     for _=1, numFlies do
@@ -27,6 +38,8 @@ local function spawnFlies(_, player)
             if(rng:RandomFloat()<MUTANT_CHANCE) then
                 ToyboxMod:makeRandomUpgradedInsect(fly, true)
             end
+
+            ToyboxMod:setEntityData(fly, "LIL_GRUB_FLY", true)
         end
     end
 end

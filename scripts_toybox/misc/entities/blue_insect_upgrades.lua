@@ -210,7 +210,7 @@ local flyFunctions = {
 
             local startSlowDist = 30*6
             local endSlowDist = 30*2.5
-            local maxSlow = 0.25
+            local maxSlow = 0.5
 
             local sp = fam:GetSprite()
             if(sp:IsFinished("Attack")) then
