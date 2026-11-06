@@ -70,5 +70,6 @@ HudHelper.RegisterHUDElement({
         --sprite.Offset = Vector(0, 6)
         sprite.Color = Color.Lerp(HUD_COLOR1, HUD_COLOR2, sin)
         sprite:Render(position)
+        sprite.Color = Color.Default
 	end,
 }, HudHelper.HUDType.POCKET)
