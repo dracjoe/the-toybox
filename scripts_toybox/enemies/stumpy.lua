@@ -1,3 +1,5 @@
+--TODO: Make spat grids not respawn on room reentry
+
 local sfx = SFXManager()
 
 local FLY_PICKER = WeightedOutcomePicker()

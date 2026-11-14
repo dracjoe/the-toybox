@@ -106,6 +106,7 @@ ToyboxMod:AddPriorityCallback(ModCallbacks.MC_POST_FAMILIAR_RENDER, CallbackPrio
 local function tryCheckIfKill(_, ent, dmg, flags, source, countdown)
     if(not (source and source.Entity)) then return end
     if(not (ent:IsDead() or ent:HasMortalDamage())) then return end
+    if(not (ent:IsActiveEnemy(true) and ent:IsVulnerableEnemy())) then return end
 
     local s = source.Entity
 

@@ -158,7 +158,7 @@ local function renderOverlays(_, npc, offset)
     if(not overlayFrame) then return end
 
     local pos = overlayFrame:GetPos()
-    local rPos = pos+Isaac.WorldToRenderPosition(npc.Position)+offset-ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
+    local rPos = pos+Isaac.WorldToRenderPosition(npc.Position)+offset--ToyboxMod.GAME:GetRoom():GetRenderScrollOffset()
     overlaySprite:SetFrame(data.Animation, npc.FrameCount%overlaySprite:GetAnimationData(data.Animation):GetLength())
     overlaySprite:Render(rPos)
 end

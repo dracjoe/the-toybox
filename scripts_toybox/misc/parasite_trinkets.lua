@@ -44,6 +44,8 @@ local function trinketCollision(_, pickup, coll)
                 end
             end
             hasTrinkets = true
+        else
+            hasTrinkets = false
         end
     end
 

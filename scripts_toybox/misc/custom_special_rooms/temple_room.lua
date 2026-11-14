@@ -504,7 +504,7 @@ local function enterTrialRoom(_)
     local room = level:GetCurrentRoomDesc()
     local templeMainData = ToyboxMod:getExtraData("TEMPLE_MAIN_ROOMS") or {}
     local templeExtraData = ToyboxMod:getExtraData("TEMPLE_TRIAL_ROOMS") or {}
-    if(templeMainData[tostring(room.SafeGridIndex)] and ToyboxMod:isCustomSpecialRoom(room.SafeGridIndex, "TEMPLE_ROOM")) then
+    if(templeMainData[tostring(room.SafeGridIndex)] and ToyboxMod:isCustomSpecialRoom(room, "TEMPLE_ROOM")) then
         local unclearRooms = 0
         for idx, data in pairs(templeExtraData) do
             if(data.Parent==room.SafeGridIndex) then
